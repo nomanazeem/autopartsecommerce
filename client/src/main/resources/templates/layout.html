@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <!-- Basic page needs
+    ============================================ -->
+    <title>Autoparts - Multipurpose Responsive HTML5 Template</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="keywords" content="html5 template, best html5 template, best html template, html5 basic template, multipurpose html5 template, multipurpose html template, creative html templates, creative html5 templates"/>
+    <meta name="description" content="is a powerful Multi-purpose HTML5 Template with clean and user friendly design. It is definite a great starter for any eCommerce web project."/>
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow"/>
+
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Favicon
+    ============================================ -->
+
+    <link rel="shortcut icon" type="image/png" th:href="@{/ico/favicon-16x16.png}"/>
+
+
+    <!-- Libs CSS
+    ============================================ -->
+    <link th:href="@{/css/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+    <link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+    <link th:href="@{/js/minicolors/miniColors.css}" rel="stylesheet">
+
+    <link th:href="@{/js/pe-icon-7-stroke/css/pe-icon-7-stroke.css}" rel="stylesheet">
+<!--
+    <link th:href="@{/pe-icon-7-stroke/css/helper.html}" rel="stylesheet">
+-->
+
+    <!-- Theme CSS
+    ============================================ -->
+    <link th:href="@{/css/themecss/so_searchpro.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-newletter-popup.css}" rel="stylesheet">
+
+    <link th:href="@{/css/footer/footer4.css}" rel="stylesheet">
+    <link th:href="@{/css/header/header4.css}" rel="stylesheet">
+    <link id="color_scheme" th:href="@{/css/home4.css}" rel="stylesheet">
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+    <!-- Google web fonts
+   ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,600,700' rel='stylesheet'
+          type='text/css'>
+    <style type="text/css">
+         body{font-family:'Rubik', sans-serif}
+    
+    </style>
+
+</head>
+
+<body class="common-home res layout-4">
+
+<div id="wrapper" class="wrapper-fluid banners-effect-5">
+
+    <div th:replace="/fragments/header"></div>
+
+    <div layout:fragment="content"></div>
+
+    <div th:replace="/fragments/footer"></div>
+</div>
+
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/slick-slider/slick.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/minicolors/jquery.miniColors.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/lightslider/lightslider.js}"></script>
+
+<!-- Theme files
+============================================ -->
+
+<script type="text/javascript" th:src="@{/js/themejs/toppanel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+<th:block layout:fragment="script"></th:block>
+
+</body>
+</html>

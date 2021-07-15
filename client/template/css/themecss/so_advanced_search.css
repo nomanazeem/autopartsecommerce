@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.so_advanced_search {
+	background-color: #229ac8;
+    border-radius: 5px;
+}
+.so_advanced_search .heading-title h2 {
+	padding: 0;
+    margin: 0 0 20px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+}
+.so_advanced_search .sas_wrap .sas_inner {
+	padding: 20px;
+}
+.so_advanced_search .sas_inner-box-search .search-boxes select {
+	border: 1px solid #ddd;
+	height: 40px;
+	/*line-height: 40px;*/
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	vertical-align: middle;
+}
+.so_advanced_search .sas_inner-box-search .search-boxes select {
+	background: url('../images/bg-selectbox.png') no-repeat right center #fff;
+	padding-right: 26px;
+}
+.so_advanced_search .sas_inner-box-search .search-boxes {
+	margin: 0 0 15px 0;
+}
+#column-left .so_advanced_search .search-boxes,
+#column-right .so_advanced_search .search-boxes {
+    width: 100%;
+}
+#column-left .so_advanced_search .search-button,
+#column-right .so_advanced_search .search-button {
+    width: 100%;
+    text-align: center;
+}
+#column-left .so_advanced_search .sas_inner-box-search .search-button,
+#column-right .so_advanced_search .sas_inner-box-search .search-button {
+	width: 100%;
+	text-align: center;
+}
+.so_advanced_search .sas_inner-box-search .search-button button {
+	height: 40px;
+	line-height: 40px;
+	border-radius: 5px;
+	color: #fff;
+	background-color: #222;
+	width: 70%;
+	border: 0;
+	padding: 0;
+	font-size: 18px;
+}
+.so_advanced_search .sas_inner-box-search .search-button button:hover {
+	background-color: #f26522;
+}
