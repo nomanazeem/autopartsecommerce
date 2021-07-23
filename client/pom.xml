@@ -10,11 +10,11 @@
         <relativePath/> <!-- lookup parent from nazeem.autoparts.repository -->
     </parent>
 
-    <groupId>nazeem.autoparts</groupId>
+    <groupId>nazeem.autoparts.client</groupId>
     <artifactId>client</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Autoparts Ecommece Client</name>
-    <description>Autoparts project for Spring Boot</description>
+    <name>Auto-parts Ecommerce Client</name>
+    <description>Auto-parts project for Spring Boot</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,6 +69,13 @@
         </dependency>
 
         <dependency>
+            <groupId>nazeem.autoparts.library</groupId>
+            <artifactId>library</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -84,7 +91,6 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

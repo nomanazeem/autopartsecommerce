@@ -56,9 +56,9 @@
                         <h3 class="modtitle">Contact us</h3>
                         <div class="modcontent">
                             <ul class="list-icon">
-                                <li><span class="icon pe-7s-map-marker"></span>5611 Wellington Road, Suite 115, Gainesville, VA 20155</li>
-                                <li><span class="icon pe-7s-call"></span> <a href="#">888 9344 6000 - 888 1234 6789</a></li>
-                                <li><span class="icon pe-7s-mail"></span><a href="mailto:contact@opencartworks.com">contact@opencartworks.com</a></li>
+                                <li><span class="icon pe-7s-map-marker"></span>Abc, Street 15, USA</li>
+                                <li><span class="icon pe-7s-call"></span> <a href="#">100-0000-000</a></li>
+                                <li><span class="icon pe-7s-mail"></span><a href="mailto:contact@demostore.com">contact@demostore.com</a></li>
                                 <li><span class="icon pe-7s-alarm"></span>7 Days a week from 10-00 am to 6-00 pm</li>
                             </ul>
                         </div>
@@ -73,12 +73,12 @@
                                 <h3 class="modtitle">Information</h3>
                                 <div class="modcontent">
                                     <ul class="menu">
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">FAQ</a></li>
-                                        <li><a href="#">Warranty And Services</a></li>
-                                        <li><a href="#">Support 24/7 page</a></li>
-                                        <li><a href="#">Product Registration</a></li>
-                                        <li><a href="#">Product Support</a></li>
+                                        <li><a th:href="@{/}">Home</a></li>
+                                        <li><a th:href="@{/category}">Categories</a></li>
+                                        <li><a th:href="@{/view-cart}">View Cart</a></li>
+                                        <li><a th:href="@{/checkout}">Checkout</a></li>
+                                        <li><a th:href="@{/contact-us}">Contact us</a></li>
+                                        <li><a th:href="@{/register}">Register</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -91,18 +91,14 @@
                                 <h3 class="modtitle">My Account</h3>
                                 <div class="modcontent">
                                     <ul class="menu">
-                                        <li><a href="#">Brands</a></li>
-                                        <li><a href="#">Gift Certificates</a></li>
-                                        <li><a href="#">Affiliates</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">FAQs</a></li>
-                                        <li><a href="#">Custom Link</a></li>
+                                        <li><a th:href="@{/my-account}">My account</a></li>
+                                        <li><a th:href="@{/order-history}">Order History</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-clear">
+                    <!--<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-clear">
                         <div class="box-service box-footer">
                             <div class="module clearfix">
                                 <h3 class="modtitle">Categories</h3>
@@ -118,23 +114,23 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
-<!--
+
         <div class="row row-dark">
             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12 col-socials">
                 <ul class="socials">
-                    <li class="facebook"><a href="https://www.facebook.com/smartaddons.page" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li class="twitter"><a href="https://twitter.com/smartaddons" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li class="google_plus"><a href="https://plus.google.com/u/0/+Smartaddons/posts" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                    <li class="pinterest"><a href="https://www.pinterest.com/smartaddons/" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
+                    <li class="facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li class="twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li class="google_plus"><a href="#" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                    <li class="pinterest"><a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
                     <li class="instagram"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
                     <li class="Youtube"><a href="#" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
                 </ul>
             </div>
-            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+            <!--<div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                 <div class="module newsletter-footer1">
                     <div class="newsletter">
                         <h3 class="modtitle">Sign Up for Newsletter</h3>
@@ -154,10 +150,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </div>-->
         </div>
--->
     </div>
     <!-- /Footer middle Container -->
     <!-- Footer Bottom Container -->

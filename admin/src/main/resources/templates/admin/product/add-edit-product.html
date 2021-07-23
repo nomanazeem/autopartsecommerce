@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form th:action="@{/product/save}" th:object="${product}" method="post" class="form-horizontal">
+                <form th:action="@{/product/save}" th:object="${product}" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Product Id</label>
@@ -36,13 +36,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Product Type:<span>*</span></label>
+                            <label class="col-sm-2 control-label">Category:<span>*</span></label>
                             <div class="col-sm-10">
-                                <select class="form-control" th:field="*{productTypeId}">
+                                <select class="form-control" th:field="*{categoryId}">
                                     <option value="">Select...</option>
-                                    <option th:each="productType : ${productTypes}" th:value="${productType.id}" th:utext="${productType.name}"/>
+                                    <option th:each="category : ${categories}" th:value="${category.id}" th:utext="${category.name}"/>
                                 </select>
-                                <p class="text-red" th:if="${#fields.hasErrors('productTypeId')}" th:errors="*{productTypeId}"></p>
+                                <p class="text-red" th:if="${#fields.hasErrors('categoryId')}" th:errors="*{categoryId}"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Code</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  th:field="*{code}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></p>
                             </div>
                         </div>
 
@@ -55,24 +63,107 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Brand</label>
+                            <label class="col-sm-2 control-label">Description</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{brand}" />
+                                 <textarea name="description" rows="5" class="form-control"
+                                           id="description" th:field="*{description}"
+                                           placeholder="Description" /></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Made in</label>
+                            <label class="col-sm-2 control-label">Stock Quantity</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{madein}" />
+                                <input type="text" class="form-control" th:field="*{stock_qty}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('stock_qty')}" th:errors="*{stock_qty}"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Price</label>
+                            <label class="col-sm-2 control-label">Cost price</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{price}" />
-                                <p class="text-red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+                                <input type="text" class="form-control" th:field="*{cost_price}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('cost_price')}" th:errors="*{cost_price}"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Sale price</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{sale_price}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('sale_price')}" th:errors="*{sale_price}"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Our price</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" th:field="*{our_price}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('our_price')}" th:errors="*{our_price}"></p>
+                            </div>
+                        </div>
+
+                        <!-- upload image -->
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label for="image_posted1">Upload image 1</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="image_posted1" type="file" name="image_posted1" th:value="${image_posted1}" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="hidden" th:field="*{image1}"/>
+                                <img th:src="@{${product.getFullImage1Url()}}" style="width:150px;height:150px;" />
+                            </div>
+                        </div>
+
+                        <!-- upload image -->
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label for="image_posted2">Upload image 2</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="image_posted2" type="file" name="image_posted2" th:value="${image_posted2}" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="hidden" th:field="*{image2}"/>
+                                <img th:src="@{${product.getFullImage2Url()}}" style="width:150px;height:150px;" />
+                            </div>
+                        </div>
+
+                        <!-- upload image -->
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label for="image_posted3">Upload image 3</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="image_posted3" type="file" name="image_posted3" th:value="${image_posted3}" />
+                            </div>
+                            <div class="col-md-4">
+                                <img th:src="@{${product.getFullImage3Url()}}" style="width:150px;height:150px;" />
+                            </div>
+                        </div>
+
+                        <!-- upload image -->
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label for="image_posted4">Upload image 4</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input id="image_posted4" type="file" name="image_posted4" th:value="${image_posted4}" />
+                            </div>
+                            <div class="col-md-4">
+                                <img th:src="@{${product.getFullImage4Url()}}" style="width:150px;height:150px;" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Active</label>
+                            <div class="col-sm-10">
+                                <select id="is_active" name="is_active" th:field="*{is_active}" class="form-control">
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
                             </div>
                         </div>
 

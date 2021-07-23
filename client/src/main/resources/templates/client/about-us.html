@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>About us — Autoparts</title>
+</head>
+<body>
+
+<!-- Main Container  -->
+<div layout:fragment="content"  class="main-container container">
+    <ul class="breadcrumb">
+        <li><a href="#"><i class="fa fa-home"></i></a></li>
+        <li><a href="#">Page</a></li>
+        <li><a href="#">About Us</a></li>
+    </ul>
+
+    <div class="row">
+        <div id="content" class="col-sm-12 item-article">
+            <div class="row box-1-about">
+                <div class="col-md-9 welcome-about-us">
+                    <div class="title-about-us">
+                        <h2>Welcome To demo-store</h2>
+                    </div>
+                    <div class="content-about-us">
+                        <div class="image-about-us">
+                            <img th:src="@{/image/catalog/about/about-us.jpg}" alt="Image Client">
+                        </div>
+                        <div class="des-about-us">
+                            Testing about us
+                            <br>
+                            <br>Testing about us
+                    </div>
+                </div>
+                <div class="col-md-3 why-choose-us">
+                    <div class="title-about-us">
+                        <h2>Why Choose Us</h2>
+                    </div>
+                    <div class="content-why">
+                        <ul class="why-list">
+                            <li><a title="Shipping &amp; Returns" href="#">Shipping &amp; Returns</a>
+                            </li>
+                            <li><a title="Secure Shopping" href="#">Secure Shopping</a>
+                            </li>
+                            <li><a title="International Shipping" href="#">International Shipping</a>
+                            </li>
+                            <li><a title="Affiliates" href="#">Affiliates</a>
+                            </li>
+                            <li><a title="Group Sales" href="#">Group Sales</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- //Main Container -->
+
+
+<th:block layout:fragment="script">
+</th:block>
+</body>
+</html>

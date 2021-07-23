@@ -153,7 +153,7 @@ $(window).load(function() {
 		midClick: true,
 		removalDelay: 300,
 		mainClass: 'my-mfp-zoom-in',
-		//gallery: {  enabled: true }
+		gallery: {  enabled: true }
     });
 	
 	

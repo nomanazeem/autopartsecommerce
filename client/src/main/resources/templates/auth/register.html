@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 </fieldset>
-                <fieldset>
+                <!--<fieldset>
                     <legend>Newsletter</legend>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Subscribe</label>
@@ -152,13 +152,19 @@
                             </label>
                         </div>
                     </div>
-                </fieldset>
-                <div class="buttons">
-                    <div class="pull-right">I have read and agree to the <a href="#" class="agree"><b>Pricing Tables</b></a>
+                </fieldset>-->
+                <div class="bottom-form">
+                    <a th:href="@{/login}" class="forgot">Login</a>
+                    <input type="submit" value="Login" class="btn btn-primary btn btn-default pull-right" />
+                </div>
+
+                <!--<div class="buttons">
+                    <div class="pull-right">
+                        I have read and agree to the <a href="#" class="agree"><b>Pricing Tables</b></a>
                         <input class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
                         <input type="submit" value="Continue" class="btn btn-primary">
                     </div>
-                </div>
+                </div>-->
             </form>
         </div>
     </div>

@@ -57,26 +57,28 @@
                                        aria-describedby="example1_info">
                                     <thead class="thead">
                                     <tr>
+                                        <th>Image</th>
                                         <th>Product ID</th>
-                                        <th>Product Type</th>
+                                        <th>Category</th>
+                                        <th>Code</th>
                                         <th>Name</th>
-                                        <th>Brand</th>
-                                        <th>Made In</th>
                                         <th>Price</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="product : ${listProducts}">
-                                        <td th:text="${product.id}">Product ID</td>
-                                        <td th:each="productType : ${productTypes}"
-                                            th:if="(${productType.id} == ${product.productTypeId})"
-                                            th:text="${productType.name}">Product Type
+                                        <td>
+                                            <img th:src="@{${product.getFullImage1Url()}}" style="width:50px;height:50px;" />
                                         </td>
+                                        <td th:text="${product.id}">Product ID</td>
+                                        <td th:each="category : ${categories}"
+                                            th:if="(${category.id} == ${product.categoryId})"
+                                            th:text="${category.name}">Category
+                                        </td>
+                                        <td th:text="${product.code}">Code</td>
                                         <td th:text="${product.name}">Name</td>
-                                        <td th:text="${product.brand}">Brand</td>
-                                        <td th:text="${product.madein}">Made in</td>
-                                        <td th:text="${product.price}">Price</td>
+                                        <td th:text="${product.our_price}">Our Price</td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/product/edit/' + ${product.id}}"><i class="fa fa-edit"></i> Edit</a>
                                             <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/product/delete/' + ${product.id}}"><i class="fa fa-trash-o"></i> Delete</a>

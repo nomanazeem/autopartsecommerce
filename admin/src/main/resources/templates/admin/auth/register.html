@@ -45,7 +45,7 @@
                 to our awesome app!</div>
         </div>
 
-        <form th:action="@{/register}" th:object="${userRegistrationDto}" method="post">
+        <form th:action="@{/register}" th:object="${clientRegistrationDto}" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" th:field="*{firstName}" required  placeholder="First name">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>

@@ -4219,7 +4219,7 @@ div.article-info .article-title h3 {
 /* 3. STYLE ALL SITE
  -------------------------------*/
 body {
-  color: #878787;
+  color: #c0c0c0;/*#878787*/
   font-size: 14px;
   line-height: 26px; }
 
@@ -4273,8 +4273,10 @@ img {
   font-size: 11px; }
 
 a, .btn-link {
-  color: #878787;
-  transition: color 0.3s ease-in-out; }
+  color: #878787;/*#878787*/
+  transition: color 0.3s ease-in-out;
+  }
+
   a:hover, .btn-link:hover {
     color: #ff2d37;
     text-decoration: none; }
