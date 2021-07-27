@@ -21,8 +21,12 @@
                 <div class="header-top-right col-lg-9 col-md-8 col-sm-7 col-xs-12">
 
                     <ul class="top-log list-inline">
-                        <li><i class="fa fa-lock"></i><a th:href="@{/login}">Login</a> / </li><li><a th:href="@{/register}">Register</a></li>
+                        <li sec:authorize="isAuthenticated()"><i class="fa fa-lock"></i>Welcome <span sec:authentication="principal.username"></span> !</li>
+                        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                        <li sec:authorize="isAnonymous()"><i class="fa fa-lock"></i><a th:href="@{/login}">Login</a> / </li>
+                        <li sec:authorize="isAnonymous()"><a th:href="@{/register}">Register</a></li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -61,7 +65,7 @@
     <div class="header-bottom hidden-compact">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-md-9 col-sm-6 col-xs-6">
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
                     <div class="main-menu-w">
                         <div class="responsive so-megamenu megamenu-style-dev">
                             <nav class="navbar-default">
@@ -82,27 +86,27 @@
                                                     <li th:class=" ${classActiveHome}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/}" class="clearfix">
-                                                            <strong>Home</strong>
+                                                            <strong><i class="fa fa-home"></i>Home</strong>
                                                         </a>
                                                     </li>
                                                     <li th:class=" ${classActivePartSearch}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/part-search}" class="clearfix">
-                                                            <strong>Part Search</strong>
+                                                            <strong><i class="fa fa-search"></i>Part Search</strong>
                                                         </a>
                                                     </li>
 
                                                     <li th:class=" ${classActiveCategory}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/category}" class="clearfix">
-                                                            <strong>Categories</strong>
+                                                            <strong><i class="fa fa-sitemap"></i>Categories</strong>
                                                         </a>
                                                     </li>
 
                                                     <li th:class="${classActivePages} == null ? 'with-sub-menu hover': ${classActivePages}">
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
-                                                            <strong>Pages</strong>
+                                                            <strong><i class="fa fa-pagelines"></i>Pages</strong>
                                                             <b class="caret"></b>
                                                         </a>
                                                         <div class="sub-menu" style="width: 40%; ">
@@ -131,19 +135,19 @@
                                                     <li th:class=" ${classActiveViewCart}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/view-cart}" class="clearfix">
-                                                            <strong>View Cart</strong>
+                                                            <strong><i class="fa fa-shopping-cart"></i>View Cart</strong>
                                                         </a>
                                                     </li>
                                                     <li th:class=" ${classActiveCheckout}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/checkout}" class="clearfix">
-                                                            <strong>Checkout</strong>
+                                                            <strong><i class="fa fa-check-circle"></i>Checkout</strong>
                                                         </a>
                                                     </li>
                                                     <li th:class=" ${classActiveMyAccount}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/my-account}" class="clearfix">
-                                                            <strong>My Account</strong>
+                                                            <strong><i class="fa fa-dashboard"></i>My Account</strong>
                                                         </a>
                                                     </li>
 

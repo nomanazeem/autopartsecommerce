@@ -1,0 +1,37 @@
+<!--changed listings-->
+<div th:fragment="partsData(productList)" class="products-list row nopadding-xs so-filter-gird" th:object="${productList}">
+    <div data-th-each="productInfo : ${productList}" class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <div class="product-item-container item--static">
+            <div class="left-block">
+                <div class="product-image-container second_img">
+                    <a th:href="@{/part-details(id=${productInfo.id})}" target="_self" th:title="${productInfo.name}">
+                        <img th:src="#{adminPath}+${productInfo.getFullImage1Url()}" class="img-1 img-responsive" alt="image1">
+                        <img th:src="#{adminPath}+${productInfo.getFullImage2Url()}" class="img-2 img-responsive" alt="image2">
+                    </a>
+                </div>
+                <span class="label-product label-new">New</span>
+            </div>
+            <div class="right-block">
+                <div class="button-group cartinfo--static">
+
+                    <!--<button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
+                        <span>Add to cart </span>
+                    </button>-->
+                    <a th:href="@{/part-details(id=${productInfo.id})}" class="addToCart" title="Add to cart">Add to cart</a>
+                </div>
+                <h4><a th:href="@{/part-details(id=${productInfo.id})}" th:title="${productInfo.name}" target="_self" th:text="${productInfo.name}"></a></h4>
+                <div class="price">
+                    <span class="price" th:text="${productInfo.ourPrice}"></span>
+                </div>
+                <div class="description item-desc">
+                    <p th:text="${productInfo.description}"></p>
+                </div>
+                <!--<div class="list-block">
+                    <button class="addToCart btn-button" type="button" title="Add to Cart" onclick="cart.add('101', '1');"><i class="fa fa-shopping-basket"></i>
+                    </button>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--// End Changed listings-->

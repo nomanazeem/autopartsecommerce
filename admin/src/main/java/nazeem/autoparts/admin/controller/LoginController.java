@@ -23,7 +23,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login(Model model) {
 
-        return "admin/auth/login";
+        return "/auth/login";
     }
 
     @GetMapping("/register")
@@ -31,13 +31,13 @@ public class LoginController {
         UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
         model.addAttribute("userRegistrationDto", userRegistrationDto);
 
-        return "admin/auth/register";
+        return "/auth/register";
     }
     @PostMapping("/register")
     public String registerUserAccount(@Valid @ModelAttribute("userRegistrationDto") UserRegistrationDto userRegistrationDto, BindingResult result, Model model) {
         model.addAttribute("userRegistrationDto", userRegistrationDto);
 
-        User userExists = userService.findByUsername(userRegistrationDto.getUserName());
+        User userExists = userService.findByUsername(userRegistrationDto.getUsername());
 
         //System.out.println("user-->"+userRegistrationDto.getUserName());
         //System.out.println("userExists-->"+userExists);
@@ -46,7 +46,7 @@ public class LoginController {
             return "redirect:/register?username";
         }
         if(result.hasErrors()){
-            return "admin/auth/register";
+            return "/auth/register";
         }
         userService.save(userRegistrationDto);
         return "redirect:/register?success";

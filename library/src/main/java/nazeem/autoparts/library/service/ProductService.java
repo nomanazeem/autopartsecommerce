@@ -56,7 +56,6 @@ public class ProductService {
 
 
     public void save(Product product) {
-
         repo.save(product);
 
         if(product.getImage_posted1().getSize() > 0 ||

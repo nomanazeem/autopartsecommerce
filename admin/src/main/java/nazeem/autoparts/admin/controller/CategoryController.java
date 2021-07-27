@@ -19,8 +19,8 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    private String add_edit_template="/admin/category/add-edit-category";
-    private String list_template="/admin/category/list-category";
+    private String add_edit_template="/category/add-edit-category";
+    private String list_template="/category/list-category";
     private String list_redirect="redirect:/category/list";
 
     @GetMapping("/add")

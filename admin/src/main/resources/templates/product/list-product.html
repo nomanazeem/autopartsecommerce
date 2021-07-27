@@ -73,7 +73,7 @@
                                         </td>
                                         <td th:text="${product.id}">Product ID</td>
                                         <td th:each="category : ${categories}"
-                                            th:if="(${category.id} == ${product.categoryId})"
+                                            th:if="(${category.id} == ${product.category.id})"
                                             th:text="${category.name}">Category
                                         </td>
                                         <td th:text="${product.code}">Code</td>

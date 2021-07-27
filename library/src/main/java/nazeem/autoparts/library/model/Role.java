@@ -1,13 +1,17 @@
 package nazeem.autoparts.library.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role {
-    public Role() {
-
-    }
     public Role(String name) {
         super();
         this.name =name;
@@ -18,22 +22,6 @@ public class Role {
     @Column(name = "role_id")
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
     @Column(name="name")
     private String name;
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    // other getters and setters are hidden for brevity
 }

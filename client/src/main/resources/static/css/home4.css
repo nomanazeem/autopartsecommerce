@@ -8649,3 +8649,8 @@ footer a:hover {
     transition: all 0.2s ease-in-out 0s;
     -moz-transition: all 0.2s ease-in-out 0s;
     -webkit-transition: all 0.2s ease-in-out 0s; }
+
+
+.error {
+    color: red;
+}

@@ -17,15 +17,15 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> searchProduct(String criteria);*/
 
     @Query("select p from Product p " +
-            "where 1=1 and is_deleted=0" +
+            "where 1=1 and is_deleted = 0 " +
             "and ( upper(p.name) like concat('%', upper(?1), '%') " +
             "       or upper(p.description) like concat('%', upper(?1), '%') " +
             ")")
     List<Product> searchProduct(String criteria);
 
-    @Query("select p from Product p where p.is_active = 1")
+    @Query("select p from Product p where 1=1 and is_active=1")
     public List<Product> findAllByActive();
 
-    @Query("select p from Product p where p.is_active = 1 and category_id=?1")
+    @Query("select p from Product p where 1=1 and is_active=1 and category_id=?1")
     public List<Product> findAllByCategoryId(Long categoryId);
 }

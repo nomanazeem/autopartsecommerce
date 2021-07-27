@@ -1,9 +1,11 @@
-package nazeem.autoparts.library.service;
+package nazeem.autoparts.library.service.impl;
 
+import nazeem.autoparts.library.model.Customer;
 import nazeem.autoparts.library.model.Role;
 import nazeem.autoparts.library.model.User;
 import nazeem.autoparts.library.repository.RoleRepository;
 import nazeem.autoparts.library.repository.UserRepository;
+import nazeem.autoparts.library.service.UserService;
 import nazeem.autoparts.library.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,31 +41,31 @@ public class UserServiceImpl implements UserService {
     public User save(UserRegistrationDto registrationDto) {
 
         //Creating admin role user
-        User user = new User(
-                registrationDto.getFirstName()
-                ,registrationDto.getLastName()
-                , registrationDto.getUserName()
-                , passwordEncoder.encode(registrationDto.getPassword())
-                , Arrays.asList(roleRepository.findByName("ADMIN"))
-            );
+        User user = new User();
+        user.setFirstName(registrationDto.getFirstName());
+        user.setLastName(registrationDto.getLastName());
+        user.setUsername(registrationDto.getUsername());
+        user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
+        user.setRoles(Arrays.asList(roleRepository.findByName("ADMIN")));
+        user.setIsActive(true);
+        user.setIsDeleted(false);
 
         return userRepository.save(user);
-        //return null;
     }
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByEmail(username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(username);
+        User user = userRepository.findByUsername(username);
         if(user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword()
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword()
                 , mapRolesToAuthorities(user.getRoles()));
     }
 

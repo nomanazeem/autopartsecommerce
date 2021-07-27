@@ -97,10 +97,52 @@
                         <h3 class="modtitle"><span>Best Seller</span></h3>
                         <div class="modcontent">
                             <div id="so_extra_slider_11" class="so-extraslider button-type1">
+                                <!--changed listings-->
+                                <div th:replace="/fragments/parts::partsData(productList=${productList})"></div>
+
+                                <!-- <div class="products-list row nopadding-xs so-filter-gird">
+                                     <div data-th-each="productInfo : ${productList}" class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                         <div class="product-item-container item&#45;&#45;static">
+                                             <div class="left-block">
+                                                 <div class="product-image-container second_img">
+                                                     <a th:href="@{/part-details(id=${productInfo.id})}" target="_self" th:title="${productInfo.name}">
+                                                         <img th:src="#{adminPath}+${productInfo.getFullImage1Url()}" class="img-1 img-responsive" alt="image1">
+                                                         <img th:src="#{adminPath}+${productInfo.getFullImage2Url()}" class="img-2 img-responsive" alt="image2">
+                                                     </a>
+                                                 </div>
+                                                 <span class="label-product label-new">New</span>
+                                             </div>
+                                             <div class="right-block">
+                                                 <div class="button-group cartinfo&#45;&#45;static">
+
+                                                     <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
+                                                         <span>Add to cart </span>
+                                                     </button>
+                                                 </div>
+                                                 <h4><a th:href="@{/part-details(id=$(productInfo.id)}" th:title="${productInfo.name}" target="_self" th:text="${productInfo.name}"></a></h4>
+                                                 <div class="price">
+                                                     <span class="price" th:text="${productInfo.our_price}"></span>
+                                                 </div>
+                                                 <div class="description item-desc">
+                                                     <p th:text="${productInfo.description}"></p>
+                                                 </div>
+                                                 <div class="list-block">
+                                                     <button class="addToCart btn-button" type="button" title="Add to Cart" onclick="cart.add('101', '1');"><i class="fa fa-shopping-basket"></i>
+                                                     </button>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>-->
+                                <!--// End Changed listings-->
+                            </div>
+                        </div>
+                        <!--<div class="modcontent">
+                            <div id="so_extra_slider_11" class="so-extraslider button-type1">
                                 <div class="products-list yt-content-slider extraslider-inner" data-rtl="yes" data-pagination="no" data-arrows="no" data-autoplay="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-lazyload="yes" data-loop="no" data-buttonpage="top">
                                     <div class="item">
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Volup tatem accu">
@@ -109,14 +151,14 @@
                                                         </a>
                                                     </div>
                                                     <span class="label-product label-new">New </span>
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -138,7 +180,7 @@
                                             </div>
                                         </div>
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="DPicanha porkcho">
@@ -147,14 +189,14 @@
                                                         </a>
                                                     </div>
                                                     <span class="label-product label-new">New</span>
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
                                                             <span>Add to cart </span>
@@ -177,7 +219,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Stickrum bresao">
@@ -186,14 +228,14 @@
                                                         </a>
                                                     </div>
                                                     <span class="label-product label-sale">-11%</span>
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -216,7 +258,7 @@
                                             </div>
                                         </div>
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Shoulder kevinis">
@@ -225,14 +267,14 @@
                                                         </a>
                                                     </div>
 
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -257,7 +299,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Remporum stick">
@@ -266,14 +308,14 @@
                                                         </a>
                                                     </div>
                                                     <span class="label-product label-new">New</span>
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -295,7 +337,7 @@
                                             </div>
                                         </div>
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Luis rute arure">
@@ -304,14 +346,14 @@
                                                         </a>
                                                     </div>
                                                     <span class="label-product label-sale">-15%</span>
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -336,7 +378,7 @@
                                     </div>
                                     <div class="item">
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Sunt in culpa">
@@ -344,14 +386,14 @@
                                                             <img th:src="@{/image/catalog/demo/product/270/7.jpg}" class="img-2 img-responsive" alt="image2">
                                                         </a>
                                                     </div>
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -374,7 +416,7 @@
                                             </div>
                                         </div>
                                         <div class="product-layout product-grid">
-                                            <div class="product-item-container item--static">
+                                            <div class="product-item-container item&#45;&#45;static">
                                                 <div class="left-block">
                                                     <div class="product-image-container second_img">
                                                         <a href="product.html" target="_self" title="Duis aute irure ">
@@ -383,14 +425,14 @@
                                                         </a>
                                                     </div>
 
-                                                    <!--quickview-->
+                                                    &lt;!&ndash;quickview&ndash;&gt;
                                                     <div class="so-quickview">
                                                         <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                     </div>
-                                                    <!--end quickview-->
+                                                    &lt;!&ndash;end quickview&ndash;&gt;
                                                 </div>
                                                 <div class="right-block">
-                                                    <div class="button-group cartinfo--static">
+                                                    <div class="button-group cartinfo&#45;&#45;static">
 
                                                         <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                         <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -414,13 +456,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- end Extra best seller -->
-                </div>
 
+                    <div class="banners banners2">
+                        <div class="row">
+                            <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <a href="#"><img th:src="@{/image/catalog/banners/bn2.jpg}" alt="banner"></a>
+                            </div>
+                            <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <a href="#"><img th:src="@{/image/catalog/banners/bn3.jpg}" alt="banner"></a>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="container">
                     <!-- Extra new arrivals -->
                     <div class="module extra-layout1">
                         <div class="pre_text">
@@ -429,11 +479,52 @@
                         <h3 class="modtitle"><span>New Arrivals</span></h3>
                         <div class="modcontent">
                             <div id="so_extra_slider_12" class="so-extraslider button-type1">
+                                <!--changed listings-->
+                                <div th:replace="/fragments/parts::partsData(productList=${productList2})"></div>
+                                <!-- <div class="products-list row nopadding-xs so-filter-gird">
+                                     <div data-th-each="productInfo : ${productList2}" class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                         <div class="product-item-container item&#45;&#45;static">
+                                             <div class="left-block">
+                                                 <div class="product-image-container second_img">
+                                                     <a th:href="@{/part-details(id=${productInfo.id})}" target="_self" th:title="${productInfo.name}">
+                                                         <img th:src="#{adminPath}+${productInfo.getFullImage1Url()}" class="img-1 img-responsive" alt="image1">
+                                                         <img th:src="#{adminPath}+${productInfo.getFullImage2Url()}" class="img-2 img-responsive" alt="image2">
+                                                     </a>
+                                                 </div>
+                                                 <span class="label-product label-new">New</span>
+                                             </div>
+                                             <div class="right-block">
+                                                 <div class="button-group cartinfo&#45;&#45;static">
+
+                                                     <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
+                                                         <span>Add to cart </span>
+                                                     </button>
+                                                 </div>
+                                                 <h4><a th:href="@{/part-details(id=$(productInfo.id)}" th:title="${productInfo.name}" target="_self" th:text="${productInfo.name}"></a></h4>
+                                                 <div class="price">
+                                                     <span class="price" th:text="${productInfo.our_price}"></span>
+                                                 </div>
+                                                 <div class="description item-desc">
+                                                     <p th:text="${productInfo.description}"></p>
+                                                 </div>
+                                                 <div class="list-block">
+                                                     <button class="addToCart btn-button" type="button" title="Add to Cart" onclick="cart.add('101', '1');"><i class="fa fa-shopping-basket"></i>
+                                                     </button>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>-->
+                                <!--// End Changed listings-->
+                            </div>
+                        </div>
+                        <!--<div class="modcontent">
+                            <div id="so_extra_slider_12" class="so-extraslider button-type1">
                                 <div class="products-list yt-content-slider extraslider-inner" data-rtl="yes" data-pagination="no" data-arrows="no" data-autoplay="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-lazyload="yes" data-loop="no" data-buttonpage="top">
                                     <div class="item">
                                         <div class="product-layout product-grid">
                                             <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item--static">
+                                                <div class="product-item-container item&#45;&#45;static">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="DPicanha porkcho">
@@ -442,14 +533,14 @@
                                                             </a>
                                                         </div>
                                                         <span class="label-product label-new">New</span>
-                                                        <!--quickview-->
+                                                        &lt;!&ndash;quickview&ndash;&gt;
                                                         <div class="so-quickview">
                                                             <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                         </div>
-                                                        <!--end quickview-->
+                                                        &lt;!&ndash;end quickview&ndash;&gt;
                                                     </div>
                                                     <div class="right-block">
-                                                        <div class="button-group cartinfo--static">
+                                                        <div class="button-group cartinfo&#45;&#45;static">
                                                             <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                             <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
                                                                 <span>Add to cart </span>
@@ -474,7 +565,7 @@
                                     <div class="item">
                                         <div class="product-layout product-grid">
                                             <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item--static">
+                                                <div class="product-item-container item&#45;&#45;static">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Stickrum bresao">
@@ -483,14 +574,14 @@
                                                             </a>
                                                         </div>
                                                         <span class="label-product label-sale">-11%</span>
-                                                        <!--quickview-->
+                                                        &lt;!&ndash;quickview&ndash;&gt;
                                                         <div class="so-quickview">
                                                             <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                         </div>
-                                                        <!--end quickview-->
+                                                        &lt;!&ndash;end quickview&ndash;&gt;
                                                     </div>
                                                     <div class="right-block">
-                                                        <div class="button-group cartinfo--static">
+                                                        <div class="button-group cartinfo&#45;&#45;static">
 
                                                             <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                             <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -517,7 +608,7 @@
                                     <div class="item">
                                         <div class="product-layout product-grid">
                                             <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item--static">
+                                                <div class="product-item-container item&#45;&#45;static">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Remporum stick">
@@ -526,14 +617,14 @@
                                                             </a>
                                                         </div>
                                                         <span class="label-product label-new">New</span>
-                                                        <!--quickview-->
+                                                        &lt;!&ndash;quickview&ndash;&gt;
                                                         <div class="so-quickview">
                                                             <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                         </div>
-                                                        <!--end quickview-->
+                                                        &lt;!&ndash;end quickview&ndash;&gt;
                                                     </div>
                                                     <div class="right-block">
-                                                        <div class="button-group cartinfo--static">
+                                                        <div class="button-group cartinfo&#45;&#45;static">
 
                                                             <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                             <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -559,7 +650,7 @@
                                     <div class="item">
                                         <div class="product-layout product-grid">
                                             <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item--static">
+                                                <div class="product-item-container item&#45;&#45;static">
                                                     <div class="left-block">
                                                         <div class="product-image-container second_img">
                                                             <a href="product.html" target="_self" title="Duis aute irure ">
@@ -568,14 +659,14 @@
                                                             </a>
                                                         </div>
 
-                                                        <!--quickview-->
+                                                        &lt;!&ndash;quickview&ndash;&gt;
                                                         <div class="so-quickview">
                                                             <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
                                                         </div>
-                                                        <!--end quickview-->
+                                                        &lt;!&ndash;end quickview&ndash;&gt;
                                                     </div>
                                                     <div class="right-block">
-                                                        <div class="button-group cartinfo--static">
+                                                        <div class="button-group cartinfo&#45;&#45;static">
 
                                                             <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
                                                             <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
@@ -600,153 +691,145 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- end Extra new arrivals -->
-                    <div class="banners banners2">
-                        <div class="row">
-                            <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <a href="#"><img th:src="@{/image/catalog/banners/bn2.jpg}" alt="banner"></a>
+
+
+                    <!-- So Categories -->
+                    <!--<div class="row-cates">
+                        <div id="so_categories_11" class="so-categories module theme2 cates-layout1 container preset01-3 preset02-2 preset03-2 preset04-2 preset05-1">
+                            <div class="pre_text">
+                                Top featured collections
                             </div>
-                            <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <a href="#"><img th:src="@{/image/catalog/banners/bn3.jpg}" alt="banner"></a>
+                            <h3 class="modtitle"><span>Shop by categories</span></h3>
+                            <div class="modcontent">
+                                <div class="cat-wrap theme2">
+                                    <div class="content-box">
+                                        <div class="inner">
+                                            <div class="parent-cat">
+                                                <div class="image-cat">
+                                                    <a href="#"><img th:src="@{/image/catalog/demo/category/cate1.jpg}" alt="image" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="cat-title"><a href="#">Wheels & Tires</a></div>
+                                            <div class="child-cat">
+                                                <div class="child-cat-title"><a href="#">Tires</a></div>
+                                                <div class="child-cat-title"><a href="#">Tires Chains</a></div>
+                                                <div class="child-cat-title"><a href="#">Tires Accessories</a></div>
+                                                <div class="child-cat-title"><a href="#">Wheels</a></div>
+                                                <div class="child-cat-title"><a href="#">Wheels Accessories</a></div>
+                                                <a class="viewmore" href="#">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="content-box">
+                                        <div class="inner">
+                                            <div class="parent-cat">
+                                                <div class="image-cat">
+                                                    <a href="#"><img th:src="@{/image/catalog/demo/category/cate2.jpg}" alt="image" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="cat-title"><a href="#">Smart devices</a></div>
+                                            <div class="child-cat">
+                                                <div class="child-cat-title"><a href="#">Bluetooth Devices </a></div>
+                                                <div class="child-cat-title"><a href="#">Dash Cam</a></div>
+                                                <div class="child-cat-title"><a href="#">Screen TV</a></div>
+                                                <div class="child-cat-title"><a href="#">Smartwatch</a></div>
+                                                <div class="child-cat-title"><a href="#">USB Connect</a></div>
+                                                <a class="viewmore" href="#">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <div class="inner">
+                                            <div class="parent-cat">
+                                                <div class="image-cat">
+                                                    <a href="#"><img th:src="@{/image/catalog/demo/category/cate3.jpg}" alt="image" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="cat-title"><a href="#">Oil Fluids</a></div>
+                                            <div class="child-cat">
+                                                <div class="child-cat-title"><a href="#">Esdipiscing</a></div>
+                                                <div class="child-cat-title"><a href="#">Reprehenderit</a></div>
+                                                <div class="child-cat-title"><a href="#">Duis aute</a></div>
+                                                <div class="child-cat-title"><a href="#">Deserunt mollit</a></div>
+                                                <div class="child-cat-title"><a href="#">Laudantium</a></div>
+                                                <a class="viewmore" href="#">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <div class="inner">
+                                            <div class="parent-cat">
+                                                <div class="image-cat">
+                                                    <a href="#"><img th:src="@{/image/catalog/demo/category/cate4.jpg}" alt="image" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="cat-title"><a href="#">Lighting</a></div>
+                                            <div class="child-cat">
+                                                <div class="child-cat-title"><a href="#">LED Tail Lights</a></div>
+                                                <div class="child-cat-title"><a href="#">Headlights</a></div>
+                                                <div class="child-cat-title"><a href="#">Aspering</a></div>
+                                                <div class="child-cat-title"><a href="#">Interior Light</a></div>
+                                                <div class="child-cat-title"><a href="#">Consectetur</a></div>
+                                                <a class="viewmore" href="#">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <div class="inner">
+                                            <div class="parent-cat">
+                                                <div class="image-cat">
+                                                    <a href="#"><img th:src="@{/image/catalog/demo/category/cate5.jpg}" alt="image" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="cat-title"><a href="#">Replacement Parts</a></div>
+                                            <div class="child-cat">
+                                                <div class="child-cat-title"><a href="#">Lighting & Electical</a></div>
+                                                <div class="child-cat-title"><a href="#">Brake Parts</a></div>
+                                                <div class="child-cat-title"><a href="#">Shock & Suspension</a></div>
+                                                <div class="child-cat-title"><a href="#">Outerwear</a></div>
+                                                <div class="child-cat-title"><a href="#">Exhaust & Emission</a></div>
+                                                <a class="viewmore" href="#">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content-box">
+                                        <div class="inner">
+                                            <div class="parent-cat">
+                                                <div class="image-cat">
+                                                    <a href="#"><img th:src="@{/image/catalog/demo/category/cate6.jpg}" alt="image" /></a>
+                                                </div>
+                                            </div>
+                                            <div class="cat-title"><a href="#">Tool & equipments</a></div>
+                                            <div class="child-cat">
+                                                <div class="child-cat-title"><a href="#">Tool Boxes</a></div>
+                                                <div class="child-cat-title"><a href="#">Tool Sets</a></div>
+                                                <div class="child-cat-title"><a href="#">Impact Wrenches</a></div>
+                                                <div class="child-cat-title"><a href="#">Tire Air Compressors </a></div>
+                                                <div class="child-cat-title"><a href="#">Hand Tools</a></div>
+                                                <a class="viewmore" href="#">View More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
+                    <!-- end So Categories -->
                 </div>
-
-                <!-- So Categories -->
-                <div class="row-cates">
-                    <div id="so_categories_11" class="so-categories module theme2 cates-layout1 container preset01-3 preset02-2 preset03-2 preset04-2 preset05-1">
-                        <div class="pre_text">
-                            Top featured collections
-                        </div>
-                        <h3 class="modtitle"><span>Shop by categories</span></h3>
-                        <div class="modcontent">
-                            <div class="cat-wrap theme2">
-                                <div class="content-box">
-                                    <div class="inner">
-                                        <div class="parent-cat">
-                                            <div class="image-cat">
-                                                <a href="#"><img th:src="@{/image/catalog/demo/category/cate1.jpg}" alt="image" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="cat-title"><a href="#">Wheels & Tires</a></div>
-                                        <div class="child-cat">
-                                            <div class="child-cat-title"><a href="#">Tires</a></div>
-                                            <div class="child-cat-title"><a href="#">Tires Chains</a></div>
-                                            <div class="child-cat-title"><a href="#">Tires Accessories</a></div>
-                                            <div class="child-cat-title"><a href="#">Wheels</a></div>
-                                            <div class="child-cat-title"><a href="#">Wheels Accessories</a></div>
-                                            <a class="viewmore" href="#">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="content-box">
-                                    <div class="inner">
-                                        <div class="parent-cat">
-                                            <div class="image-cat">
-                                                <a href="#"><img th:src="@{/image/catalog/demo/category/cate2.jpg}" alt="image" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="cat-title"><a href="#">Smart devices</a></div>
-                                        <div class="child-cat">
-                                            <div class="child-cat-title"><a href="#">Bluetooth Devices </a></div>
-                                            <div class="child-cat-title"><a href="#">Dash Cam</a></div>
-                                            <div class="child-cat-title"><a href="#">Screen TV</a></div>
-                                            <div class="child-cat-title"><a href="#">Smartwatch</a></div>
-                                            <div class="child-cat-title"><a href="#">USB Connect</a></div>
-                                            <a class="viewmore" href="#">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="inner">
-                                        <div class="parent-cat">
-                                            <div class="image-cat">
-                                                <a href="#"><img th:src="@{/image/catalog/demo/category/cate3.jpg}" alt="image" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="cat-title"><a href="#">Oil Fluids</a></div>
-                                        <div class="child-cat">
-                                            <div class="child-cat-title"><a href="#">Esdipiscing</a></div>
-                                            <div class="child-cat-title"><a href="#">Reprehenderit</a></div>
-                                            <div class="child-cat-title"><a href="#">Duis aute</a></div>
-                                            <div class="child-cat-title"><a href="#">Deserunt mollit</a></div>
-                                            <div class="child-cat-title"><a href="#">Laudantium</a></div>
-                                            <a class="viewmore" href="#">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="inner">
-                                        <div class="parent-cat">
-                                            <div class="image-cat">
-                                                <a href="#"><img th:src="@{/image/catalog/demo/category/cate4.jpg}" alt="image" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="cat-title"><a href="#">Lighting</a></div>
-                                        <div class="child-cat">
-                                            <div class="child-cat-title"><a href="#">LED Tail Lights</a></div>
-                                            <div class="child-cat-title"><a href="#">Headlights</a></div>
-                                            <div class="child-cat-title"><a href="#">Aspering</a></div>
-                                            <div class="child-cat-title"><a href="#">Interior Light</a></div>
-                                            <div class="child-cat-title"><a href="#">Consectetur</a></div>
-                                            <a class="viewmore" href="#">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="inner">
-                                        <div class="parent-cat">
-                                            <div class="image-cat">
-                                                <a href="#"><img th:src="@{/image/catalog/demo/category/cate5.jpg}" alt="image" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="cat-title"><a href="#">Replacement Parts</a></div>
-                                        <div class="child-cat">
-                                            <div class="child-cat-title"><a href="#">Lighting & Electical</a></div>
-                                            <div class="child-cat-title"><a href="#">Brake Parts</a></div>
-                                            <div class="child-cat-title"><a href="#">Shock & Suspension</a></div>
-                                            <div class="child-cat-title"><a href="#">Outerwear</a></div>
-                                            <div class="child-cat-title"><a href="#">Exhaust & Emission</a></div>
-                                            <a class="viewmore" href="#">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content-box">
-                                    <div class="inner">
-                                        <div class="parent-cat">
-                                            <div class="image-cat">
-                                                <a href="#"><img th:src="@{/image/catalog/demo/category/cate6.jpg}" alt="image" /></a>
-                                            </div>
-                                        </div>
-                                        <div class="cat-title"><a href="#">Tool & equipments</a></div>
-                                        <div class="child-cat">
-                                            <div class="child-cat-title"><a href="#">Tool Boxes</a></div>
-                                            <div class="child-cat-title"><a href="#">Tool Sets</a></div>
-                                            <div class="child-cat-title"><a href="#">Impact Wrenches</a></div>
-                                            <div class="child-cat-title"><a href="#">Tire Air Compressors </a></div>
-                                            <div class="child-cat-title"><a href="#">Hand Tools</a></div>
-                                            <a class="viewmore" href="#">View More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end So Categories -->
-
             </div>
-
         </div>
     </div>
     <!-- //Main Container -->
 
     <th:block layout:fragment="script">
         <script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+        <script type="text/javascript">
+            display('grid');
+        </script>
     </th:block>
 </body>
 </html>

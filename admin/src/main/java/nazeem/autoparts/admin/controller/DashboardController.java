@@ -10,7 +10,7 @@ public class DashboardController {
 
     @RequestMapping("/")
     public String index() {
-        return "admin/dashboard/index";
+        return "/dashboard/index";
     }
 
     // Added to test 500 page

@@ -1,112 +1,85 @@
 package nazeem.autoparts.library.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
+import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "customer", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "customer", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Customer {
-
-    protected Customer() {
-    }
-    public Customer(String firstName, String lastName, String email, String password, String phone, Collection<Role> roles) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
-        this.isActive=true;
-        this.phone = phone;
-    }
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private Long id;
 
-
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
-    }
-
-
     @NotEmpty(message = "First name can't be empty!")
     @Column(name = "first_name")
     private String firstName;
-
-    public String getFirstName(){
-        return this.firstName;
-    }
-    public void setFirstName(String firstName){
-        this.firstName=firstName;
-    }
 
     @NotEmpty(message = "Last name can't be empty!")
     @Column(name = "last_name")
     private String lastName;
 
-    public String getLastName(){
-        return this.lastName;
-    }
-    public void setLastName(String lastName){
-        this.lastName=lastName;
-    }
 
-    @Column(name = "email")
+    @Column(name = "username")
     @Email(message = "*Please provide a valid Email")
     @NotEmpty(message = "*Please provide an email")
-    private String email;
-
-    public String getEmail(){
-        return this.email;
-    }
-    public void setEmail(String username){
-        this.email=username;
-    }
-
+    private String username;
 
     @Column(name = "password")
     @Length(min = 5, message = "*Your password must have at least 5 characters")
     @NotEmpty(message = "*Please provide your password")
     private String password;
 
-    public String getPassword(){
-        return this.password;
-    }
-    public void setPassword(String password){
-        this.password=password;
-    }
-
-    @Column(name = "is_active")
-    private Boolean isActive;
-
-    public boolean getActive(){
-        return this.isActive;
-    }
-    public void setActive(boolean active){
-        this.isActive=isActive;
-    }
-
-
     @Column(name = "phone")
     private String phone;
 
-    public String getPhone(){
-        return this.phone;
-    }
-    public void setPhone(String phone){
-        this.phone=phone;
-    }
+
+    //--------Address information----------//
+    @Column(name = "company")
+    private String company;
+
+    @NotNull(message = "Enter address 1!")
+    @Column(name = "address1")
+    private String address1;
+
+    @Column(name = "address2")
+    private String address2;
+
+    @NotNull(message = "Enter city!")
+    @Column(name = "city")
+    private String city;
+
+    @NotNull(message = "Enter state!")
+    @Column(name = "state")
+    private String state;
+
+    @NotNull(message = "Enter postal code!")
+    @Column(name = "postal_code")
+    private String postalCode;
+
+    @NotNull(message = "Select Country!")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "country_id", referencedColumnName = "country_id")
+    private Country country;
+    //---------------- end address -------------//
+
+
+
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
+
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -117,11 +90,38 @@ public class Customer {
                     name = "role_id", referencedColumnName = "role_id"))
     private Collection <Role> roles;
 
-    public void setRoles(Collection<Role> roles){
-        this.roles = roles;
+    @OneToOne(mappedBy = "customer")
+    private ShoppingCart shoppingCart;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
+
+
+    @Override
+    public int hashCode() {
+        return 42;
     }
-    public Collection<Role> getRoles(){
-        return this.roles;
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", company='" + company + '\'' +
+                ", address1='" + address1 + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", country=" + country +
+                ", isDeleted=" + isDeleted +
+                ", roles=" + roles +
+                ", shoppingCart=" + shoppingCart +
+                ", orders=" + orders +
+                '}';
     }
-    // other getters and setters are hidden for brevity
 }

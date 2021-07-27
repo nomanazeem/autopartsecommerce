@@ -19,169 +19,94 @@
         <!--Middle Part Start-->
         <div class="col-sm-9" id="content">
             <h2 class="title">My Account</h2>
-            <p class="lead">Hello, <strong>Noman Azeem!</strong> - To update your account information.</p>
-            <form>
+            <p class="lead">Hello, <strong th:text="${customer.firstName}+' '+${customer.lastName}"></strong> - To update your account information.</p>
+
+            <form th:action="@{/my-account}" th:object="${customer}" enctype="multipart/form-data" method="post">
+
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully changed your personal details!</div>
+                </div>
+
+                <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                    <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                </div>
+
+
+                <input type="hidden" th:field="*{id}" th:value="${id}"/>
+                <input type="hidden" th:field="*{isDeleted}" th:value="${isDeleted}"/>
+                <input type="hidden" th:field="*{password}" th:value="${password}"/>
+
                 <div class="row">
                     <div class="col-sm-6">
                         <fieldset id="personal-details">
                             <legend>Personal Details</legend>
                             <div class="form-group required">
-                                <label for="input-firstname" class="control-label">First Name</label>
-                                <input type="text" class="form-control" id="input-firstname" placeholder="First Name" value="" name="firstname">
+                                <label for="firstName" class="control-label">First Name</label>
+                                <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="First Name" th:value="${firstName}">
+                                <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}" />
                             </div>
                             <div class="form-group required">
-                                <label for="input-lastname" class="control-label">Last Name</label>
-                                <input type="text" class="form-control" id="input-lastname" placeholder="Last Name" value="" name="lastname">
+                                <label for="lastName" class="control-label">Last Name</label>
+                                <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Last Name" th:value="${lastName}">
+                                <p th:if="${#fields.hasErrors('lastName')}" th:errorclass="error" th:errors="*{lastName}" />
                             </div>
                             <div class="form-group required">
-                                <label for="input-email" class="control-label">E-Mail</label>
-                                <input type="email" class="form-control" id="input-email" placeholder="E-Mail" value="" name="email">
+                                <label for="username" class="control-label">Username (E-Mail Address)</label>
+                                <input type="email" readonly="readonly" class="form-control" th:field="*{username}" id="username" placeholder="E-Mail" th:value="${username}">
+                                <p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}" />
                             </div>
                             <div class="form-group required">
-                                <label for="input-telephone" class="control-label">Telephone</label>
-                                <input type="tel" class="form-control" id="input-telephone" placeholder="Telephone" value="" name="telephone">
-                            </div>
-                            <div class="form-group">
-                                <label for="input-fax" class="control-label">Fax</label>
-                                <input type="text" class="form-control" id="input-fax" placeholder="Fax" value="" name="fax">
+                                <label for="phone" class="control-label">Telephone</label>
+                                <input type="tel" class="form-control" th:field="*{phone}" id="phone" placeholder="Telephone" th:value="${phone}">
+                                <p th:if="${#fields.hasErrors('phone')}" th:errorclass="error" th:errors="*{phone}" />
                             </div>
                         </fieldset>
                         <br>
-                    </div>
-                    <div class="col-sm-6">
-                        <fieldset>
-                            <legend>Change Password</legend>
-                            <div class="form-group required">
-                                <label for="old-password" class="control-label">Old Password</label>
-                                <input type="password" class="form-control" id="old-password" placeholder="Old Password" value="" name="old-password">
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-password" class="control-label">New Password</label>
-                                <input type="password" class="form-control" id="input-password" placeholder="New Password" value="" name="new-password">
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-confirm" class="control-label">New Password Confirm</label>
-                                <input type="password" class="form-control" id="input-confirm" placeholder="New Password Confirm" value="" name="new-confirm">
-                            </div>
-                        </fieldset>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <fieldset id="address">
-                            <legend>Payment Address</legend>
-                            <div class="form-group">
-                                <label for="input-company" class="control-label">Company</label>
-
-                                <input type="text" class="form-control"  placeholder="Company" value="" name="company">
-
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-address-1" class="control-label">Address 1</label>
-                                <input type="text" class="form-control"  placeholder="Address 1" value="" name="address_1">
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-city" class="control-label">City</label>
-                                <input type="text" class="form-control" placeholder="City" value="" name="city">
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-postcode" class="control-label">Post Code</label>
-                                <input type="text" class="form-control"  placeholder="Post Code" value="" name="postcode">
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-country" class="control-label">Country</label>
-                                <select class="form-control" name="country_id">
-                                    <option value=""> --- Please Select --- </option>
-                                    <option value="244">Aaland Islands</option>
-                                    <option value="1">Afghanistan</option>
-                                    <option value="2">Albania</option>
-                                    <option value="3">Algeria</option>
-                                    <option value="4">American Samoa</option>
-                                    <option value="5">Andorra</option>
-                                    <option value="6">Angola</option>
-                                    <option value="7">Anguilla</option>
-                                    <option value="8">Antarctica</option>
-                                    <option value="9">Antigua and Barbuda</option>
-                                    <option value="10">Argentina</option>
-                                    <option value="11">Armenia</option>
-                                    <option value="12">Aruba</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group required">
-                                <label for="input-zone" class="control-label">Region / State</label>
-                                <select class="form-control" name="zone_id">
-                                    <option value=""> --- Please Select --- </option>
-                                    <option value="3513">Aberdeen</option>
-                                    <option value="3514">Aberdeenshire</option>
-                                    <option value="3515">Anglesey</option>
-                                    <option value="3516">Angus</option>
-                                    <option value="3517">Argyll and Bute</option>
-                                    <option value="3518">Bedfordshire</option>
-                                    <option value="3519">Berkshire</option>
-
-                                </select>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="col-sm-6">
-                        <fieldset id="shipping-address">
                             <legend>Shipping Address</legend>
                             <div class="form-group">
-                                <label for="input-company" class="control-label">Company</label>
-                                <input type="text" class="form-control" id="input-company" placeholder="Company" value="" name="company">
+                                <label for="company" class="control-label">Company</label>
+                                <input type="text" th:field="*{company}" placeholder="Company" id="company" class="form-control" th:value="${company}">
                             </div>
                             <div class="form-group required">
-                                <label for="input-address-1" class="control-label">Address 1</label>
-                                <input type="text" class="form-control" id="input-address-1" placeholder="Address 1" value="" name="address_1">
+                                <label for="address1" class="control-label">Address 1</label>
+                                <input type="text" th:field="*{address1}" placeholder="Address 1" id="address1" class="form-control" th:value="${address1}">
+                                <p th:if="${#fields.hasErrors('address1')}" th:errorclass="error" th:errors="*{address1}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="address2" class="control-label">Address 2</label>
+                                <input type="text" th:field="*{address2}" placeholder="Address 2" id="address2" class="form-control" th:value="${address2}">
                             </div>
                             <div class="form-group required">
-                                <label for="input-city" class="control-label">City</label>
-                                <input type="text" class="form-control" id="input-city" placeholder="City" value="" name="city">
+                                <label for="city" class="control-label">City</label>
+                                <input type="text" th:field="*{city}" placeholder="City" id="city" class="form-control" th:value="${city}">
+                                <p th:if="${#fields.hasErrors('city')}" th:errorclass="error" th:errors="*{city}" />
                             </div>
                             <div class="form-group required">
-                                <label for="input-postcode" class="control-label">Post Code</label>
-                                <input type="text" class="form-control" id="input-postcode" placeholder="Post Code" value="" name="postcode">
+                                <label for="postalCode" class="control-label">Post Code</label>
+                                <input type="text" th:field="*{postalCode}" placeholder="Post Code" id="postalCode" class="form-control" th:value="${postalCode}">
+                                <p th:if="${#fields.hasErrors('postalCode')}" th:errorclass="error" th:errors="*{postalCode}" />
                             </div>
                             <div class="form-group required">
-                                <label for="input-country" class="control-label">Country</label>
-                                <select class="form-control" id="input-country" name="country_id">
+                                <label class="control-label">Country</label>
+                                <select th:field="*{country.id}" class="form-control">
                                     <option value=""> --- Please Select --- </option>
-                                    <option value="244">Aaland Islands</option>
-                                    <option value="1">Afghanistan</option>
-                                    <option value="2">Albania</option>
-                                    <option value="3">Algeria</option>
-                                    <option value="4">American Samoa</option>
-                                    <option value="5">Andorra</option>
-                                    <option value="6">Angola</option>
-                                    <option value="7">Anguilla</option>
-                                    <option value="8">Antarctica</option>
-                                    <option value="9">Antigua and Barbuda</option>
-                                    <option value="10">Argentina</option>
-                                    <option value="11">Armenia</option>
-                                    <option value="12">Aruba</option>
-
+                                    <option th:each="countryInfo : ${countries}" th:value="${countryInfo.id}" th:utext="${countryInfo.code}+' - '+${countryInfo.name}"></option>
                                 </select>
+                                <p th:if="${#fields.hasErrors('country.id')}" th:errorclass="error" th:errors="*{country.id}" />
                             </div>
                             <div class="form-group required">
-                                <label for="input-zone" class="control-label">Region / State</label>
-                                <select class="form-control" id="input-zone" name="zone_id">
-                                    <option value=""> --- Please Select --- </option>
-                                    <option value="3513">Aberdeen</option>
-                                    <option value="3514">Aberdeenshire</option>
-                                    <option value="3515">Anglesey</option>
-                                    <option value="3516">Angus</option>
-                                    <option value="3517">Argyll and Bute</option>
-                                    <option value="3518">Bedfordshire</option>
-                                    <option value="3519">Berkshire</option>
-
-                                </select>
+                                <label for="state" class="control-label">Region / State</label>
+                                <input type="text" th:field="*{state}" placeholder="State" id="state" class="form-control" th:value="${state}">
+                                <p th:if="${#fields.hasErrors('state')}" th:errorclass="error" th:errors="*{state}" />
                             </div>
                         </fieldset>
                     </div>
                 </div>
-
-
 
                 <div class="buttons clearfix">
                     <div class="pull-right">

@@ -24,8 +24,8 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
-    private String add_edit_template="/admin/product/add-edit-product";
-    private String list_template="/admin/product/list-product";
+    private String add_edit_template="/product/add-edit-product";
+    private String list_template="/product/list-product";
     private String list_redirect="redirect:/product/list";
 
 

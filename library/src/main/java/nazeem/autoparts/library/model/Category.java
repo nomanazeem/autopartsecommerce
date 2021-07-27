@@ -1,12 +1,25 @@
 package nazeem.autoparts.library.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="category")
 public class Category {
+    public Category(String name, String description){
+        this.name =name;
+        this.description = description;
+        this.isActive=true;
+        this.isDeleted=false;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
@@ -20,48 +33,9 @@ public class Category {
     private String description;
 
     @Column(name = "is_active")
-    private boolean is_active;
+    private Boolean isActive;
 
     @Column(name = "is_deleted")
-    private boolean is_deleted;
+    private Boolean isDeleted;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
-    }
-
-    public boolean isIs_deleted() {
-        return is_deleted;
-    }
-
-    public void setIs_deleted(boolean is_deleted) {
-        this.is_deleted = is_deleted;
-    }
 }

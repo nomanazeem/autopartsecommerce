@@ -1,7 +1,8 @@
 package nazeem.autoparts.client.config;
 
 import nazeem.autoparts.library.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import nazeem.autoparts.library.service.impl.CustomerServiceImpl;
+import nazeem.autoparts.library.service.impl.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -41,9 +42,35 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public CountryService countryService(){
+        return new CountryService();
+    }
+
+    @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Bean
+    public OrderService orderService(){
+        return new OrderService();
+    }
+
+    @Bean
+    public OrderDetailService orderDetailService(){
+        return new OrderDetailService();
+    }
+
+    @Bean
+    public ShoppingCartService shoppingCartService(){
+        return new ShoppingCartService();
+    }
+
+    @Bean
+    public CartItemService cartItemService(){
+        return new CartItemService();
+    }
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -69,8 +96,8 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             "/category",
             "/part-search",
             "/part-details",
-            "/view-cart",
-            "/checkout",
+
+
 
             "/register",
             "/login",
@@ -85,12 +112,14 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             "/terms-and-conditions",
 
 
-            "/my-account",
+            //Secure pages
+            /*
+             "/view-cart",
+             "/checkout",
+             "/my-account",
             "/order-details",
             "/order-history",
-
-
-
+            "/change-password",*/
     };
 
     @Override

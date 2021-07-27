@@ -1,7 +1,7 @@
 package nazeem.autoparts.library.service;
 
-import nazeem.autoparts.library.model.Category;
-import nazeem.autoparts.library.repository.CategoryRepository;
+import nazeem.autoparts.library.model.Country;
+import nazeem.autoparts.library.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,24 +10,24 @@ import java.util.List;
 
 @Service
 @Transactional
-public class CategoryService {
+public class CountryService {
 
     @Autowired
-    private CategoryRepository repo;
+    private CountryRepository repo;
 
-    public List<Category> findAll() {
-        return (List<Category>) repo.findAll();
+    public List<Country> findAll() {
+        return (List<Country>) repo.findAll();
     }
 
-    public Category findByName(String name) {
+    public Country findByName(String name) {
         return repo.findByName(name);
     }
 
-    public void save(Category product) {
+    public void save(Country product) {
         repo.save(product);
     }
 
-    public Category get(long  id) {
+    public Country get(long  id) {
         return repo.findById(id).get();
     }
 

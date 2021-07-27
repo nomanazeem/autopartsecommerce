@@ -28,12 +28,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td style="width: 50%;" class="text-left"> <b>Order ID:</b> #214521
+                    <td style="width: 50%;" class="text-left"> <b>Order ID:</b> <span th:text="'#'+${order.id}"></span>
                         <br>
-                        <b>Date Added:</b> 20/06/2016</td>
-                    <td style="width: 50%;" class="text-left"> <b>Payment Method:</b> Cash On Delivery
+                        <b>Date Added:</b> <span th:text="${order.orderDate}"></span></td>
+                    <td style="width: 50%;" class="text-left"> <b>Payment Method:</b> <span th:text="${order.paymentMethod}"></span>
                         <br>
-                        <b>Shipping Method:</b> Flat Shipping Rate </td>
+                        <b>Shipping Method:</b> <span th:text="${order.shippingMethod}"></span> </td>
                 </tr>
                 </tbody>
             </table>
@@ -41,21 +41,17 @@
                 <thead>
                 <tr>
                     <td style="width: 50%; vertical-align: top;" class="text-left">Payment Address</td>
-                    <td style="width: 50%; vertical-align: top;" class="text-left">Shipping Address</td>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="text-left">Jhone Cary
-                        <br>Central Square
-                        <br>22 Hoi Wing Road
-                        <br>New Delhi
-                        <br>India</td>
-                    <td class="text-left">Jhone Cary
-                        <br>Central Square
-                        <br>22 Hoi Wing Road
-                        <br>New Delhi
-                        <br>India</td>
+                    <td class="text-left">
+                        <p th:text="${order.customer.firstName}+' '+${order.customer.lastName}"></p>
+                        <p th:text="${order.customer.address1}"></p>
+                        <p th:text="${order.customer.postalCode}"></p>
+                        <p th:text="${order.customer.state}"></p>
+                        <p th:text="${order.customer.city}"></p>
+                        <p th:text="${order.customer.country.name}"></p>
                 </tr>
                 </tbody>
             </table>
@@ -72,14 +68,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="text-left">iPhone5 </td>
-                        <td class="text-left">product 11</td>
-                        <td class="text-right">1</td>
-                        <td class="text-right">$123.20</td>
-                        <td class="text-right">$123.20</td>
-                        <td style="white-space: nowrap;" class="text-right"> <a class="btn btn-primary" title="" data-toggle="tooltip" href="#" data-original-title="Reorder"><i class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-danger" title="" data-toggle="tooltip" href="return.html" data-original-title="Return"><i class="fa fa-reply"></i></a>
+                    <tr th:each="orderDetail : ${order.getOrderDetailList()}">
+                        <td class="text-left" th:text="${orderDetail.product.name}"></td>
+                        <td class="text-left" th:text="${orderDetail.product.code}"></td>
+                        <td class="text-right" th:text="${orderDetail.quantity}"></td>
+                        <td class="text-right" th:text="${orderDetail.ourPrice}"></td>
+                        <td class="text-right" th:text="${orderDetail.totalPrice}"></td>
+                        <td style="white-space: nowrap;" class="text-right">
+                            <a class="btn btn-primary" title="" data-toggle="tooltip" target="_blank" th:href="@{/part-details(id=${orderDetail.product.id})}" data-original-title="Reorder"><i class="fa fa-shopping-cart"></i></a>
+<!--
+                            <a class="btn btn-danger" title="" data-toggle="tooltip" th:href="@{/product-details(id=${orderDetail.product.id})}" data-original-title="Return"><i class="fa fa-reply"></i></a>
+-->
                         </td>
                     </tr>
 
@@ -89,35 +88,21 @@
                         <td colspan="3"></td>
                         <td class="text-right"><b>Sub-Total</b>
                         </td>
-                        <td class="text-right">$101.00</td>
+                        <td class="text-right" th:text="${order.subTotal}"></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td colspan="3"></td>
                         <td class="text-right"><b>Flat Shipping Rate</b>
                         </td>
-                        <td class="text-right">$5.00</td>
+                        <td class="text-right" th:text="${order.shippingTotal}"></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td colspan="3"></td>
-                        <td class="text-right"><b>Eco Tax (-2.00)</b>
+                        <td class="text-right"><b>Grand Total</b>
                         </td>
-                        <td class="text-right">$6.00</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td class="text-right"><b>VAT (20%)</b>
-                        </td>
-                        <td class="text-right">$21.20</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="3"></td>
-                        <td class="text-right"><b>Total</b>
-                        </td>
-                        <td class="text-right">$133.20</td>
+                        <td class="text-right" th:text="${order.grandTotal}"></td>
                         <td></td>
                     </tr>
                     </tfoot>
@@ -133,22 +118,19 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="text-left">20/06/2016</td>
-                    <td class="text-left">Processing</td>
+                    <td class="text-left" th:text="${order.orderDate}"></td>
+                    <td class="text-left" th:text="${order.orderStatus}"></td>
                 </tr>
-                <tr>
-                    <td class="text-left">21/06/2016</td>
-                    <td class="text-left">Shipped</td>
-                </tr>
+<!--
                 <tr>
                     <td class="text-left">24/06/2016</td>
                     <td class="text-left">Complete</td>
                 </tr>
+-->
                 </tbody>
             </table>
             <div class="buttons clearfix">
-                <div class="pull-right"><a class="btn btn-primary" href="#">Continue</a>
-                </div>
+                <div class="pull-right"><a class="btn btn-primary" onclick="javascript:window.print();" href="#">Print</a></div>
             </div>
 
 
