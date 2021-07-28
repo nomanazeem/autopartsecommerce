@@ -1,6 +1,7 @@
 <!--changed listings-->
 <div th:fragment="partsData(productList)" class="products-list row nopadding-xs so-filter-gird" th:object="${productList}">
-    <div data-th-each="productInfo : ${productList}" class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div th:if="${productList != null}">
+        <div data-th-each="productInfo : ${productList}" class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <div class="product-item-container item--static">
             <div class="left-block">
                 <div class="product-image-container second_img">
@@ -32,6 +33,7 @@
                 </div>-->
             </div>
         </div>
+    </div>
     </div>
 </div>
 <!--// End Changed listings-->

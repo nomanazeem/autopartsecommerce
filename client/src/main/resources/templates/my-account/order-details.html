@@ -93,11 +93,27 @@
                     </tr>
                     <tr>
                         <td colspan="3"></td>
+                        <td class="text-right">
+                            <strong>Tax Rate:</strong>
+                        </td>
+                        <td class="text-right" th:text="${order.taxRate}"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"></td>
+                        <td class="text-right">
+                            <strong>Tax Total:</strong>
+                        </td>
+                        <td class="text-right" th:text="${order.taxTotal}"></td>
+                        <td></td>
+                    </tr>
+                    <!--<tr>
+                        <td colspan="3"></td>
                         <td class="text-right"><b>Flat Shipping Rate</b>
                         </td>
                         <td class="text-right" th:text="${order.shippingTotal}"></td>
                         <td></td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="3"></td>
                         <td class="text-right"><b>Grand Total</b>

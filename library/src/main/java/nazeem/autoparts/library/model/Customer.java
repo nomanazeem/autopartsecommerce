@@ -120,8 +120,8 @@ public class Customer {
                 ", country=" + country +
                 ", isDeleted=" + isDeleted +
                 ", roles=" + roles +
-                ", shoppingCart=" + shoppingCart +
-                ", orders=" + orders +
+                //", shoppingCart=" + shoppingCart +
+                //", orders=" + orders +
                 '}';
     }
 }

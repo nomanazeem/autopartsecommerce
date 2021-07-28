@@ -45,10 +45,10 @@
                         <div class="icon-search hidden-lg hidden-md"><i class="fa fa-search"></i></div>
 
                         <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                            <form method="GET" action="">
-                                <div id="search0" class="search input-group form-group">
+                            <form th:action="@{/part-search}" method="POST">
+                            <div id="search0" class="search input-group form-group">
 
-                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="search">
+                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="name">
 
                                     <button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
 

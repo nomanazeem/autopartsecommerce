@@ -1,0 +1,61 @@
+<!--Left Part Start -->
+<aside class="col-sm-4 col-md-3 content-aside" id="column-left">
+    <div class="module">
+        <h3 class="modtitle">Filter </h3>
+        <div class="modcontent ">
+            <form th:action="@{/part-search}" th:object="${search}" method="POST" class="type_2">
+
+                <div class="table_layout filter-shopby">
+                    <div class="table_row">
+                        <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+                        <div class="table_cell" style="z-index: 103;">
+                            <legend>Search</legend>
+                            <input class="form-control" type="text" value="" size="50" th:field="*{name}" autocomplete="off" placeholder="Search">
+
+                            <legend>Category</legend>
+                            <select class="form-control" placeholder="Search" th:field="*{category}">
+                                <option value="">All Categories</option>
+                                <option th:each="categoryInfo : ${categories}" th:value="${categoryInfo.id}" th:utext="${categoryInfo.name}"/>
+                            </select>
+                        </div><!--/ .table_cell -->
+                        <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
+                        <!--<div class="table_cell">
+                            <fieldset>
+                                <legend>Price</legend>
+                                <div class="range">
+                                    Range :
+                                    <span class="min_val">$10.00</span> -
+                                    <span class="max_val">$999.99</span>
+                                    <input type="hidden" name="" class="min_value" value="10.00">
+                                    <input type="hidden" name="" class="max_value" value="999.99">
+                                </div>
+                                <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+                                    <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" ></span>
+                                    <span class="ui-slider-handle ui-state-default ui-corner-all" ></span>
+                                </div>
+                            </fieldset>
+                        </div>-->
+
+                        <!-- - - - - - - - - - - - - - End price - - - - - - - - - - - - - - - - -->
+
+
+                    </div><!--/ .table_row -->
+                    <footer class="bottom_box">
+                        <div class="buttons_row">
+                            <button type="submit" class="button_grey button_submit">Search</button>
+
+                            <!--<button type="reset" class="button_grey filter_reset">Reset</button>-->
+
+                        </div>
+                        <!--Back To Top-->
+                        <div class="back-to-top"><i class="fa fa-angle-up"></i></div>
+                    </footer>
+                </div><!--/ .table_layout -->
+            </form>
+        </div>
+    </div>
+</aside>
+<!--Left Part End -->

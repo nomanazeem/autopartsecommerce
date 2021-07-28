@@ -118,11 +118,17 @@ public class ShoppingCartService {
         ShoppingCart shoppingCart = findShoppingCart(customer);
         CartItem cartItem = findCartItem(shoppingCart, product.getId());
 
+        System.out.println("cart item="+cartItem);
+
         List<CartItem> cartItemList = shoppingCart.getCartItemList();
+        System.out.println("before size="+cartItemList.stream().count());
+
         cartItemList.remove(cartItem);
 
+        System.out.println("after size="+cartItemList.stream().count());
+
         //set updated cart item
-        shoppingCart.setCartItemList(cartItemList);
+        //shoppingCart.setCartItemList(cartItemList);
 
         //-------------------//
         shoppingCart.setShippingTotal(0.0F);

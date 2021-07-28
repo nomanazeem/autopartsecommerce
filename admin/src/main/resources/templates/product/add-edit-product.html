@@ -27,6 +27,7 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <form th:action="@{/product/save}" th:object="${product}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                   <input type="hidden" th:field="*{isDeleted}" value="0"/>
                     <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Product Id</label>

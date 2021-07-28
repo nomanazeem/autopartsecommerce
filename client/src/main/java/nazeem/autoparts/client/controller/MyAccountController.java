@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,9 @@ public class MyAccountController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     //--------------- MY ACCOUNT ---------------------//
@@ -104,5 +108,29 @@ public class MyAccountController {
         model.addAttribute("classActiveMyAccount", "active");
 
         return "/my-account/change-password";
+    }
+    @PostMapping("/change-password")
+    public String saveChangePassword(@Valid
+                                         @ModelAttribute("old_password") String oldPassword
+                                        , @ModelAttribute("new_password") String newPassword
+                                        , @ModelAttribute("confirm_password") String confirm_password
+                                        , Principal principal
+                                        , BindingResult result
+                                        , Model model) {
+        model.addAttribute("classActiveMyAccount", "active");
+
+        Customer customer = customerService.findByUsername(principal.getName());
+
+        if(bCryptPasswordEncoder.matches(oldPassword, customer.getPassword())){
+            //match successfully
+            String encodedPassword = bCryptPasswordEncoder.encode(newPassword);
+            customer.setPassword(encodedPassword);
+
+            customerService.save(customer);
+        }else {
+            return "redirect:/change-password?error";
+        }
+
+        return "redirect:/change-password?success";
     }
 }

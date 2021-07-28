@@ -22,20 +22,29 @@ import java.util.List;
 public class ProductService {
 
     @Autowired
-    private ProductRepository repo;
+    private ProductRepository productRepository;
 
     public List<Product> findAll() {
-        return repo.findAll();
+        return productRepository.findAll();
     }
     public List<Product> findAllByActive() {
-        return repo.findAllByActive();
+        return productRepository.findAllByActive();
     }
     public List<Product> findAllByCategoryId(Long categoryId) {
-        return repo.findAllByCategoryId(categoryId);
+        return productRepository.findAllByCategoryId(categoryId);
+    }
+    public List<Product> topMostOrderedProducts(Integer top) {
+        return productRepository.topMostOrderedProducts(top);
     }
 
-    public Page<Product> findPaginated(String search, Pageable pageable) {
-        List<Product> products = repo.searchProduct(search); //repo.findAll();
+
+    public List<Product> searchResults(String keyword, String categoryId) {
+        List<Product> products = productRepository.searchProduct2(keyword, categoryId);
+        return products;
+    }
+
+     public Page<Product> findPaginated(String search, Pageable pageable) {
+        List<Product> products = productRepository.searchProduct(search); //productRepository.findAll();
 
         int pageSize = pageable.getPageSize();
         int currentPage = pageable.getPageNumber();
@@ -56,7 +65,7 @@ public class ProductService {
 
 
     public void save(Product product) {
-        repo.save(product);
+        productRepository.save(product);
 
         if(product.getImage_posted1().getSize() > 0 ||
                 product.getImage_posted2().getSize() > 0 ||
@@ -83,7 +92,7 @@ public class ProductService {
                 product.setImage4(image4);
             }
 
-            repo.save(product);
+            productRepository.save(product);
         }
     }
     private String ImageUpload(Long productId, MultipartFile productImage1){
@@ -118,10 +127,10 @@ public class ProductService {
     }
 
     public Product get(long id) {
-        return repo.findById(id).get();
+        return productRepository.findById(id).get();
     }
 
     public void delete(long id) {
-        repo.deleteById(id);
+        productRepository.deleteById(id);
     }
 }
