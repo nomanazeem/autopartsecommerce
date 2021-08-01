@@ -89,18 +89,32 @@ public class MyAccountController {
         return "/my-account/order-history";
     }
     @RequestMapping("/order-details")
-    public String orderDetails(@RequestParam("id") Long id, Model model) {
+    public String orderDetails(@RequestParam("id") Long id, Principal principal, Model model) {
         model.addAttribute("classActiveMyAccount", "active");
 
-        Order order = orderService.get(id);
-        //invalid order id
-        if(order == null){
-            return "/my-account/order-details?error";
+        Customer customer = customerService.findByUsername(principal.getName());
+
+        Order order;
+        try {
+            order = orderService.get(id);
+
+            //invalid order id
+            if(order == null){
+                model.addAttribute("error", "Order does not exits.");
+                return "/my-account/order-details";
+            }
+            if(!order.getCustomer().equals(customer)){
+                model.addAttribute("error", "Order did not belongs to you.");
+                return "/my-account/order-details";
+            }
+
+            model.addAttribute("order", order);
+            return "/my-account/order-details";
+
+        }catch (Exception ex){
+            model.addAttribute("error", ex.getMessage());
+            return "/my-account/order-details";
         }
-
-        model.addAttribute("order", order);
-
-        return "/my-account/order-details";
     }
 
     @RequestMapping("/change-password")

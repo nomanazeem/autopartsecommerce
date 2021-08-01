@@ -3,6 +3,7 @@ package nazeem.autoparts.client.config;
 import nazeem.autoparts.library.service.*;
 import nazeem.autoparts.library.service.impl.CustomerServiceImpl;
 import nazeem.autoparts.library.service.impl.UserServiceImpl;
+import nazeem.autoparts.library.util.Utility;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -71,6 +72,25 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return new CartItemService();
     }
 
+    @Bean
+    public MakeService makeService(){
+        return new MakeService();
+    }
+
+    @Bean
+    public ModelService modelService(){
+        return new ModelService();
+    }
+
+    @Bean
+    public Utility utility(){
+        return new Utility();
+    }
+
+    @Bean
+    public EmailService emailService(){
+        return new EmailService();
+    }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -111,6 +131,8 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             "/return-policy",
             "/terms-and-conditions",
 
+            //api route
+            "/models",
 
             //Secure pages
             /*

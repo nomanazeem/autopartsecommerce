@@ -38,8 +38,8 @@ public class ProductService {
     }
 
 
-    public List<Product> searchResults(String keyword, String categoryId) {
-        List<Product> products = productRepository.searchProduct2(keyword, categoryId);
+    public List<Product> searchResults(String keyword, String categoryId, String makeId, String modelId, String year) {
+        List<Product> products = productRepository.searchProduct2(keyword, categoryId, makeId, modelId, year);
         return products;
     }
 

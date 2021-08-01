@@ -13,25 +13,25 @@ import java.util.List;
 public class CountryService {
 
     @Autowired
-    private CountryRepository repo;
+    private CountryRepository countryRepository;
 
     public List<Country> findAll() {
-        return (List<Country>) repo.findAll();
+        return (List<Country>) countryRepository.findAll();
     }
 
     public Country findByName(String name) {
-        return repo.findByName(name);
+        return countryRepository.findByName(name);
     }
 
     public void save(Country product) {
-        repo.save(product);
+        countryRepository.save(product);
     }
 
     public Country get(long  id) {
-        return repo.findById(id).get();
+        return countryRepository.findById(id).get();
     }
 
     public void delete(long id) {
-        repo.deleteById(id);
+        countryRepository.deleteById(id);
     }
 }

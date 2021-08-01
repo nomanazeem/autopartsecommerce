@@ -4,6 +4,7 @@ import nazeem.autoparts.library.model.Country;
 import nazeem.autoparts.library.model.Customer;
 import nazeem.autoparts.library.service.CountryService;
 import nazeem.autoparts.library.service.CustomerService;
+import nazeem.autoparts.library.service.EmailService;
 import nazeem.autoparts.library.web.dto.CustomerRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -24,6 +26,9 @@ public class LoginController {
 
     @Autowired
     private CountryService countryService;
+
+    @Autowired
+    private EmailService emailService;
 
 
     @GetMapping("/login")
@@ -76,7 +81,7 @@ public class LoginController {
         return "auth/register";
     }
     @PostMapping("/register")
-    public String registerUserAccount(@Valid @ModelAttribute("customerRegistrationDto") CustomerRegistrationDto customerRegistrationDto, BindingResult result, Model model) {
+    public String registerUserAccount(@Valid @ModelAttribute("customerRegistrationDto") CustomerRegistrationDto customerRegistrationDto, BindingResult result, HttpServletRequest request, Model model) {
         model.addAttribute("customerRegistrationDto", customerRegistrationDto);
 
         //Get countries list
@@ -94,7 +99,13 @@ public class LoginController {
         if(result.hasErrors()){
             return "auth/register";
         }
-        customerService.save(customerRegistrationDto);
+
+        Customer newCustomer= customerService.save(customerRegistrationDto);
+
+        String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+
+        //send email
+        emailService.registration(appUrl, newCustomer);
 
         return "redirect:/register?success";
     }

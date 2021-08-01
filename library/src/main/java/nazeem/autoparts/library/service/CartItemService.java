@@ -13,21 +13,21 @@ import java.util.List;
 public class CartItemService {
 
     @Autowired
-    private CartItemRepository repo;
+    private CartItemRepository cartItemRepository;
 
     public List<CartItem> findAll() {
-        return (List<CartItem>) repo.findAll();
+        return (List<CartItem>) cartItemRepository.findAll();
     }
 
     public void save(CartItem order) {
-        repo.save(order);
+        cartItemRepository.save(order);
     }
 
     public CartItem get(long id) {
-        return repo.findById(id).get();
+        return cartItemRepository.findById(id).get();
     }
 
     public void delete(long id) {
-        repo.deleteById(id);
+        cartItemRepository.deleteById(id);
     }
 }

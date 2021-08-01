@@ -12,6 +12,22 @@
                             <legend>Search</legend>
                             <input class="form-control" type="text" value="" size="50" th:field="*{name}" autocomplete="off" placeholder="Search">
 
+                            <legend>Make</legend>
+                            <select class="form-control make" th:field="*{make.id}">
+                                <option th:each="makeInfo : ${listMake}" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
+                            </select>
+
+                            <legend>Model</legend>
+                            <select class="form-control model" th:field="*{model.id}">
+                                <option th:each="modelInfo : ${listModel}" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
+                            </select>
+
+                            <legend>Year</legend>
+                            <select class="form-control" th:field="*{year}">
+                                <option value="">All Year</option>
+                                <option th:each="yearInfo : ${listYear}" th:value="${yearInfo}" th:utext="${yearInfo}"/>
+                            </select>
+
                             <legend>Category</legend>
                             <select class="form-control" placeholder="Search" th:field="*{category}">
                                 <option value="">All Categories</option>

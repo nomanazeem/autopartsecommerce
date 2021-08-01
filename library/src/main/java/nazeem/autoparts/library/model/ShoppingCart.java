@@ -2,6 +2,7 @@ package nazeem.autoparts.library.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -49,7 +50,6 @@ public class ShoppingCart {
     @Column(name = "description")
     private String description;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "shoppingCart")
     private List<CartItem> cartItemList;
 
@@ -71,7 +71,7 @@ public class ShoppingCart {
                 ", shippingMethod='" + shippingMethod + '\'' +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 ", description='" + description + '\'' +
-                ", cartItemList=" + cartItemList +
+                //", cartItemList=" + cartItemList +
                 '}';
     }
 }

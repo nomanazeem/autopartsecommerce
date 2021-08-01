@@ -31,6 +31,10 @@ public class Customer {
     @Column(name = "last_name")
     private String lastName;
 
+    public String getFullName(){
+        return firstName +" "+lastName;
+    }
+
 
     @Column(name = "username")
     @Email(message = "*Please provide a valid Email")

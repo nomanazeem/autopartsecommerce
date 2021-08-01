@@ -25,154 +25,168 @@
 
             <form th:action="@{/add-to-cart}" th:object="${product}" method="post">
 
-            <div class="product-view row">
+                <div th:if="${error}">
+                    <div class="alert alert-danger" th:text="${error}"></div>
+                </div>
 
-                <div class="left-content-product">
+                <div th:if="${error == null}">
 
-                    <div th:if="${param.addtocart}">
-                        <div class="alert alert-success">Item has been added to cart successfully !</div>
-                    </div>
+                    <div class="product-view row">
 
+                        <div class="left-content-product">
 
-                    <div class="content-product-left class-honizol col-md-5 col-sm-12 col-xs-12">
-                        <div class="large-image  ">
-                            <img itemprop="image" class="product-image-zoom" th:src="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}" th:alt="${product.name}">
-                        </div>
-<!--
-                        <a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
--->
-
-                        <div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10"
-                             data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1"
-                             data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
-                            <a data-index="0" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}">
-                                <img th:src="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}" th:alt="${product.name}">
-                            </a>
-                            <a data-index="1" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage2Url()}" th:title="${product.name}">
-                                <img th:src="#{adminPath}+${product.getFullImage2Url()}" th:title="${product.name}" th:alt="${product.name}">
-                            </a>
-                            <a data-index="2" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage3Url()}" th:title="${product.name}">
-                                <img th:src="#{adminPath}+${product.getFullImage3Url()}" th:title="${product.name}" th:alt="${product.name}">
-                            </a>
-                            <a data-index="3" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage4Url()}" th:title="${product.name}">
-                                <img th:src="#{adminPath}+${product.getFullImage4Url()}" th:title="${product.name}" th:alt="${product.name}">
-                            </a>
-                        </div>
-                    </div>
-
-
-
-                    <div class="content-product-right col-md-7 col-sm-12 col-xs-12">
-                        <div class="title-product">
-                            <h1 th:text="${product.name}"></h1>
-                        </div>
-                        <div class="product-label form-group">
-                            <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                <span class="price-new" itemprop="price" th:text="${product.ourPrice}"></span>
-                                <span class="price-old" th:text="${product.salePrice}"></span>
+                            <div th:if="${param.addtocart}">
+                                <div class="alert alert-success">Item has been added to cart successfully !</div>
                             </div>
-                            <div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
-                        </div>
 
-                        <div class="product-box-desc">
-                            <div class="inner-box-desc">
-                                <div class="price-tax"><span th:text="'Product Code: '+${product.code}"></span></div>
-                                <div class="price-tax"><span th:text="'Stock Quantity: '+${product.stockQty}"></span></div>
+
+
+
+                            <div class="content-product-left class-honizol col-md-5 col-sm-12 col-xs-12">
+                                <div class="large-image  ">
+                                    <img itemprop="image" class="product-image-zoom" th:src="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}" th:alt="${product.name}">
+                                </div>
+        <!--
+                                <a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
+        -->
+
+                                <div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10"
+                                     data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1"
+                                     data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+                                    <a data-index="0" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}">
+                                        <img th:src="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}" th:alt="${product.name}">
+                                    </a>
+                                    <a data-index="1" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage2Url()}" th:title="${product.name}">
+                                        <img th:src="#{adminPath}+${product.getFullImage2Url()}" th:title="${product.name}" th:alt="${product.name}">
+                                    </a>
+                                    <a data-index="2" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage3Url()}" th:title="${product.name}">
+                                        <img th:src="#{adminPath}+${product.getFullImage3Url()}" th:title="${product.name}" th:alt="${product.name}">
+                                    </a>
+                                    <a data-index="3" class="img thumbnail " th:data-image="#{adminPath}+${product.getFullImage4Url()}" th:title="${product.name}">
+                                        <img th:src="#{adminPath}+${product.getFullImage4Url()}" th:title="${product.name}" th:alt="${product.name}">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
 
-                        <div id="product">
-                            <h4>Available Options</h4>
-                            <div class="form-group box-info-product">
-                                <div class="option quantity">
-                                    <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
-                                        <label>Qty</label>
-                                        <input class="form-control" type="text" name="quantity" value="1">
-                                        <input hidden="hidden" name="id" th:value="${product.id}" />
-                                        <span class="input-group-addon product_quantity_down">−</span>
-                                        <span class="input-group-addon product_quantity_up">+</span>
+
+                            <div class="content-product-right col-md-7 col-sm-12 col-xs-12">
+                                <div class="title-product">
+                                    <h1 th:text="${product.name}"></h1>
+                                </div>
+                                <div class="product-label form-group">
+                                    <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+                                        <span class="price-new" itemprop="price" th:text="${product.ourPrice}"></span>
+                                        <span class="price-old" th:text="${product.salePrice}"></span>
+                                    </div>
+                                    <div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
+                                </div>
+
+                                <div class="product-box-desc">
+                                    <div class="inner-box-desc">
+                                        <div class="price-tax" th:if="${product.make}"><span th:text="'Make: '+${product.make.name}"></span></div>
+                                        <div class="price-tax" th:if="${product.model}"><span th:text="'Model: '+${product.model.name}"></span></div>
+                                        <div class="price-tax" th:if="${product.year}"><span th:text="'Year: '+${product.year}"></span></div>
+
+                                        <div class="price-tax"><span th:text="'Product Code: '+${product.code}"></span></div>
+                                        <div class="price-tax"><span th:text="'Stock Quantity: '+${product.stockQty}"></span></div>
                                     </div>
                                 </div>
-                                <div class="cart">
-                                    <input type="submit" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" data-original-title="Add to Cart">
 
-                                    <!--<input type="button" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" onclick="cart.add('42', '1');" data-original-title="Add to Cart">-->
+
+                                <div id="product">
+                                    <h4>Available Options</h4>
+                                    <div class="form-group box-info-product">
+                                        <div class="option quantity">
+                                            <div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
+                                                <label>Qty</label>
+                                                <input class="form-control" type="text" name="quantity" value="1">
+                                                <input hidden="hidden" name="id" th:value="${product.id}" />
+                                                <span class="input-group-addon product_quantity_down">−</span>
+                                                <span class="input-group-addon product_quantity_up">+</span>
+                                            </div>
+                                        </div>
+                                        <div class="cart">
+                                            <input type="submit" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" data-original-title="Add to Cart">
+
+                                            <!--<input type="button" data-toggle="tooltip" title="" value="Add to Cart" data-loading-text="Loading..." id="button-cart" class="btn btn-mega btn-lg" onclick="cart.add('42', '1');" data-original-title="Add to Cart">-->
+                                        </div>
+                                    </div>
+
                                 </div>
+                                <!-- end box info product -->
+
                             </div>
 
                         </div>
-                        <!-- end box info product -->
-
                     </div>
+                    <!-- Product Tabs -->
+                    <div class="producttab ">
+                        <div class="tabsslider  vertical-tabs col-xs-12">
+                            <ul class="nav nav-tabs col-lg-2 col-sm-3">
+                                <li class="active"><a data-toggle="tab" href="#tab-1">Description</a></li>
+                                <li class="item_nonactive"><a data-toggle="tab" href="#tab-2">Custom Tab</a></li>
+                            </ul>
+                            <div class="tab-content col-lg-10 col-sm-9 col-xs-12">
+                                <div id="tab-1" class="tab-pane fade active in">
+                                    <p th:text="${product.description}">
+                                    </p>
+                                    <!--<h3>
+                                        Features:</h3>
+                                    <p>
+                                        Unrivaled display performance</p>
+                                    <ul>
+                                        <li>
+                                            30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.</li>
+                                        <li>
+                                            Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.</li>
+                                        <li>
+                                            Wide-format design for simultaneous display of two full pages of text and graphics.</li>
+                                        <li>
+                                            Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks</li>
+                                        <li>
+                                            Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.</li>
+                                        <li>
+                                            Lightning-fast pixel response for full-motion digital video playback.</li>
+                                        <li>
+                                            Support for 16.7 million saturated colors, for use in all graphics-intensive applications.</li>
+                                    </ul>
+                                    <p>
+                                        Simple setup and operation</p>
+                                    <ul>
+                                        <li>
+                                            Single cable with elegant breakout for connection to DVI, USB and FireWire ports</li>
+                                        <li>
+                                            Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.</li>
+                                        <li>
+                                            Two FireWire 400 ports to support iSight and other desktop peripherals</li>
+                                    </ul>
+                                    <p>
+                                        Sleek, elegant design</p>
+                                    <ul>
+                                        <li>
+                                            Huge virtual workspace, very small footprint.</li>
+                                        <li>
+                                            Narrow Bezel design to minimize visual impact of using dual displays</li>
+                                        <li>
+                                            Unique hinge design for effortless adjustment</li>
+                                        <li>
+                                            Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)</li>
+                                    </ul>-->
 
+
+                                </div>
+                                <div id="tab-2" class="tab-pane fade">
+                                    <p th:text="${product.description}">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //Product Tabs -->
                 </div>
-            </div>
             </form>
-            <!-- Product Tabs -->
-            <div class="producttab ">
-                <div class="tabsslider  vertical-tabs col-xs-12">
-                    <ul class="nav nav-tabs col-lg-2 col-sm-3">
-                        <li class="active"><a data-toggle="tab" href="#tab-1">Description</a></li>
-                        <li class="item_nonactive"><a data-toggle="tab" href="#tab-2">Custom Tab</a></li>
-                    </ul>
-                    <div class="tab-content col-lg-10 col-sm-9 col-xs-12">
-                        <div id="tab-1" class="tab-pane fade active in">
-                            <p th:text="${product.description}">
-                            </p>
-                            <!--<h3>
-                                Features:</h3>
-                            <p>
-                                Unrivaled display performance</p>
-                            <ul>
-                                <li>
-                                    30-inch (viewable) active-matrix liquid crystal display provides breathtaking image quality and vivid, richly saturated color.</li>
-                                <li>
-                                    Support for 2560-by-1600 pixel resolution for display of high definition still and video imagery.</li>
-                                <li>
-                                    Wide-format design for simultaneous display of two full pages of text and graphics.</li>
-                                <li>
-                                    Industry standard DVI connector for direct attachment to Mac- and Windows-based desktops and notebooks</li>
-                                <li>
-                                    Incredibly wide (170 degree) horizontal and vertical viewing angle for maximum visibility and color performance.</li>
-                                <li>
-                                    Lightning-fast pixel response for full-motion digital video playback.</li>
-                                <li>
-                                    Support for 16.7 million saturated colors, for use in all graphics-intensive applications.</li>
-                            </ul>
-                            <p>
-                                Simple setup and operation</p>
-                            <ul>
-                                <li>
-                                    Single cable with elegant breakout for connection to DVI, USB and FireWire ports</li>
-                                <li>
-                                    Built-in two-port USB 2.0 hub for easy connection of desktop peripheral devices.</li>
-                                <li>
-                                    Two FireWire 400 ports to support iSight and other desktop peripherals</li>
-                            </ul>
-                            <p>
-                                Sleek, elegant design</p>
-                            <ul>
-                                <li>
-                                    Huge virtual workspace, very small footprint.</li>
-                                <li>
-                                    Narrow Bezel design to minimize visual impact of using dual displays</li>
-                                <li>
-                                    Unique hinge design for effortless adjustment</li>
-                                <li>
-                                    Support for VESA mounting solutions (Apple Cinema Display VESA Mount Adapter sold separately)</li>
-                            </ul>-->
 
-
-                        </div>
-                        <div id="tab-2" class="tab-pane fade">
-                            <p th:text="${product.description}">
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- //Product Tabs -->
 
             <!-- Related Products -->
            <!-- <div class="related titleLine products-list grid module ">
@@ -381,6 +395,16 @@
 
 <th:block layout:fragment="script">
    <script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+    <script type="text/javascript" th:src="@{/js/Util.js}"></script>
+    <script th:inline="javascript">
+        $(document).ready(function() {
+            //display('grid');
+            $(".make").change(function() {
+                var url = /*[[@{/models}]]*/
+                getModels(url);
+            });
+        });
+    </script>
 </th:block>
 </body>
 </html>

@@ -63,6 +63,7 @@
                                         <th>Code</th>
                                         <th>Name</th>
                                         <th>Price</th>
+                                        <th>Is Active?</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -71,17 +72,18 @@
                                         <td>
                                             <img th:src="@{${product.getFullImage1Url()}}" style="width:50px;height:50px;" />
                                         </td>
-                                        <td th:text="${product.id}">Product ID</td>
+                                        <td th:text="${product.id}"></td>
                                         <td th:each="category : ${categories}"
                                             th:if="(${category.id} == ${product.category.id})"
-                                            th:text="${category.name}">Category
+                                            th:text="${category.name}">
                                         </td>
-                                        <td th:text="${product.code}">Code</td>
-                                        <td th:text="${product.name}">Name</td>
-                                        <td th:text="${product.our_price}">Our Price</td>
+                                        <td th:text="${product.code}"></td>
+                                        <td th:text="${product.name}"></td>
+                                        <td th:text="${product.ourPrice}"></td>
+                                        <td th:text="${product.isActive}"></td>
                                         <td>
                                             <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/product/edit/' + ${product.id}}"><i class="fa fa-edit"></i> Edit</a>
-                                            <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/product/delete/' + ${product.id}}"><i class="fa fa-trash-o"></i> Delete</a>
+                                            <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/product/edit/' + ${product.id}}"><i class="fa fa-trash-o"></i> Delete</a>
                                         </td>
                                     </tr>
                                     </tbody>

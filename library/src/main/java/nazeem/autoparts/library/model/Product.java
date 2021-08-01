@@ -2,6 +2,7 @@ package nazeem.autoparts.library.model;
 
 import javax.persistence.*;
 
+import javax.validation.constraints.Null;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,12 +22,28 @@ public class Product {
     @Column(name = "product_id")
     private Long id;
 
-    //------------ Mapped Column -----------//
     @NotNull(message = "Select Category!")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category category;
-    //-------------------------------------//
+
+
+    //Make
+    @NotNull(message = "Select Make!")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "make_id", nullable = true, referencedColumnName = "make_id")
+    private Make make;
+
+    //Model
+    @NotNull(message = "Select Model!")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "model_id", referencedColumnName = "model_id")
+    private Model model;
+
+    //Year
+    @Column(name = "year")
+    private String year;
+
 
 
     @NotEmpty(message = "Code can't be empty!")

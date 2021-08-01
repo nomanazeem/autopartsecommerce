@@ -45,11 +45,11 @@ public class CartItem {
     public String toString() {
         return "CartItem{" +
                 "id=" + id +
-                //", shoppingCart=" + shoppingCart +
+                ", shoppingCart=" + shoppingCart +
                 //", product=" + product +
-                //", quantity=" + quantity +
-                //", ourPrice=" + ourPrice +
-                //", totalPrice=" + totalPrice +
+                ", quantity=" + quantity +
+                ", ourPrice=" + ourPrice +
+                ", totalPrice=" + totalPrice +
                 '}';
     }
 }

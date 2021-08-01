@@ -13,21 +13,21 @@ import java.util.List;
 public class OrderDetailService {
 
     @Autowired
-    private OrderDetailRepository repo;
+    private OrderDetailRepository orderDetailRepository;
 
     public List<OrderDetail> findAll() {
-        return (List<OrderDetail>) repo.findAll();
+        return (List<OrderDetail>) orderDetailRepository.findAll();
     }
 
     public void save(OrderDetail order) {
-        repo.save(order);
+        orderDetailRepository.save(order);
     }
 
     public OrderDetail get(long  id) {
-        return repo.findById(id).get();
+        return orderDetailRepository.findById(id).get();
     }
 
     public void delete(long id) {
-        repo.deleteById(id);
+        orderDetailRepository.deleteById(id);
     }
 }

@@ -13,25 +13,25 @@ import java.util.List;
 public class CategoryService {
 
     @Autowired
-    private CategoryRepository repo;
+    private CategoryRepository categoryRepository;
 
     public List<Category> findAll() {
-        return (List<Category>) repo.findAll();
+        return (List<Category>) categoryRepository.findAll();
     }
 
     public Category findByName(String name) {
-        return repo.findByName(name);
+        return categoryRepository.findByName(name);
     }
 
     public void save(Category product) {
-        repo.save(product);
+        categoryRepository.save(product);
     }
 
     public Category get(long  id) {
-        return repo.findById(id).get();
+        return categoryRepository.findById(id).get();
     }
 
     public void delete(long id) {
-        repo.deleteById(id);
+        categoryRepository.deleteById(id);
     }
 }

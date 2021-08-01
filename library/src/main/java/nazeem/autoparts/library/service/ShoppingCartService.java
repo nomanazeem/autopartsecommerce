@@ -4,6 +4,7 @@ import nazeem.autoparts.library.model.CartItem;
 import nazeem.autoparts.library.model.Customer;
 import nazeem.autoparts.library.model.Product;
 import nazeem.autoparts.library.model.ShoppingCart;
+import nazeem.autoparts.library.repository.CartItemRepository;
 import nazeem.autoparts.library.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class ShoppingCartService {
 
     @Autowired
     private ShoppingCartRepository shoppingCartRepository;
+
+    @Autowired
+    private CartItemRepository cartItemRepository;
 
     private Float TAX_RATE =5.0F; //5% Percent
 
@@ -128,7 +132,7 @@ public class ShoppingCartService {
         System.out.println("after size="+cartItemList.stream().count());
 
         //set updated cart item
-        //shoppingCart.setCartItemList(cartItemList);
+        shoppingCart.setCartItemList(cartItemList);
 
         //-------------------//
         shoppingCart.setShippingTotal(0.0F);
@@ -149,6 +153,11 @@ public class ShoppingCartService {
         shoppingCart.setGrandTotal(grandTotal);
 
         shoppingCartRepository.save(shoppingCart);
+
+        //deleted instance passed to merge:
+
+        //Delete child item
+        cartItemRepository.delete(cartItem);
 
         return shoppingCart;
     }

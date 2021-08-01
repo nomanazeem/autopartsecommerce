@@ -8,7 +8,7 @@
 <body>
 <section layout:fragment="header">
     <h1>
-        Category List
+        Make List
         <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
@@ -21,12 +21,12 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Category List</h3>
+                    <h3 class="box-title">Make List</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="box-footer center">
-                        <a th:href="@{/category/add}">
+                        <a th:href="@{/make/add}">
                             <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add new
                             </button>
                         </a>
@@ -51,21 +51,21 @@
                                    aria-describedby="example1_info">
                                 <thead class="thead">
                                 <tr>
-                                    <th>Category ID</th>
+                                    <th>Make ID</th>
                                     <th>Name</th>
-                                    <th>Is Active?</th>
+                                    <th>Is Deleted?</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="category : ${listCategories}">
-                                        <td th:text="${category.id}"></td>
-                                        <td th:text="${category.name}"></td>
-                                        <td th:text="${category.isActive}"></td>
+                                    <tr th:each="make : ${listMake}">
+                                        <td th:text="${make.id}"></td>
+                                        <td th:text="${make.name}"></td>
+                                        <td th:text="${make.isDeleted}"></td>
 
                                         <td>
-                                            <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/category/edit/' + ${category.id}}"><i class="fa fa-edit"></i> Edit</a>
-                                            <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/category/edit/' + ${category.id}}"><i class="fa fa-trash-o"></i> Delete</a>
+                                            <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{'/make/edit/' + ${make.id}}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{'/make/edit/' + ${make.id}}"><i class="fa fa-trash-o"></i> Delete</a>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -17,26 +17,11 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    /*public List<Order> findAll() {
-        return (List<Order>) orderRepository.findAll();
-    }
-    public void save(Order order) {
-        orderRepository.save(order);
-    }
-    */
-
     public List<Order> findAllOrders(Customer customer) {
         return customer.getOrders();
     }
 
     public Order saveOrder(ShoppingCart shoppingCart) {
-        /*//shopping cart is not null
-        if(shoppingCart==null) return null;
-        //customer is not null
-        if(shoppingCart.getCustomer() ==null) return null;
-        //shopping cart item is not null
-        if(shoppingCart.getCartItemList() == null) return null;*/
-
         Order order = new Order();
         order.setCustomer(shoppingCart.getCustomer());
         order.setOrderDate(new Date());

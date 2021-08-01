@@ -27,7 +27,11 @@
                 <!-- /.box-header -->
                 <!-- form start -->
                 <form th:action="@{/product/save}" th:object="${product}" method="post" enctype="multipart/form-data" class="form-horizontal">
-                   <input type="hidden" th:field="*{isDeleted}" value="0"/>
+
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                        <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
+                    </div>
+
                     <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Product Id</label>
@@ -41,11 +45,41 @@
                             <div class="col-sm-10">
                                 <select class="form-control" th:field="*{category.id}">
                                     <option value="">Select...</option>
-                                    <option th:each="category2 : ${categories}" th:value="${category2.id}" th:utext="${category2.name}"/>
+                                    <option th:each="categoryInfo : ${categories}" th:value="${categoryInfo.id}" th:utext="${categoryInfo.name}"/>
                                 </select>
                                 <p class="text-red" th:if="${#fields.hasErrors('category.id')}" th:errors="*{category.id}"></p>
                             </div>
                         </div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Make :</label>
+                            <div class="col-sm-10">
+                                <select class="form-control make" th:field="*{make.id}">
+                                    <option th:each="makeInfo : ${listMake}" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Model :</label>
+                            <div class="col-sm-10">
+                                <select class="form-control model" th:field="*{model.id}">
+                                    <option th:each="modelInfo : ${listModel}" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Year :</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" th:field="*{year}">
+                                    <option value="">All Year</option>
+                                    <option th:each="yearInfo : ${listYear}" th:value="${yearInfo}" th:utext="${yearInfo}"/>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Code</label>
@@ -75,24 +109,44 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Stock Quantity</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{stock_qty}" />
-                                <p class="text-red" th:if="${#fields.hasErrors('stock_qty')}" th:errors="*{stock_qty}"></p>
+                                <input type="text" class="form-control" th:field="*{stockQty}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('stockQty')}" th:errors="*{stockQty}"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Sale price</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{sale_price}" />
-                                <p class="text-red" th:if="${#fields.hasErrors('sale_price')}" th:errors="*{sale_price}"></p>
+                                <input type="text" class="form-control" th:field="*{salePrice}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('salePrice')}" th:errors="*{salePrice}"></p>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Our price</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" th:field="*{our_price}" />
-                                <p class="text-red" th:if="${#fields.hasErrors('our_price')}" th:errors="*{our_price}"></p>
+                                <input type="text" class="form-control" th:field="*{ourPrice}" />
+                                <p class="text-red" th:if="${#fields.hasErrors('ourPrice')}" th:errors="*{ourPrice}"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Is Active ?</label>
+                            <div class="col-sm-10">
+                                <select th:field="*{isActive}" class="form-control">
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Is Deleted ?</label>
+                            <div class="col-sm-10">
+                                <select th:field="*{isDeleted}" class="form-control">
+                                    <option value="false">No</option>
+                                    <option value="true">Yes</option>
+                                </select>
                             </div>
                         </div>
 
@@ -150,15 +204,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Active</label>
-                            <div class="col-sm-10">
-                                <select th:field="*{isActive}" class="form-control">
-                                    <option value="true">Yes</option>
-                                    <option value="false">No</option>
-                                </select>
-                            </div>
-                        </div>
+
 
                     </div>
                     <!-- /.box-body -->
@@ -177,7 +223,22 @@
 </div>
 
 <th:block layout:fragment="script">
-    <script>
+    <script type="text/javascript">
+        function getModels() {
+            var make = $(".make").val();
+            $.get( "../models?make=" + make, function( data ) {
+                $(".model").empty();
+                data.forEach(function(item, i) {
+                    var option = "<option value = " + item.id + ">" + item.name +  "</option>";
+                    $(".model").append(option);
+                });
+            });
+        };
+        $(document).ready(function() {
+            $(".make").change(function() {
+                getModels();
+            });
+        });
     </script>
 </th:block>
 

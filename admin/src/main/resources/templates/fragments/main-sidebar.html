@@ -27,6 +27,9 @@
 
                 <li class="active"><a th:href="@{/product/list}"><i class="fa fa-circle-o"></i> Product</a></li>
                 <li><a th:href="@{/category/list}"><i class="fa fa-circle-o"></i> Category</a></li>
+                <li><a th:href="@{/make/list}"><i class="fa fa-circle-o"></i> Make</a></li>
+                <li><a th:href="@{/model/list}"><i class="fa fa-circle-o"></i> Model</a></li>
+
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><i class="fa fa-circle-o"></i> Logout</a></li>
             </ul>
         </li>

@@ -8,12 +8,12 @@
 <body>
 <section layout:fragment="header">
     <h1>
-        Category Detail
+        Make Detail
         <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
         <li><a th:href="@{/}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Category Details</li>
+        <li class="active">Make Details</li>
     </ol>
 </section>
 <div layout:fragment="content">
@@ -22,46 +22,28 @@
             <!-- Horizontal Form -->
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Category Detail</h3>
+                    <h3 class="box-title">Make Detail</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form th:action="@{/category/save}" th:object="${category}" method="post" class="form-horizontal">
+                <form th:action="@{/make/save}" th:object="${make}" method="post" class="form-horizontal">
 
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Category Id</label>
+                            <label class="col-sm-2 control-label">Make Id</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Category ID">
+                                <input type="text" class="form-control"  readonly="readonly" th:field="*{id}" placeholder="Make ID">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
+                            <label class="col-sm-2 control-label">Make name</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"  th:field="*{name}" />
                                 <p class="text-red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Description</label>
-                            <div class="col-sm-10">
-                                 <textarea name="description" rows="5" class="form-control"
-                                           id="description" th:field="*{description}"
-                                           placeholder="Description" /></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Is Active ?</label>
-                            <div class="col-sm-10">
-                                <select id="isActive" name="isActive" th:field="*{isActive}" class="form-control">
-                                    <option th:value="true">Yes</option>
-                                    <option th:value="false">No</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Is Deleted ?</label>
                             <div class="col-sm-10">
@@ -75,7 +57,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer center">
-                        <a th:href="@{/category/list}">
+                        <a th:href="@{/make/list}">
                             <button type="button" class="btn btn-default"><i class="fa fa-right"></i> Cancel</button>
                         </a>
                         <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Save</button>

@@ -1,9 +1,6 @@
 package nazeem.autoparts.client.controller;
 
-import nazeem.autoparts.library.model.Country;
-import nazeem.autoparts.library.model.Customer;
-import nazeem.autoparts.library.model.Product;
-import nazeem.autoparts.library.model.ShoppingCart;
+import nazeem.autoparts.library.model.*;
 import nazeem.autoparts.library.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -24,19 +22,22 @@ import java.util.List;
 public class ShoppingCartController {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @Autowired
-    CountryService countryService;
+    private CountryService countryService;
 
     @Autowired
-    ShoppingCartService shoppingCartService;
+    private ShoppingCartService shoppingCartService;
 
     @Autowired
-    OrderService orderService;
+    private OrderService orderService;
+
+    @Autowired
+    private EmailService emailService;
 
     //----------------- CART ---------------//
     @RequestMapping("/view-cart")
@@ -159,6 +160,7 @@ public class ShoppingCartController {
                                 @ModelAttribute("shoppingCart") ShoppingCart shoppingCart
             , Principal principal
             , BindingResult result
+            , HttpServletRequest request
             , Model model) {
         model.addAttribute("classActiveCheckout", "active");
 
@@ -194,10 +196,16 @@ public class ShoppingCartController {
         customerService.save(customer);
 
         //Save order
-        orderService.saveOrder(shoppingCart1);
+        Order newOrder= orderService.saveOrder(shoppingCart1);
 
         //make cart empty
         shoppingCartService.emptyShoppingCart(customer);
+
+        String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+
+        //Send email
+        emailService.orderCreation(appUrl, newOrder);
+
 
         //redirect to order-history page
         return "redirect:/order-history?success";

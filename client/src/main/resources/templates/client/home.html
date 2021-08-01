@@ -29,62 +29,46 @@
             <div class="content-main-w">
                 <div class="container">
                     <div class="box-advanced-search">
-                        <div class="so_advanced_search">
+                        <form th:action="@{/part-search}" method="POST">
+                            <div class="so_advanced_search">
                             <div class="sas_wrap">
                                 <div class="sas_inner">
                                     <div class="heading-title"><h2>Select Your Vehicle</h2></div>
                                     <div class="sas_inner-box-search">
                                         <div class="row">
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
-                                                <select name="make" id="so_make0" class="form-control">
-                                                    <option value="">Select Make</option>
-                                                    <option value="1" >Acura</option>
-                                                    <option value="2" >BMW</option>
-                                                    <option value="3" >Chevrolet</option>
-                                                    <option value="4" >GMC</option>
-                                                    <option value="5" >Honda</option>
-                                                    <option value="6" >John deere</option>
-                                                    <option value="7" >Kawasaky</option>
-                                                    <option value="8" >Lexus</option>
-                                                    <option value="9" >mazda</option>
-                                                    <option value="10" >Mercedes</option>
-                                                    <option value="11" >nuko</option>
-                                                    <option value="12" >Opel</option>
-                                                    <option value="13" >Yamaha</option>
+                                                <select class="form-control make" name="make">
+                                                    <option th:each="makeInfo : ${listMake}" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
                                                 </select>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
-                                                <select name="model" id="so_model0" class="form-control">
-                                                    <option value="">Select Model</option>
-                                                    <option value="1" >3D Model</option>
-                                                    <option value="2" >BMW</option>
-                                                    <option value="3" >1000 Rocket</option>
+                                                <select class="form-control model" name="model">
+                                                    <option th:each="modelInfo : ${listModel}" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
                                                 </select>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
+                                            <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
                                                 <select name="engine" id="so_engine0" class="form-control">
                                                     <option value="">Select Engine</option>
                                                     <option value="1" >320i</option>
                                                     <option value="2" >x5</option>
                                                     <option value="3" >350i</option>
                                                 </select>
-                                            </div>
+                                            </div>-->
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
-                                                <select name="year" id="so_year0" class="form-control">
-                                                    <option value="">Select Year</option>
-                                                    <option value="1" >2015</option>
-                                                    <option value="2" >2016</option>
-                                                    <option value="3" >2017</option>
+                                                <select class="form-control" name="year">
+                                                    <option value="">All Year</option>
+                                                    <option th:each="yearInfo : ${listYear}" th:value="${yearInfo}" th:utext="${yearInfo}"/>
                                                 </select>
                                             </div>
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-button">
-                                                <button type="button" id="sas_search_button0">Find My Part</button>
+                                                <button type="submit" id="sas_search_button0">Find My Part</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
 
@@ -98,7 +82,7 @@
                         <div class="modcontent">
                             <div id="so_extra_slider_11" class="so-extraslider button-type1">
                                 <!--changed listings-->
-                                <div th:replace="/fragments/parts::partsData(productList=${productList})"></div>
+                                <div th:replace="/fragments/parts::partsData(productList=${productList2})"></div>
 
                                 <!--// End Changed listings-->
                             </div>
@@ -127,7 +111,7 @@
                         <div class="modcontent">
                             <div id="so_extra_slider_12" class="so-extraslider button-type1">
                                 <!--changed listings-->
-                                <div th:replace="/fragments/parts::partsData(productList=${productList2})"></div>
+                                <div th:replace="/fragments/parts::partsData(productList=${productList})"></div>
 
                                 <!--// End Changed listings-->
                             </div>
@@ -441,8 +425,15 @@
 
     <th:block layout:fragment="script">
         <script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
-        <script type="text/javascript">
-            display('grid');
+        <script type="text/javascript" th:src="@{/js/Util.js}"></script>
+        <script th:inline="javascript">
+            $(document).ready(function() {
+                display('grid');
+                $(".make").change(function() {
+                    var url = /*[[@{/models}]]*/
+                    getModels(url);
+                });
+            });
         </script>
     </th:block>
 </body>
