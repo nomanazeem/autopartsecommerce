@@ -30,20 +30,53 @@ public class ProductService {
     public List<Product> findAllByActive() {
         return productRepository.findAllByActive();
     }
-    public List<Product> findAllByCategoryId(Long categoryId) {
-        return productRepository.findAllByCategoryId(categoryId);
+    public Page<Product> findAllByCategoryId(Long categoryId, Pageable pageable) {
+        List<Product> products = productRepository.findAllByCategoryId(categoryId);
+
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+        List<Product> list;
+
+        if (products.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, products.size());
+            list = products.subList(startItem, toIndex);
+        }
+
+        Page<Product> pageProducts = new PageImpl<Product>(list, PageRequest.of(currentPage, pageSize), products.size());
+
+        return pageProducts;
     }
+
     public List<Product> topMostOrderedProducts(Integer top) {
         return productRepository.topMostOrderedProducts(top);
     }
 
 
-    public List<Product> searchResults(String keyword, String categoryId, String makeId, String modelId, String year) {
+    public Page<Product> searchResults(String keyword, String categoryId, String makeId, String modelId, String year, Pageable pageable) {
         List<Product> products = productRepository.searchProduct2(keyword, categoryId, makeId, modelId, year);
-        return products;
+        //return products;
+
+        int pageSize = pageable.getPageSize();
+        int currentPage = pageable.getPageNumber();
+        int startItem = currentPage * pageSize;
+        List<Product> list;
+
+        if (products.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, products.size());
+            list = products.subList(startItem, toIndex);
+        }
+
+        Page<Product> pageProducts = new PageImpl<Product>(list, PageRequest.of(currentPage, pageSize), products.size());
+
+        return pageProducts;
     }
 
-     public Page<Product> findPaginated(String search, Pageable pageable) {
+     /*public Page<Product> findPaginated(String search, Pageable pageable) {
         List<Product> products = productRepository.searchProduct(search); //productRepository.findAll();
 
         int pageSize = pageable.getPageSize();
@@ -58,10 +91,10 @@ public class ProductService {
             list = products.subList(startItem, toIndex);
         }
 
-        Page<Product> bookPage = new PageImpl<Product>(list, PageRequest.of(currentPage, pageSize), products.size());
+        Page<Product> pageProducts = new PageImpl<Product>(list, PageRequest.of(currentPage, pageSize), products.size());
 
-        return bookPage;
-    }
+        return pageProducts;
+    }*/
 
 
     public void save(Product product) {

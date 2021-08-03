@@ -40,7 +40,7 @@ public class MyAccountController {
     //--------------- MY ACCOUNT ---------------------//
     @RequestMapping("/my-account")
     public String myAccount(Model model) {
-        model.addAttribute("classActiveMyAccount", "active");
+        model.addAttribute("classActiveMyAccount", "home active");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
@@ -58,7 +58,7 @@ public class MyAccountController {
 
     @PostMapping("/my-account")
     public String myAccountSave(@Valid @ModelAttribute("customer") Customer customer, BindingResult result, Model model) {
-        model.addAttribute("classActiveMyAccount", "active");
+        model.addAttribute("classActiveMyAccount", "home active");
 
         //Get countries list
         List<Country> countryList = countryService.findAll();
@@ -79,7 +79,7 @@ public class MyAccountController {
 
     @RequestMapping("/order-history")
     public String orderHistory(Model model, Principal principal) {
-        model.addAttribute("classActiveMyAccount", "active");
+        model.addAttribute("classActiveMyAccount", "home active");
 
         Customer customer = customerService.findByUsername(principal.getName());
 
@@ -90,7 +90,7 @@ public class MyAccountController {
     }
     @RequestMapping("/order-details")
     public String orderDetails(@RequestParam("id") Long id, Principal principal, Model model) {
-        model.addAttribute("classActiveMyAccount", "active");
+        model.addAttribute("classActiveMyAccount", "home active");
 
         Customer customer = customerService.findByUsername(principal.getName());
 
@@ -119,7 +119,7 @@ public class MyAccountController {
 
     @RequestMapping("/change-password")
     public String changePassword(Model model) {
-        model.addAttribute("classActiveMyAccount", "active");
+        model.addAttribute("classActiveMyAccount", "home active");
 
         return "/my-account/change-password";
     }
@@ -131,7 +131,7 @@ public class MyAccountController {
                                         , Principal principal
                                         , BindingResult result
                                         , Model model) {
-        model.addAttribute("classActiveMyAccount", "active");
+        model.addAttribute("classActiveMyAccount", "home active");
 
         Customer customer = customerService.findByUsername(principal.getName());
 

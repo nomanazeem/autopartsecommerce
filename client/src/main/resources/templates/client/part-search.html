@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-    <title>Part Search — Autoparts</title>
+    <title>Part Search</title>
 </head>
 <body>
 <!-- Main Container  -->
@@ -83,6 +83,16 @@
                 <!-- //end Filters -->
 
                 <div th:replace="/fragments/parts::partsData(productList=${productList})"></div>
+
+
+                <nav th:if="${productList.totalPages > 0}" aria-label="Page navigation example">
+                    <ul th:each="pageNumber : ${pageNumbers}" class="pagination">
+                        <li th:class="${pageNumber == currentPage} ? 'page-item active' : 'page-item '">
+                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${pageNumber})}"
+                               th:text="${pageNumber}" ></a>
+                        </li>
+                    </ul>
+                </nav>
 
                 <!-- Filters -->
                 <div class="product-filter product-filter-bottom filters-panel">

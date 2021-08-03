@@ -1,6 +1,8 @@
 package nazeem.autoparts.library.repository;
 import nazeem.autoparts.library.model.Product;
 import org.hibernate.annotations.NamedNativeQuery;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -16,9 +18,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(value="select * from product p " +
             "where 1=1 " +
-            "and is_active = 1 and is_deleted = 0 " +
-            "and (length(?1) =0 or p.name like concat('%', ?1, '%')) " +
-            "and (length(?2) =0 or category_id= ?2) "+
+            "and is_active  = 1 and is_deleted = 0 " +
+            "and (length(?1) = 0 or p.name like concat('%', ?1, '%')) " +
+            "and (length(?2) = 0 or category_id= ?2) "+
             "and (?3=1  or make_id= ?3) "+
             "and (?4=1 or model_id= ?4) "+
             "and (length(?5) =0 or year= ?5) "

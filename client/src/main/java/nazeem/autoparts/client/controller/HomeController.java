@@ -5,24 +5,15 @@ import nazeem.autoparts.library.service.*;
 import nazeem.autoparts.library.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class HomeController {
-
-    //@Autowired
-    //EmailService emailService;
 
     @Autowired
     private MakeService makeService;
@@ -39,9 +30,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        //emailService.testEmail();
-
-        model.addAttribute("classActiveHome", "home hover active ");
+        model.addAttribute("classActiveHome", "home active ");
 
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
@@ -66,37 +55,37 @@ public class HomeController {
 
     @RequestMapping("/about-us")
     public String aboutUs(Model model) {
-        model.addAttribute("classActivePages", "with-sub-menu hover active ");
+        model.addAttribute("classActivePages", "home active ");
 
         return "/client/about-us";
     }
     @RequestMapping("/contact-us")
     public String contactUs(Model model) {
-        model.addAttribute("classActivePages", "with-sub-menu hover active ");
+        model.addAttribute("classActivePages", "home active ");
 
         return "/client/contact-us";
     }
     @RequestMapping("/faq")
     public String faq(Model model) {
-        model.addAttribute("classActivePages", "with-sub-menu hover active ");
+        model.addAttribute("classActivePages", "home active ");
 
         return "/client/faq";
     }
     @RequestMapping("/privacy-policy")
     public String privacyPolicy(Model model) {
-        model.addAttribute("classActivePages", "with-sub-menu hover active ");
+        model.addAttribute("classActivePages", "home active ");
 
         return "/client/privacy-policy";
     }
     @RequestMapping("/return-policy")
     public String returnPolicy(Model model) {
-        model.addAttribute("classActivePages", "with-sub-menu hover active ");
+        model.addAttribute("classActivePages", "home active ");
 
         return "/client/return-policy";
     }
     @RequestMapping("/terms-and-conditions")
     public String termsAndConditions(Model model) {
-        model.addAttribute("classActivePages", "with-sub-menu hover active ");
+        model.addAttribute("classActivePages", "home active ");
 
         return "/client/terms-and-conditions";
     }

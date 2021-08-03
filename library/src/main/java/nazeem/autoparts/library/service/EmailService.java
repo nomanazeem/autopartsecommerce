@@ -38,13 +38,13 @@ public class EmailService {
         try {
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
             simpleMailMessage.setTo(customer.getUsername());//should be email address
-            simpleMailMessage.setSubject("Registration");
+            simpleMailMessage.setSubject("Auto parts - Registration");
 
             String loginUrl = appUrl+"/login";
 
             simpleMailMessage.setText(
                     String.format("Dear %s, Thank you for registration with Ecommerce Application !." +
-                                    "<br/> please login %s"
+                                    "\n please login %s"
                     , customer.getFullName(), loginUrl));
             simpleMailMessage.setFrom(environment.getProperty("from.email"));
 
@@ -60,14 +60,14 @@ public class EmailService {
         try {
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
             simpleMailMessage.setTo(order.getCustomer().getUsername());//should be email address
-            simpleMailMessage.setSubject("Order Creation");
+            simpleMailMessage.setSubject("Auto parts - Order Creation");
 
             String viewOrdersUrl = appUrl+"/order-history";
 
 
             simpleMailMessage.setText(
                     String.format("Dear %s, Thank you for made order with Ecommerce Application !"+
-                                    "<br/> please view your order details %s"
+                                    "\n please view your order details %s"
                             , order.getCustomer().getFullName(), viewOrdersUrl));
             simpleMailMessage.setFrom(environment.getProperty("from.email"));
 

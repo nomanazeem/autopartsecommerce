@@ -33,6 +33,8 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(Model model) {
+        model.addAttribute("classActiveMyAccount", "home active");
+
         CustomerRegistrationDto customerRegistrationDto = new CustomerRegistrationDto();
         model.addAttribute("customerRegistrationDto", customerRegistrationDto);
 
@@ -41,6 +43,8 @@ public class LoginController {
 
     @GetMapping("/forget-password")
     public String forgetPassword(Model model) {
+        model.addAttribute("classActiveMyAccount", "home active");
+
         CustomerRegistrationDto customerRegistrationDto = new CustomerRegistrationDto();
         model.addAttribute("customerRegistrationDto", customerRegistrationDto);
 
@@ -49,6 +53,8 @@ public class LoginController {
 
     @PostMapping("/forget-password")
     public String forgetPasswordRecovery(@Valid @ModelAttribute("customerRegistrationDto") CustomerRegistrationDto customerRegistrationDto, BindingResult result, Model model) {
+        model.addAttribute("classActiveMyAccount", "home active");
+
         model.addAttribute("customerRegistrationDto", customerRegistrationDto);
 
         Customer customerExists = customerService.findByUsername(customerRegistrationDto.getUsername());
@@ -71,6 +77,8 @@ public class LoginController {
 
     @GetMapping("/register")
     public String register(Model model) {
+        model.addAttribute("classActiveMyAccount", "home active");
+
         CustomerRegistrationDto customerRegistrationDto = new CustomerRegistrationDto();
         model.addAttribute("customerRegistrationDto", customerRegistrationDto);
 
@@ -82,6 +90,8 @@ public class LoginController {
     }
     @PostMapping("/register")
     public String registerUserAccount(@Valid @ModelAttribute("customerRegistrationDto") CustomerRegistrationDto customerRegistrationDto, BindingResult result, HttpServletRequest request, Model model) {
+        model.addAttribute("classActiveMyAccount", "home active");
+
         model.addAttribute("customerRegistrationDto", customerRegistrationDto);
 
         //Get countries list

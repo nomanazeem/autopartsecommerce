@@ -42,7 +42,7 @@ public class ShoppingCartController {
     //----------------- CART ---------------//
     @RequestMapping("/view-cart")
     public String viewCart(Model model, Principal principal) {
-        model.addAttribute("classActiveViewCart", "active");
+        model.addAttribute("classActiveViewCart", "home active");
 
         Customer customer = customerService.findByUsername(principal.getName());//get logged in user
         ShoppingCart shoppingCart = customer.getShoppingCart();
@@ -58,7 +58,7 @@ public class ShoppingCartController {
             , @ModelAttribute("quantity") Long quantity
             , Model model
             , Principal principal) {
-        model.addAttribute("classActiveViewCart", "active");
+        model.addAttribute("classActiveViewCart", "home active");
 
         //Find product
         Product product = productService.get(id);
@@ -73,7 +73,7 @@ public class ShoppingCartController {
     }
     @RequestMapping("/empty-cart")
     public String emptyCart(Model model, Principal principal) {
-        model.addAttribute("classActiveViewCart", "active");
+        model.addAttribute("classActiveViewCart", "home active");
 
         Customer customer = customerService.findByUsername(principal.getName());//get logged in user
 
@@ -93,7 +93,7 @@ public class ShoppingCartController {
             , @ModelAttribute("quantity") String quantity
             , Model model
             , Principal principal) {
-        model.addAttribute("classActiveViewCart", "active");
+        model.addAttribute("classActiveViewCart", "home active");
 
         //Check if valid quantity then use it otherwise default value is 1
         Long qty=1L;
@@ -120,7 +120,7 @@ public class ShoppingCartController {
             @ModelAttribute("id") Long id
             , Model model
             , Principal principal) {
-        model.addAttribute("classActiveViewCart", "active");
+        model.addAttribute("classActiveViewCart", "home active");
 
         //Find product
         Product product = productService.get(id);
@@ -139,7 +139,7 @@ public class ShoppingCartController {
     //--------------- END CHECKOUT ---------------------//
     @RequestMapping("/checkout")
     public String checkout(Model model) {
-        model.addAttribute("classActiveCheckout", "active");
+        model.addAttribute("classActiveCheckout", "home active");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
@@ -162,7 +162,7 @@ public class ShoppingCartController {
             , BindingResult result
             , HttpServletRequest request
             , Model model) {
-        model.addAttribute("classActiveCheckout", "active");
+        model.addAttribute("classActiveCheckout", "home active");
 
         //Get countries list
         List<Country> countryList = countryService.findAll();

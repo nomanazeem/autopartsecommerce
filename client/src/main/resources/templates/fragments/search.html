@@ -3,35 +3,35 @@
     <div class="module">
         <h3 class="modtitle">Filter </h3>
         <div class="modcontent ">
-            <form th:action="@{/part-search}" th:object="${search}" method="POST" class="type_2">
+            <form th:action="@{/part-search}" th:object="${search}" method="GET" class="type_2">
 
                 <div class="table_layout filter-shopby">
                     <div class="table_row">
                         <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
                         <div class="table_cell" style="z-index: 103;">
                             <legend>Search</legend>
-                            <input class="form-control" type="text" value="" size="50" th:field="*{name}" autocomplete="off" placeholder="Search">
+                            <input class="form-control" type="text" value="" size="50" name="name" th:value="${param.name}" autocomplete="off" placeholder="Search">
 
                             <legend>Make</legend>
-                            <select class="form-control make" th:field="*{make.id}">
-                                <option th:each="makeInfo : ${listMake}" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
+                            <select class="form-control make" name="make" id="make">
+                                <option th:each="makeInfo : ${listMake}" th:selected="(${makeInfo.id} == ${make})" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
                             </select>
 
                             <legend>Model</legend>
-                            <select class="form-control model" th:field="*{model.id}">
-                                <option th:each="modelInfo : ${listModel}" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
+                            <select class="form-control model" name="model" id="model">
+                                <option th:each="modelInfo : ${listModel}" th:selected="(${modelInfo.id} == ${model})" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
                             </select>
 
                             <legend>Year</legend>
-                            <select class="form-control" th:field="*{year}">
+                            <select class="form-control" name="year" id="year">
                                 <option value="">All Year</option>
-                                <option th:each="yearInfo : ${listYear}" th:value="${yearInfo}" th:utext="${yearInfo}"/>
+                                <option th:each="yearInfo : ${listYear}" th:selected="(${yearInfo} == ${year})" th:value="${yearInfo}" th:utext="${yearInfo}"/>
                             </select>
 
                             <legend>Category</legend>
-                            <select class="form-control" placeholder="Search" th:field="*{category}">
+                            <select class="form-control" placeholder="Search" name="category" id="category">
                                 <option value="">All Categories</option>
-                                <option th:each="categoryInfo : ${categories}" th:value="${categoryInfo.id}" th:utext="${categoryInfo.name}"/>
+                                <option th:each="categoryInfo : ${categories}" th:selected="(${categoryInfo.id} == ${category})" th:value="${categoryInfo.id}" th:utext="${categoryInfo.name}"/>
                             </select>
                         </div><!--/ .table_cell -->
                         <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
