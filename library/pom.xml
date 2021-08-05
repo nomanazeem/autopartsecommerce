@@ -14,6 +14,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>Auto-parts Ecommerce Library</name>
     <description>Auto-parts project for Spring Boot</description>
+    <packaging>war</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

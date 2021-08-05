@@ -1,5 +1,9 @@
 package nazeem.autoparts.library.service;
 
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Product;
 import nazeem.autoparts.library.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,27 +79,6 @@ public class ProductService {
 
         return pageProducts;
     }
-
-     /*public Page<Product> findPaginated(String search, Pageable pageable) {
-        List<Product> products = productRepository.searchProduct(search); //productRepository.findAll();
-
-        int pageSize = pageable.getPageSize();
-        int currentPage = pageable.getPageNumber();
-        int startItem = currentPage * pageSize;
-        List<Product> list;
-
-        if (products.size() < startItem) {
-            list = Collections.emptyList();
-        } else {
-            int toIndex = Math.min(startItem + pageSize, products.size());
-            list = products.subList(startItem, toIndex);
-        }
-
-        Page<Product> pageProducts = new PageImpl<Product>(list, PageRequest.of(currentPage, pageSize), products.size());
-
-        return pageProducts;
-    }*/
-
 
     public void save(Product product) {
         productRepository.save(product);

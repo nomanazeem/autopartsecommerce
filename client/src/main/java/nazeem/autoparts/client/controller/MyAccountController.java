@@ -1,12 +1,14 @@
 package nazeem.autoparts.client.controller;
 
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Country;
 import nazeem.autoparts.library.model.Customer;
 import nazeem.autoparts.library.model.Order;
 import nazeem.autoparts.library.service.*;
-import nazeem.autoparts.library.web.dto.CustomerRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

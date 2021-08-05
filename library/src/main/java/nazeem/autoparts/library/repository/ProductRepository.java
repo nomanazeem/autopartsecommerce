@@ -1,8 +1,10 @@
 package nazeem.autoparts.library.repository;
+
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Product;
-import org.hibernate.annotations.NamedNativeQuery;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

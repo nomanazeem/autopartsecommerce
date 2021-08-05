@@ -1,5 +1,9 @@
 package nazeem.autoparts.admin.config;
 
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.service.*;
 import nazeem.autoparts.library.service.impl.CustomerServiceImpl;
 import nazeem.autoparts.library.service.impl.UserServiceImpl;
@@ -14,9 +18,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-/**
- * Created by noman.
- */
 @Configuration
 @EnableWebSecurity
 public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {

@@ -1,7 +1,10 @@
 package nazeem.autoparts.client.controller;
 
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Category;
-import nazeem.autoparts.library.model.Dropdown;
 import nazeem.autoparts.library.model.Make;
 import nazeem.autoparts.library.service.CategoryService;
 import nazeem.autoparts.library.service.MakeService;
@@ -12,13 +15,11 @@ import nazeem.autoparts.library.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -140,7 +141,7 @@ public class PartController {
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
 
-        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(listMake.get(0).getId());
+        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(Long.parseLong(makeId));
         model.addAttribute("listModel", listModel);
 
         List<Integer> listYear = utility.getYears();

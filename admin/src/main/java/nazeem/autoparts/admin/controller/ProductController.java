@@ -1,5 +1,9 @@
 package nazeem.autoparts.admin.controller;
 
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import javax.validation.Valid;
 
 import nazeem.autoparts.library.model.*;
@@ -15,8 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/product")

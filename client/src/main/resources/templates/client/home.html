@@ -29,7 +29,10 @@
             <div class="content-main-w">
                 <div class="container">
                     <div class="box-advanced-search">
-                        <form th:action="@{/part-search}" method="POST">
+                        <form th:action="@{/part-search}" method="GET">
+                            <input type="hidden" name="name" value=""/>
+                            <input type="hidden" name="category" value=""/>
+
                             <div class="so_advanced_search">
                             <div class="sas_wrap">
                                 <div class="sas_inner">
@@ -46,14 +49,7 @@
                                                     <option th:each="modelInfo : ${listModel}" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
                                                 </select>
                                             </div>
-                                            <!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
-                                                <select name="engine" id="so_engine0" class="form-control">
-                                                    <option value="">Select Engine</option>
-                                                    <option value="1" >320i</option>
-                                                    <option value="2" >x5</option>
-                                                    <option value="3" >350i</option>
-                                                </select>
-                                            </div>-->
+
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 search-boxes">
                                                 <select class="form-control" name="year">
                                                     <option value="">All Year</option>

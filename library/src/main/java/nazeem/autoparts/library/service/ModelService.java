@@ -1,9 +1,10 @@
 package nazeem.autoparts.library.service;
 
-import nazeem.autoparts.library.model.Dropdown;
-import nazeem.autoparts.library.model.Make;
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Model;
-import nazeem.autoparts.library.repository.MakeRepository;
 import nazeem.autoparts.library.repository.ModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

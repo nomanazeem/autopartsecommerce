@@ -1,6 +1,9 @@
 package nazeem.autoparts.library.repository;
 
-import nazeem.autoparts.library.model.Dropdown;
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Model;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

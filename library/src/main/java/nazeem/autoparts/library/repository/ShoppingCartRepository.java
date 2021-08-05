@@ -1,7 +1,9 @@
 package nazeem.autoparts.library.repository;
 
-import nazeem.autoparts.library.model.Customer;
-import nazeem.autoparts.library.model.Product;
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.ShoppingCart;
 import org.springframework.data.jpa.repository.JpaRepository;
 

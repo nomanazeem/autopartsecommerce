@@ -1,6 +1,9 @@
 package nazeem.autoparts.library.service.impl;
 
-import nazeem.autoparts.library.model.Customer;
+/*
+    Created By: noman azeem
+    Contact: syed.noman.azeem@gmail.com
+*/
 import nazeem.autoparts.library.model.Role;
 import nazeem.autoparts.library.model.User;
 import nazeem.autoparts.library.repository.RoleRepository;
@@ -8,7 +11,6 @@ import nazeem.autoparts.library.repository.UserRepository;
 import nazeem.autoparts.library.service.UserService;
 import nazeem.autoparts.library.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
