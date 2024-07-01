@@ -99,193 +99,42 @@
                     </div>
 
                     <!-- Extra new arrivals -->
-                    <div class="module extra-layout1">
+                    <!-- <div class="module extra-layout1">
                         <div class="pre_text">
                             Top sale in the week
                         </div>
                         <h3 class="modtitle"><span>New Arrivals</span></h3>
                         <div class="modcontent">
                             <div id="so_extra_slider_12" class="so-extraslider button-type1">
-                                <!--changed listings-->
                                 <div th:replace="/fragments/parts::partsData(productList=${productList})"></div>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="module extra-layout1">
+                        <h3 class="modtitle"><span>Recommendations</span></h3>
+                        <div class="modcontent">
+                            <div id="so_extra_slider_11" class="so-extraslider button-type1">
+                                <!--changed listings-->
+                                <div th:replace="/fragments/parts::partsData(productList=${productList2})"></div>
 
                                 <!--// End Changed listings-->
                             </div>
                         </div>
-                        <!--<div class="modcontent">
-                            <div id="so_extra_slider_12" class="so-extraslider button-type1">
-                                <div class="products-list yt-content-slider extraslider-inner" data-rtl="yes" data-pagination="no" data-arrows="no" data-autoplay="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="3" data-items_column3="2" data-items_column4="1" data-lazyload="yes" data-loop="no" data-buttonpage="top">
-                                    <div class="item">
-                                        <div class="product-layout product-grid">
-                                            <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item&#45;&#45;static">
-                                                    <div class="left-block">
-                                                        <div class="product-image-container second_img">
-                                                            <a href="product.html" target="_self" title="DPicanha porkcho">
-                                                                <img th:src="@{/image/catalog/demo/product/270/1.jpg}" class="img-1 img-responsive" alt="image1">
-                                                                <img th:src="@{/image/catalog/demo/product/270/3.jpg}" class="img-2 img-responsive" alt="image2">
-                                                            </a>
-                                                        </div>
-                                                        <span class="label-product label-new">New</span>
-                                                        &lt;!&ndash;quickview&ndash;&gt;
-                                                        <div class="so-quickview">
-                                                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                                        </div>
-                                                        &lt;!&ndash;end quickview&ndash;&gt;
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="button-group cartinfo&#45;&#45;static">
-                                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                                <span>Add to cart </span>
-                                                            </button>
-                                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                                        </div>
-                                                        <h4><a href="product.html" title="Picanha porkcho" target="_self">Picanha porkcho</a></h4>
-                                                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                        </div>
-                                                        <div class="price">
-                                                            <span class="price">$89.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product-layout product-grid">
-                                            <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item&#45;&#45;static">
-                                                    <div class="left-block">
-                                                        <div class="product-image-container second_img">
-                                                            <a href="product.html" target="_self" title="Stickrum bresao">
-                                                                <img th:src="@{/image/catalog/demo/product/270/3.jpg}" class="img-1 img-responsive" alt="image1">
-                                                                <img th:src="@{/image/catalog/demo/product/270/4.jpg}" class="img-2 img-responsive" alt="image2">
-                                                            </a>
-                                                        </div>
-                                                        <span class="label-product label-sale">-11%</span>
-                                                        &lt;!&ndash;quickview&ndash;&gt;
-                                                        <div class="so-quickview">
-                                                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                                        </div>
-                                                        &lt;!&ndash;end quickview&ndash;&gt;
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="button-group cartinfo&#45;&#45;static">
 
-                                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                                <span>Add to cart </span>
-                                                            </button>
-                                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                                        </div>
-                                                        <h4><a href="product.html" title="Stickrum bresao" target="_self">Stickrum bresao</a></h4>
-                                                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        </div>
-                                                        <div class="price">
-                                                            <span class="price-new">$85.00</span>
-                                                            <span class="price-old">$96.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product-layout product-grid">
-                                            <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item&#45;&#45;static">
-                                                    <div class="left-block">
-                                                        <div class="product-image-container second_img">
-                                                            <a href="product.html" target="_self" title="Remporum stick">
-                                                                <img th:src="@{/image/catalog/demo/product/270/6.jpg}" class="img-1 img-responsive" alt="image1">
-                                                                <img th:src="@{/image/catalog/demo/product/270/9.jpg}" class="img-2 img-responsive" alt="image2">
-                                                            </a>
-                                                        </div>
-                                                        <span class="label-product label-new">New</span>
-                                                        &lt;!&ndash;quickview&ndash;&gt;
-                                                        <div class="so-quickview">
-                                                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                                        </div>
-                                                        &lt;!&ndash;end quickview&ndash;&gt;
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="button-group cartinfo&#45;&#45;static">
+                    </div>
+                    <!-- end Extra best seller -->
 
-                                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                                <span>Add to cart </span>
-                                                            </button>
-                                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                                        </div>
-                                                        <h4><a href="product.html" title="Remporum stick" target="_self">Remporum stick</a></h4>
-                                                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        </div>
-                                                        <div class="price">
-                                                            <span class="price">$65.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="product-layout product-grid">
-                                            <div class="item-inner product-layout transition product-grid">
-                                                <div class="product-item-container item&#45;&#45;static">
-                                                    <div class="left-block">
-                                                        <div class="product-image-container second_img">
-                                                            <a href="product.html" target="_self" title="Duis aute irure ">
-                                                                <img th:src="@{/image/catalog/demo/product/270/7.jpg}" class="img-1 img-responsive" alt="image1">
-                                                                <img th:src="@{/image/catalog/demo/product/270/8.jpg}" class="img-2 img-responsive" alt="image2">
-                                                            </a>
-                                                        </div>
-
-                                                        &lt;!&ndash;quickview&ndash;&gt;
-                                                        <div class="so-quickview">
-                                                            <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                                        </div>
-                                                        &lt;!&ndash;end quickview&ndash;&gt;
-                                                    </div>
-                                                    <div class="right-block">
-                                                        <div class="button-group cartinfo&#45;&#45;static">
-
-                                                            <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                                            <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                                                <span>Add to cart </span>
-                                                            </button>
-                                                            <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                                        </div>
-                                                        <h4><a href="product.html" title="Volup tatem accu" target="_self">Volup tatem accu</a></h4>
-                                                        <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                                            <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                                        </div>
-                                                        <div class="price">
-                                                            <span class="price">$60.00</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="banners banners2">
+                        <div class="row">
+                            <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <a href="#"><img th:src="@{/image/catalog/banners/bn2.jpg}" alt="banner"></a>
                             </div>
-                        </div>-->
+                            <div class="item col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <a href="#"><img th:src="@{/image/catalog/banners/bn3.jpg}" alt="banner"></a>
+                            </div>
+                        </div>
                     </div>
                     <!-- end Extra new arrivals -->
 
