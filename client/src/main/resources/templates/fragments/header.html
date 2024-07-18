@@ -1,13 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Store</title>
+    <link rel="stylesheet" href="path/to/font-awesome.css"> <!-- Ensure the correct path to Font Awesome CSS -->
+    <link rel="stylesheet" href="path/to/bootstrap.css"> <!-- Ensure the correct path to Bootstrap CSS -->
+    <style>
+        ::placeholder {
+            font-weight: bold;
+        }
+    </style>
 
-<!-- Header Container  -->
-<header id="header" class=" typeheader-4">
-
+</head>
+<body>
+<!-- Header Container -->
+<header id="header" class="typeheader-4">
     <!-- Header Top -->
     <div class="header-top hidden-compact">
         <div class="container">
             <div class="row">
                 <div class="header-top-left col-lg-3 col-md-4 col-sm-5 hidden-xs">
-                    <div class="telephone " >
+                    <div class="telephone">
                         <ul class="socials">
                             <li class="facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li class="twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -19,14 +33,12 @@
                     </div>
                 </div>
                 <div class="header-top-right col-lg-9 col-md-8 col-sm-7 col-xs-12">
-
                     <ul class="top-log list-inline">
-                        <li sec:authorize="isAuthenticated()"><i class="fa fa-lock"></i>Welcome <span sec:authentication="principal.username"></span> !</li>
+                        <li sec:authorize="isAuthenticated()"><i class="fa fa-lock"></i>Welcome <span sec:authentication="principal.username"></span>!</li>
                         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                         <li sec:authorize="isAnonymous()"><i class="fa fa-lock"></i><a th:href="@{/login}">Login</a> / </li>
                         <li sec:authorize="isAnonymous()"><a th:href="@{/register}">Register</a></li>
                     </ul>
-
                 </div>
             </div>
         </div>
@@ -38,24 +50,20 @@
                     <div class="logo">
                         <a th:href="@{/}"><img th:src="@{/image/catalog/logo.png}" title="Your Store" alt="Your Store" /></a>
                     </div>
-
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 middle-right">
                     <div class="search-header-w">
                         <div class="icon-search hidden-lg hidden-md"><i class="fa fa-search"></i></div>
-
-                        <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
-                            <form th:action="@{/part-search}" method="GET">
+                        <div id="sosearchpro" class="sosearchpro-wrapper so-search">
+                            <form th:action="@{/client/part-search}" method="GET">
                                 <div id="search0" class="search input-group form-group">
-                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="name">
-
+                                    <input id="searchInput" class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="name">
                                     <input type="hidden" name="make" value="1"/>
                                     <input type="hidden" name="model" value="1"/>
                                     <input type="hidden" name="year" value=""/>
                                     <input type="hidden" name="category" value=""/>
-
                                     <button type="submit" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
-
+                                    <button type="button" id="micButton" class="button-mic btn btn-secondary"><i class="fa fa-microphone"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -64,7 +72,6 @@
             </div>
         </div>
     </div>
-
     <div class="header-bottom hidden-compact">
         <div class="container">
             <div class="row">
@@ -72,7 +79,7 @@
                     <div class="main-menu-w">
                         <div class="responsive so-megamenu megamenu-style-dev">
                             <nav class="navbar-default">
-                                <div class=" container-megamenu  horizontal open ">
+                                <div class="container-megamenu horizontal open">
                                     <div class="navbar-header">
                                         <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
                                             <span class="icon-bar"></span>
@@ -80,82 +87,75 @@
                                             <span class="icon-bar"></span>
                                         </button>
                                     </div>
-
                                     <div class="megamenu-wrapper">
                                         <span id="remove-megamenu" class="fa fa-times"></span>
                                         <div class="megamenu-pattern">
                                             <div class="container-mega">
                                                 <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                    <li th:class=" ${classActiveHome}">
+                                                    <li th:class="${classActiveHome}">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{/}" class="clearfix">
+                                                        <a th:href="@{/client}" class="clearfix">
                                                             <strong><i class="fa fa-home"></i>Home</strong>
                                                         </a>
                                                     </li>
-                                                    <li th:class=" ${classActivePartSearch}">
+                                                    <li th:class="${classActivePartSearch}">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{/part-search}" class="clearfix">
+                                                        <a th:href="@{/client/part-search}" class="clearfix">
                                                             <strong><i class="fa fa-search"></i>Part Search</strong>
                                                         </a>
                                                     </li>
-
-                                                    <li th:class=" ${classActiveCategory}">
+                                                    <li th:class="${classActiveCategory}">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{/category}" class="clearfix">
+                                                        <a th:href="@{/client/category}" class="clearfix">
                                                             <strong><i class="fa fa-sitemap"></i>Categories</strong>
                                                         </a>
                                                     </li>
-
                                                     <li th:class="${classActivePages} == null ? 'with-sub-menu hover': ${classActivePages}">
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
                                                             <strong><i class="fa fa-pagelines"></i>Pages</strong>
                                                             <b class="caret"></b>
                                                         </a>
-                                                        <div class="sub-menu" style="width: 40%; ">
-                                                            <div class="content" >
+                                                        <div class="sub-menu" style="width: 40%;">
+                                                            <div class="content">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <ul class="row-list">
-                                                                            <li><a class="subcategory_item" th:href="@{/about-us}">About us</a></li>
-                                                                            <li><a class="subcategory_item" th:href="@{/contact-us}">Contact us</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/client/about-us}">About us</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/client/contact-us}">Contact us</a></li>
                                                                         </ul>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <ul class="row-list">
-                                                                            <li><a class="subcategory_item" th:href="@{/faq}">FAQ</a></li>
-                                                                            <li><a class="subcategory_item" th:href="@{/privacy-policy}">Privacy Policy</a></li>
-                                                                            <li><a class="subcategory_item" th:href="@{/return-policy}">Return Policy</a></li>
-                                                                            <li><a class="subcategory_item" th:href="@{/terms-and-conditions}">Terms & Conditions</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/client/faq}">FAQ</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/client/privacy-policy}">Privacy Policy</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/client/return-policy}">Return Policy</a></li>
+                                                                            <li><a class="subcategory_item" th:href="@{/client/terms-and-conditions}">Terms & Conditions</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </li>
-
-
-                                                    <li th:class=" ${classActiveViewCart}">
+                                                    <li th:class="${classActiveViewCart}">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{/view-cart}" class="clearfix">
-                                                            <strong><i class="fa fa-shopping-cart"></i>View Cart</strong>
+                                                        <a th:href="@{/client/view-cart}" class="clearfix">
+                                                            <strong><i class="fa fa-shopping-cart"></i>Cock Cart</strong>
                                                         </a>
                                                     </li>
-                                                    <li th:class=" ${classActiveCheckout}">
+                                                    <li th:class="${classActiveCheckout}">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{/checkout}" class="clearfix">
+                                                        <a th:href="@{/client/checkout}" class="clearfix">
                                                             <strong><i class="fa fa-check-circle"></i>Checkout</strong>
                                                         </a>
                                                     </li>
-                                                    <li th:class=" ${classActiveMyAccount}">
+                                                    <li th:class="${classActiveMyAccount}">
                                                         <p class="close-menu"></p>
-                                                        <a th:href="@{/my-account}" class="clearfix">
+                                                        <a th:href="@{/client/my-account}" class="clearfix">
                                                             <strong><i class="fa fa-dashboard"></i>My Account</strong>
                                                         </a>
                                                     </li>
-
                                                 </ul>
-
                                             </div>
                                         </div>
                                     </div>
@@ -166,8 +166,104 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </header>
-<!-- //Header Container  -->
+<!-- //Header Container -->
+
+<!-- Include necessary JS files -->
+<script src="path/to/jquery.js"></script> <!-- Ensure the correct path to jQuery -->
+<script src="path/to/bootstrap.js"></script> <!-- Ensure the correct path to Bootstrap JS -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const micButton = document.getElementById('micButton');
+
+        let isRecording = false;
+
+        if ('webkitSpeechRecognition' in window) {
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.onstart = function () {
+                isRecording = true;
+                micButton.classList.add('recording');
+                micButton.innerHTML = '<i class="fa fa-microphone-slash"></i>';
+            };
+
+            recognition.onresult = function (event) {
+                const transcript = event.results[0][0].transcript;
+                searchInput.value = transcript.toLowerCase();
+                let url = 'http://localhost:8080/client/';
+                console.log("=========>", transcript.toLowerCase())
+                switch (transcript) {
+                    case 'home':
+                        url += '';
+                        break;
+                    case 'part search':
+                        url += 'part-search';
+                        break;
+                    case 'categories':
+                        url += 'category';
+                        break;
+                    case 'about us':
+                        url += 'about-us';
+                        break;
+                    case 'contact us':
+                        url += 'contact-us';
+                        break;
+                    case 'faq':
+                        url += 'faq';
+                        break;
+                    case 'privacy policy':
+                        url += 'privacy-policy';
+                        break;
+                    case 'return policy':
+                        url += 'return-policy';
+                        break;
+                    case 'terms and conditions':
+                        url += 'terms-and-conditions';
+                        break;
+                    case 'view cart':
+                        url += 'view-cart';
+                        break;
+                    case 'checkout':
+                        url += 'checkout';
+                        break;
+                    case 'my account':
+                        url += 'my-account';
+                        break;
+                    default:
+                        alert('Command not recognized');
+                        return;
+                }
+                console.log("Done Done")
+                window.location.href = url;
+            };
+
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            recognition.onend = function () {
+                isRecording = false;
+                micButton.classList.remove('recording');
+                micButton.innerHTML = '<i class="fa fa-microphone"></i>';
+            };
+
+            micButton.addEventListener('click', function () {
+                if (isRecording) {
+                    recognition.stop();
+                } else {
+                    recognition.start();
+                }
+            });
+        } else {
+            console.warn('Speech recognition not supported in this browser.');
+            micButton.disabled = true;
+        }
+    });
+</script>
+</body>
+</html>
