@@ -11,7 +11,6 @@
             font-weight: bold;
         }
     </style>
-
 </head>
 <body>
 <!-- Header Container -->
@@ -140,7 +139,7 @@
                                                     <li th:class="${classActiveViewCart}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/client/view-cart}" class="clearfix">
-                                                            <strong><i class="fa fa-shopping-cart"></i>Cock Cart</strong>
+                                                            <strong><i class="fa fa-shopping-cart"></i>View Cart</strong>
                                                         </a>
                                                     </li>
                                                     <li th:class="${classActiveCheckout}">
@@ -170,98 +169,64 @@
 </header>
 <!-- //Header Container -->
 
-<!-- Include necessary JS files -->
-<script src="path/to/jquery.js"></script> <!-- Ensure the correct path to jQuery -->
-<script src="path/to/bootstrap.js"></script> <!-- Ensure the correct path to Bootstrap JS -->
+<!-- Include jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const searchInput = document.getElementById('searchInput');
         const micButton = document.getElementById('micButton');
 
-        let isRecording = false;
-
+        let recognition;
         if ('webkitSpeechRecognition' in window) {
-            const recognition = new webkitSpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.lang = 'en-US';
-
-            recognition.onstart = function () {
-                isRecording = true;
-                micButton.classList.add('recording');
-                micButton.innerHTML = '<i class="fa fa-microphone-slash"></i>';
-            };
-
-            recognition.onresult = function (event) {
-                const transcript = event.results[0][0].transcript;
-                searchInput.value = transcript.toLowerCase();
-                let url = 'http://localhost:8080/client/';
-                console.log("=========>", transcript.toLowerCase())
-                switch (transcript) {
-                    case 'home':
-                        url += '';
-                        break;
-                    case 'part search':
-                        url += 'part-search';
-                        break;
-                    case 'categories':
-                        url += 'category';
-                        break;
-                    case 'about us':
-                        url += 'about-us';
-                        break;
-                    case 'contact us':
-                        url += 'contact-us';
-                        break;
-                    case 'faq':
-                        url += 'faq';
-                        break;
-                    case 'privacy policy':
-                        url += 'privacy-policy';
-                        break;
-                    case 'return policy':
-                        url += 'return-policy';
-                        break;
-                    case 'terms and conditions':
-                        url += 'terms-and-conditions';
-                        break;
-                    case 'view cart':
-                        url += 'view-cart';
-                        break;
-                    case 'checkout':
-                        url += 'checkout';
-                        break;
-                    case 'my account':
-                        url += 'my-account';
-                        break;
-                    default:
-                        alert('Command not recognized');
-                        return;
-                }
-                console.log("Done Done")
-                window.location.href = url;
-            };
-
-            recognition.onerror = function (event) {
-                console.error('Speech recognition error:', event.error);
-            };
-
-            recognition.onend = function () {
-                isRecording = false;
-                micButton.classList.remove('recording');
-                micButton.innerHTML = '<i class="fa fa-microphone"></i>';
-            };
-
-            micButton.addEventListener('click', function () {
-                if (isRecording) {
-                    recognition.stop();
-                } else {
-                    recognition.start();
-                }
-            });
+            recognition = new webkitSpeechRecognition();
+        } else if ('SpeechRecognition' in window) {
+            recognition = new SpeechRecognition();
         } else {
-            console.warn('Speech recognition not supported in this browser.');
-            micButton.disabled = true;
+            console.log('Speech Recognition API not supported.');
+            micButton.style.display = 'none';
+            return;
+        }
+
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = function (event) {
+            const transcript = event.results[0][0].transcript.trim();
+            searchInput.value = transcript;
+            navigateBasedOnCommand(transcript);
+        };
+
+        recognition.onerror = function (event) {
+            console.error(event.error);
+        };
+
+        micButton.addEventListener('click', function () {
+            recognition.start();
+        });
+
+        function navigateBasedOnCommand(command) {
+            const tokens = command.split(' ').map(token => token.toLowerCase());
+
+            if (tokens.includes('home')) {
+                window.location.href = '/client';
+            } else if (tokens.includes('part') && tokens.includes('search')) {
+                window.location.href = '/client/part-search';
+            } else if (tokens.includes('categories')) {
+                window.location.href = '/client/category';
+            } else if (tokens.includes('view') && tokens.includes('cart')) {
+                window.location.href = '/client/view-cart';
+            } else if (tokens.includes('checkout')) {
+                window.location.href = '/client/checkout';
+            } else if (tokens.includes('account')) {
+                window.location.href = '/client/my-account';
+            } else {
+                console.log('Command not recognized.');
+            }
         }
     });
 </script>
