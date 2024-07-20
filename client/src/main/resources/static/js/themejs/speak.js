@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     var clientUrl = "http://localhost:8080/client";
+    var recordApiUrl = "http://127.0.0.1:5000/record";
 
     $("#btnSpeak").click(function(){
       //alert("The paragraph was clicked.");
@@ -9,8 +10,9 @@ $(document).ready(function(){
       //debugger;
       $.ajax({
              type:"GET",
-             url: clientUrl+"/speech-to-text",
+             url: recordApiUrl,
              success:function(data){
+                data = data.result;
                 //debugger;
                 console.log("you speak..."+data);
                 if (data.indexOf("Google Speech Recognition") >= 0){
