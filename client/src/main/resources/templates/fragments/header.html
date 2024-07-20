@@ -224,6 +224,18 @@
                 window.location.href = '/client/checkout';
             } else if (tokens.includes('account')) {
                 window.location.href = '/client/my-account';
+            } else if (tokens.includes('about') && tokens.includes('us')) {
+                window.location.href = '/client/about-us';
+            } else if (tokens.includes('contact') && tokens.includes('us')) {
+                window.location.href = '/client/contact-us';
+            } else if (tokens.includes('faq')) {
+                window.location.href = '/client/faq';
+            } else if (tokens.includes('privacy') && tokens.includes('policy')) {
+                window.location.href = '/client/privacy-policy';
+            } else if (tokens.includes('return') && tokens.includes('policy')) {
+                window.location.href = '/client/return-policy';
+            } else if (tokens.includes('terms') && tokens.includes('conditions')) {
+                window.location.href = '/client/terms-and-conditions';
             } else {
                 console.log('Command not recognized.');
             }
