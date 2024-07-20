@@ -19,10 +19,13 @@ $(document).ready(function(){
                 }
 
                 console.log("checking....");
-                var found = getActionUrl(data, function(){
-                    console.log('found is...'+found);
-                    if(!found)
-                        alert("Sorry i don't find..."+data);
+                getActionUrl(data, function(found, endpoint){
+                    console.log('done...'+data + ", found..."+found+", endpoint..."+endpoint);
+                    if(found){
+                        window.location.replace(clientUrl+endpoint);
+                    }else {
+                       alert("Sorry i don't find..."+data);
+                    }
                 });
             },
             error:function(data){
@@ -31,79 +34,115 @@ $(document).ready(function(){
          });
     });
 
-    function getActionUrl(speechText){
+    function getActionUrl(speechText, callback){
         var found=false;
+        var redirect="";
+
         //View cart
         var homeArray = ["home", "home page", "main page"];
-        found = viewAction(homeArray, speechText, '/');
+        redirect = "/";
+        found = viewAction(homeArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Part search
         var partSearchArray = ["part search", "search", "search part"];
-        found = viewAction(partSearchArray, speechText, '/part-search');
+        redirect = "/part-search";
+        found = viewAction(partSearchArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Part search
         var categoryArray = ["categories", "category"];
-        found = viewAction(categoryArray, speechText, '/category');
+        redirect = "/category";
+        found = viewAction(categoryArray, speechText);
+        if(found) return callback(found, redirect);
 
         //---------Pages ---------//
         //About us
         var aboutUsArray = ["pages", "about us", "about"];
-        found = viewAction(aboutUsArray, speechText, '/about-us');
+        redirect = "/about-us";
+        found = viewAction(aboutUsArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Contact us
         var contactUsArray = ["contact us", "contact"];
-        found = viewAction(contactUsArray, speechText, '/contact-us');
+        redirect = "/contact-us";
+        found = viewAction(contactUsArray, speechText);
+        if(found) return callback(found, redirect);
 
         //FAQ
         var faqArray = ["FAQ", "faq", "frequently ask" ,"frequently ask question", "frequently asked question"];
-        found = viewAction(faqArray, speechText, '/faq');
-
+        redirect = "/faq";
+        found = viewAction(faqArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Privacy policy
         var privacyPolicyArray = ["privacy policy", "privacy"];
-        found = viewAction(privacyPolicyArray, speechText, '/privacy-policy');
+        redirect = "/privacy-policy";
+        found = viewAction(privacyPolicyArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Return policy
         var returnPolicyArray = ["return policy", "return"];
-        found = viewAction(returnPolicyArray, speechText, '/return-policy');
+        redirect = "/return-policy";
+        found = viewAction(returnPolicyArray, speechText);
+        if(found) return callback(found, redirect);
+
 
         //Terms and conditions
         var termsAndConditionsArray = ["terms and conditions", "term and condition", "term and conditions", "terms and condition"];
-        found = viewAction(termsAndConditionsArray, speechText, '/terms-and-conditions');
+        redirect = "/terms-and-conditions";
+        found = viewAction(termsAndConditionsArray, speechText);
+        if(found) return callback(found, redirect);
 
         //View cart
         var viewCartArray = ["view card", "view cart"];
-        found = viewAction(viewCartArray, speechText, '/view-cart');
+        redirect = "/view-cart";
+        found = viewAction(viewCartArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Checkout
         var checkoutArray = ["checkout", "check out"];
-        found = viewAction(checkoutArray, speechText, '/checkout');
+        redirect = "/checkout";
+        found = viewAction(checkoutArray, speechText);
+        if(found) return callback(found, redirect);
 
         //My account
         var myAccountArray = ["my account", "account"];
-        found = viewAction(myAccountArray, speechText, '/my-account');
+        redirect = "/my-account";
+        found = viewAction(myAccountArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Order history
         var orderHistoryArray = ["order history", "history"];
-        found = viewAction(orderHistoryArray, speechText, '/order-history');
+        redirect = "/order-history";
+        found = viewAction(orderHistoryArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Change password
         var changePasswordArray = ["change password", "password"];
+        redirect = "/change-password";
         found = viewAction(changePasswordArray, speechText, '/change-password');
+        if(found) return callback(found, redirect);
 
         //Login
         var loginArray = ["login", "sign in"];
+        redirect = "/login";
         found = viewAction(loginArray, speechText, '/login');
+        if(found) return callback(found, redirect);
 
         //Logout
         var logoutArray = ["logout"];
-        found = viewAction(logoutArray, speechText, '/logout');
+        redirect = "/logout";
+        found = viewAction(logoutArray, speechText);
+        if(found) return callback(found, redirect);
 
         //Register
         var registerArray = ["register", "sign up"];
+        redirect = "/register";
         found = viewAction(registerArray, speechText, '/register');
+        if(found) return callback(found, redirect);
 
-        return found;
+        callback(false, '');
     }
 
     function viewAction(array, speechText, endpoint){
@@ -111,7 +150,7 @@ $(document).ready(function(){
         const contains = array.some(element => speechText.includes(element));
         if(contains){
             console.log("redirecting to..."+endpoint)
-            window.location.replace(clientUrl+endpoint);
+            //window.location.replace(clientUrl+endpoint);
             return true;
         }
         return false;
