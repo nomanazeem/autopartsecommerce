@@ -6,21 +6,19 @@ $(document).ready(function(){
     $("#btnSpeak").click(function(){
       //alert("The paragraph was clicked.");
       console.log("speaking...");
-
+      disableButton($("#btnSpeak"), true);
       //debugger;
       $.ajax({
              type:"GET",
              url: recordApiUrl,
              success:function(data){
+                disableButton($("#btnSpeak"), false);
+
                 data = data.result;
                 //debugger;
                 console.log("you speak..."+data);
-                if (data.indexOf("Google Speech Recognition") >= 0){
-                    alert(data);
-                    return;
-                }
 
-                console.log("checking....");
+                //console.log("checking....");
                 getActionUrl(data, function(found, endpoint){
                     console.log('done...'+data + ", found..."+found+", endpoint..."+endpoint);
                     if(found){
@@ -31,7 +29,8 @@ $(document).ready(function(){
                 });
             },
             error:function(data){
-                alert('There were any error while calling speech text api. contact support.')
+                disableButton($("#btnSpeak"), false);
+                alert('There were any error while calling speech text api. contact support.'+data.error)
             }
          });
     });
@@ -158,14 +157,7 @@ $(document).ready(function(){
         return false;
     }
 
-
-
-	/* ---------------------------------------------------
-	Preloading Screen
--------------------------------------------------- */
-//    $(window).load(function() {
-//        // Animate loader off screen
-//        //$('body').addClass('loaded');
-//        alert('Home');
-//    });
+    function disableButton(element, isEnable){
+        element.prop("disabled", isEnable);
+    }
 });
