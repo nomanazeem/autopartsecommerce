@@ -59,7 +59,7 @@ $(document).ready(function(){
 
         //---------Pages ---------//
         //About us
-        var aboutUsArray = ["pages", "about us", "about"];
+        var aboutUsArray = ["pages", "page", "about us", "about"];
         redirect = "/about-us";
         found = viewAction(aboutUsArray, speechText);
         if(found) return callback(found, redirect);
@@ -160,11 +160,9 @@ $(document).ready(function(){
     function disableButton(element, isEnable){
         element.prop("disabled", isEnable);
     }
-});
 
-$(document).ready(function(){
-    var clientUrl = "http://localhost:8080/client/part-search";
-    var recordApiUrl = "http://127.0.0.1:5000/record";
+    var partSearch = clientUrl+"/part-search";
+
 
     $("#btnSpeakSearch").click(function(){
         console.log("speaking...");
@@ -190,7 +188,7 @@ $(document).ready(function(){
                     page: '1',
                     size: '10'
                 });
-                const url = `${clientUrl}?${params.toString()}`;
+                const url = `${partSearch}?${params.toString()}`;
 
                 // Redirect to the constructed URL
                 window.location.href = url;
@@ -201,8 +199,4 @@ $(document).ready(function(){
             }
         });
     });
-
-    function disableButton(button, disable) {
-        button.prop('disabled', disable);
-    }
 });

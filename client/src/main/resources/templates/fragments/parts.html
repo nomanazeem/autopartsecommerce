@@ -7,7 +7,7 @@
                 <div class="product-image-container second_img">
                     <a th:href="@{/part-details(id=${productInfo.id})}" target="_self" th:title="${productInfo.name}">
                         <img th:src="#{adminPath}+${productInfo.getFullImage1Url()}" class="img-1 img-responsive" alt="image1">
-                        <img th:src="#{adminPath}+${productInfo.getFullImage2Url()}" class="img-2 img-responsive" alt="image2">
+                        <img th:src="#{adminPath}+${productInfo.getFullImage1Url()}" class="img-2 img-responsive" alt="image2">
                     </a>
                 </div>
                 <span class="label-product label-new">New</span>

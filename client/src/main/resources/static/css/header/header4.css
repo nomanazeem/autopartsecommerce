@@ -367,7 +367,8 @@
   margin: 0;
   border: 2px solid #e5e5e5;
   border-radius: 5px;
-  width: 100%; }
+  /*width: 100%; */
+  }
 .typeheader-4 #sosearchpro .search .select_category {
   border: none;
   width: 180px;

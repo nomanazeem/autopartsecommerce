@@ -19,11 +19,11 @@
                 </div>
                 <div class="header-top-right col-lg-9 col-md-8 col-sm-7 col-xs-12">
                     <ul class="top-log list-inline">
+                        <button type="button" id="btnSpeak" class="button-search btn btn-success" title="Speak to navigate, you can speak up to 2 seconds, like home page, search part then redirect to relevant page">Navigate ...<i class="fa fa-microphone"></i></button>
                         <li sec:authorize="isAuthenticated()"><i class="fa fa-lock"></i>Welcome <span sec:authentication="principal.username"></span> !</li>
                         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                         <li sec:authorize="isAnonymous()"><i class="fa fa-lock"></i><a th:href="@{/login}">Login</a> / </li>
                         <li sec:authorize="isAnonymous()"><a th:href="@{/register}">Register</a></li>
-                        <button type="button" id="btnSpeak" class="button-search btn btn-success" title="For Navigating purpose, you can speak up to 3 seconds, like home page, search part">Speak To Navigate ....<i class="fa fa-microphone"></i></button>
                     </ul>
                 </div>
             </div>
@@ -49,8 +49,9 @@
                                     <input type="hidden" name="model" value="1" />
                                     <input type="hidden" name="year" value="" />
                                     <input type="hidden" name="category" value="" />
-                                    <button type="submit" id="btnSearch" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
-                                    <button type="button" id="btnSpeakSearch" class="button-search btn btn-primary" style="margin-left: 10px;"><i class="fa fa-microphone"></i></button>
+                                    <button type="button" id="btnSpeakSearch" class="button-search btn btn-success" ><i class="fa fa-microphone"></i></button>
+
+                                    <button type="submit" id="btnSearch" class="button-search btn btn-default custom-button" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
                                 </div>
                             </form>
                         </div>

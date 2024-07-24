@@ -7646,7 +7646,8 @@ header ul.top-link > li.language .btn-link img {
   .typeheader-4 .header-bottom {
     border-bottom: 2px solid #ff2d37; }
   .typeheader-4 #sosearchpro .search button {
-    background-color: #ff2d37; }
+    /*background-color: #ff2d37; */
+    }
   .typeheader-4 #sosearchpro .search button:hover {
     background-color: #f9000c; }
   .typeheader-4 .shopping_cart .btn-shopping-cart .top_cart .shopcart-inner .total-shopping-cart .items_cart {
@@ -7654,6 +7655,9 @@ header ul.top-link > li.language .btn-link img {
   .typeheader-4 .shopping_cart .btn-shopping-cart .top_cart .shopcart-inner .total-shopping-cart .items_carts {
     color: #ff2d37; }
 
+.custom-button {
+   background-color:#ff2d37;
+}
 .common-home .typeheader-5 .container-megamenu.horizontal ul.megamenu > li.home > a {
   color: #ff2d37;
   background-color: transparent; }
