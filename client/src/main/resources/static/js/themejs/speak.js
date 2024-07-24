@@ -181,12 +181,12 @@ $(document).ready(function(){
                 // Construct the full URL with query parameters
                 const params = new URLSearchParams({
                     name: nameParam, // Use the data received from record API
-                    make: '1',
+                    make: '',
                     model: '',
                     year: '',
                     category: '',
                     page: '1',
-                    size: '10'
+                    size: '100'
                 });
                 const url = `${partSearch}?${params.toString()}`;
 

@@ -23,8 +23,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "and is_active  = 1 and is_deleted = 0 " +
             "and (length(?1) = 0 or p.name like concat('%', ?1, '%')) " +
             "and (length(?2) = 0 or category_id= ?2) "+
-            "and (?3=1  or make_id= ?3) "+
-            "and (?4=1 or model_id= ?4) "+
+            "and (length(?3) = 0 or make_id= ?3) "+
+            "and (length(?4) = 0 or model_id= ?4) "+
+            //"and (?3=1  or make_id= ?3) "+
+            //"and (?4=1 or model_id= ?4) "+
             "and (length(?5) =0 or year= ?5) "
             , nativeQuery = true)
     List<Product> searchProduct2(String keyword, String categoryId, String makeId, String modelId, String year);

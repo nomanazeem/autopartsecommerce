@@ -101,7 +101,7 @@ public class PartController {
             , @RequestParam("page") Optional<Integer> page
             , @RequestParam("size") Optional<Integer> size) {
 
-        String keyword="",makeId="1", modelId="1", categoryId="", yearId="";
+        String keyword="",makeId="", modelId="", categoryId="", yearId="";
 
         if(name.isPresent()){
             keyword = name.get();
@@ -141,7 +141,14 @@ public class PartController {
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
 
-        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(Long.parseLong(makeId));
+        Long lMakeId=0L;
+        try {
+            lMakeId = Long.parseLong(makeId);
+        }catch (NumberFormatException e){
+            lMakeId=0L;
+        }
+
+        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(lMakeId);
         model.addAttribute("listModel", listModel);
 
         List<Integer> listYear = utility.getYears();
