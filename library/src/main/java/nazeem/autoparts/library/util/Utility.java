@@ -14,7 +14,7 @@ public class Utility {
         List<Integer> years = new ArrayList<>();
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
-        for(Integer i=1980; i<= currentYear; i++){
+        for(Integer i=1999; i<= currentYear; i++){
             years.add(i);
         }
         return years;

@@ -14,17 +14,19 @@
 
                             <legend>Make</legend>
                             <select class="form-control make" name="make" id="make">
+                                <option value="">All Makes</option>
                                 <option th:each="makeInfo : ${listMake}" th:selected="(${makeInfo.id} == ${make})" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
                             </select>
 
                             <legend>Model</legend>
                             <select class="form-control model" name="model" id="model">
+                                <option value="">All Models</option>
                                 <option th:each="modelInfo : ${listModel}" th:selected="(${modelInfo.id} == ${model})" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
                             </select>
 
                             <legend>Year</legend>
                             <select class="form-control" name="year" id="year">
-                                <option value="">All Year</option>
+                                <option value="">All Years</option>
                                 <option th:each="yearInfo : ${listYear}" th:selected="(${yearInfo} == ${year})" th:value="${yearInfo}" th:utext="${yearInfo}"/>
                             </select>
 

@@ -124,6 +124,7 @@ $(document).ready(function() {
 		$("ul.megamenu > li.click").children(".sub-menu").hide();
 		$("ul.megamenu > li.click").find(".content").hide();
 	});
+
 	$('.close-menu').on('click', function () {
 		$(this).parent().removeClass("active");
 		$(this).parent().children(".sub-menu").hide();

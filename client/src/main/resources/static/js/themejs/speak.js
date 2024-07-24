@@ -4,14 +4,14 @@ $(document).ready(function(){
     var recordApiUrl = "http://127.0.0.1:5000/record";
 
     $("#btnSpeak").click(function(){
-        //alert("The paragraph was clicked.");
-        console.log("speaking...");
-        disableButton($("#btnSpeak"), true);
-        //debugger;
-        $.ajax({
-            type:"GET",
-            url: recordApiUrl,
-            success:function(data){
+      //alert("The paragraph was clicked.");
+      console.log("speaking...");
+      disableButton($("#btnSpeak"), true);
+      //debugger;
+      $.ajax({
+             type:"GET",
+             url: recordApiUrl,
+             success:function(data){
                 disableButton($("#btnSpeak"), false);
 
                 data = data.result;
