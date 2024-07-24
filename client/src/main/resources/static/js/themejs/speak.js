@@ -24,7 +24,7 @@ $(document).ready(function(){
                     if(found){
                         window.location.replace(clientUrl+endpoint);
                     }else {
-                       alert("Sorry i don't find..."+data);
+                        alert("Sorry i don't find..."+data);
                     }
                 });
             },
@@ -32,7 +32,7 @@ $(document).ready(function(){
                 disableButton($("#btnSpeak"), false);
                 alert('There were any error while calling speech text api. contact support.'+data.error)
             }
-         });
+        });
     });
 
     function getActionUrl(speechText, callback){
@@ -159,5 +159,50 @@ $(document).ready(function(){
 
     function disableButton(element, isEnable){
         element.prop("disabled", isEnable);
+    }
+});
+
+$(document).ready(function(){
+    var clientUrl = "http://localhost:8080/client/part-search";
+    var recordApiUrl = "http://127.0.0.1:5000/record";
+
+    $("#btnSpeakSearch").click(function(){
+        console.log("speaking...");
+        disableButton($("#btnSpeakSearch"), true);
+
+        // Make the call to the record API
+        $.ajax({
+            type: "GET",
+            url: recordApiUrl,
+            success: function(data){
+                disableButton($("#btnSpeakSearch"), false);
+
+                var nameParam = data.result;
+                console.log("you speak... " + nameParam);
+
+                // Construct the full URL with query parameters
+                const params = new URLSearchParams({
+                    name: nameParam, // Use the data received from record API
+                    make: '1',
+                    model: '',
+                    year: '',
+                    category: '',
+                    page: '1',
+                    size: '10'
+                });
+                const url = `${clientUrl}?${params.toString()}`;
+
+                // Redirect to the constructed URL
+                window.location.href = url;
+            },
+            error: function(data){
+                disableButton($("#btnSpeakSearch"), false);
+                alert('There was an error while calling the speech text API. Contact support. ' + data.error);
+            }
+        });
+    });
+
+    function disableButton(button, disable) {
+        button.prop('disabled', disable);
     }
 });
