@@ -42,7 +42,7 @@ public class PartController {
     @Autowired
     private Utility utility;
 
-    private final Integer PAGE_SIZE=2;
+    private final Integer PAGE_SIZE=100;
 
     @RequestMapping("/category")
     public String category(@RequestParam("id") Optional<Long> id
@@ -253,7 +253,7 @@ public class PartController {
         model.addAttribute("search", new Product());
 
         //All categories
-        List<Category> categoryList = categoryService.findAll();
+        List<Category>  categoryList = categoryService.findAll();
         model.addAttribute("categories", categoryList);
 
         List<Make> listMake = makeService.findAll();

@@ -1,13 +1,12 @@
-
 <!-- Header Container  -->
-<header id="header" class=" typeheader-4">
+<header id="header" class="typeheader-4">
 
     <!-- Header Top -->
     <div class="header-top hidden-compact">
         <div class="container">
             <div class="row">
                 <div class="header-top-left col-lg-3 col-md-4 col-sm-5 hidden-xs">
-                    <div class="telephone " >
+                    <div class="telephone ">
                         <ul class="socials">
                             <li class="facebook"><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li class="twitter"><a href="#" target="_blank"><i class="fa fa-twitter"></i></a></li>
@@ -19,18 +18,18 @@
                     </div>
                 </div>
                 <div class="header-top-right col-lg-9 col-md-8 col-sm-7 col-xs-12">
-
                     <ul class="top-log list-inline">
                         <li sec:authorize="isAuthenticated()"><i class="fa fa-lock"></i>Welcome <span sec:authentication="principal.username"></span> !</li>
                         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                         <li sec:authorize="isAnonymous()"><i class="fa fa-lock"></i><a th:href="@{/login}">Login</a> / </li>
                         <li sec:authorize="isAnonymous()"><a th:href="@{/register}">Register</a></li>
+                        <button type="button" id="btnSpeak" class="button-search btn btn-success" title="For Navigating purpose, you can speak up to 3 seconds, like home page, search part">Speak To Navigate ....<i class="fa fa-microphone"></i></button>
                     </ul>
-
                 </div>
             </div>
         </div>
     </div>
+
     <div class="header-middle">
         <div class="container">
             <div class="row">
@@ -38,24 +37,20 @@
                     <div class="logo">
                         <a th:href="@{/}"><img th:src="@{/image/catalog/logo.png}" title="Your Store" alt="Your Store" /></a>
                     </div>
-
                 </div>
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 middle-right">
                     <div class="search-header-w">
                         <div class="icon-search hidden-lg hidden-md"><i class="fa fa-search"></i></div>
-
-                        <div id="sosearchpro" class="sosearchpro-wrapper so-search ">
+                        <div id="sosearchpro" class="sosearchpro-wrapper so-search">
                             <form th:action="@{/part-search}" method="GET">
                                 <div id="search0" class="search input-group form-group">
-                                    <input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Keyword here..." name="name">
-
-                                    <input type="hidden" name="make" value="1"/>
-                                    <input type="hidden" name="model" value="1"/>
-                                    <input type="hidden" name="year" value=""/>
-                                    <input type="hidden" name="category" value=""/>
-
-                                    <button type="submit" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
-
+                                    <input class="autosearch-input form-control" type="text" value="" th:value="${param.name}" size="50" autocomplete="off" placeholder="Keyword here..." name="name">
+                                    <input type="hidden" name="make" value="1" />
+                                    <input type="hidden" name="model" value="1" />
+                                    <input type="hidden" name="year" value="" />
+                                    <input type="hidden" name="category" value="" />
+                                    <button type="submit" id="btnSearch" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
+                                    <button type="button" id="btnSpeakSearch" class="button-search btn btn-primary" style="margin-left: 10px;"><i class="fa fa-microphone"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -72,7 +67,7 @@
                     <div class="main-menu-w">
                         <div class="responsive so-megamenu megamenu-style-dev">
                             <nav class="navbar-default">
-                                <div class=" container-megamenu  horizontal open ">
+                                <div class="container-megamenu horizontal open">
                                     <div class="navbar-header">
                                         <button type="button" id="show-megamenu" data-toggle="collapse" class="navbar-toggle">
                                             <span class="icon-bar"></span>
@@ -80,40 +75,37 @@
                                             <span class="icon-bar"></span>
                                         </button>
                                     </div>
-
                                     <div class="megamenu-wrapper">
                                         <span id="remove-megamenu" class="fa fa-times"></span>
                                         <div class="megamenu-pattern">
                                             <div class="container-mega">
                                                 <ul class="megamenu" data-transition="slide" data-animationtime="250">
-                                                    <li th:class=" ${classActiveHome}">
+                                                    <li th:class="${classActiveHome}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/}" class="clearfix">
                                                             <strong><i class="fa fa-home"></i>Home</strong>
                                                         </a>
                                                     </li>
-                                                    <li th:class=" ${classActivePartSearch}">
+                                                    <li th:class="${classActivePartSearch}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/part-search}" class="clearfix">
                                                             <strong><i class="fa fa-search"></i>Part Search</strong>
                                                         </a>
                                                     </li>
-
-                                                    <li th:class=" ${classActiveCategory}">
+                                                    <li th:class="${classActiveCategory}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/category}" class="clearfix">
                                                             <strong><i class="fa fa-sitemap"></i>Categories</strong>
                                                         </a>
                                                     </li>
-
                                                     <li th:class="${classActivePages} == null ? 'with-sub-menu hover': ${classActivePages}">
                                                         <p class="close-menu"></p>
                                                         <a href="#" class="clearfix">
                                                             <strong><i class="fa fa-pagelines"></i>Pages</strong>
                                                             <b class="caret"></b>
                                                         </a>
-                                                        <div class="sub-menu" style="width: 40%; ">
-                                                            <div class="content" >
+                                                        <div class="sub-menu" style="width: 40%;">
+                                                            <div class="content">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <ul class="row-list">
@@ -133,29 +125,25 @@
                                                             </div>
                                                         </div>
                                                     </li>
-
-
-                                                    <li th:class=" ${classActiveViewCart}">
+                                                    <li th:class="${classActiveViewCart}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/view-cart}" class="clearfix">
                                                             <strong><i class="fa fa-shopping-cart"></i>View Cart</strong>
                                                         </a>
                                                     </li>
-                                                    <li th:class=" ${classActiveCheckout}">
+                                                    <li th:class="${classActiveCheckout}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/checkout}" class="clearfix">
                                                             <strong><i class="fa fa-check-circle"></i>Checkout</strong>
                                                         </a>
                                                     </li>
-                                                    <li th:class=" ${classActiveMyAccount}">
+                                                    <li th:class="${classActiveMyAccount}">
                                                         <p class="close-menu"></p>
                                                         <a th:href="@{/my-account}" class="clearfix">
                                                             <strong><i class="fa fa-dashboard"></i>My Account</strong>
                                                         </a>
                                                     </li>
-
                                                 </ul>
-
                                             </div>
                                         </div>
                                     </div>
@@ -166,8 +154,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </header>
 <!-- //Header Container  -->

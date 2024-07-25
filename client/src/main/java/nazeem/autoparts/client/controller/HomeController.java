@@ -59,37 +59,37 @@ public class HomeController {
 
     @RequestMapping("/about-us")
     public String aboutUs(Model model) {
-        model.addAttribute("classActivePages", "home active ");
+        model.addAttribute("classActivePages", "home active with-sub-menu hover");
 
         return "/client/about-us";
     }
     @RequestMapping("/contact-us")
     public String contactUs(Model model) {
-        model.addAttribute("classActivePages", "home active ");
+        model.addAttribute("classActivePages", "home active with-sub-menu hover");
 
         return "/client/contact-us";
     }
     @RequestMapping("/faq")
     public String faq(Model model) {
-        model.addAttribute("classActivePages", "home active ");
+        model.addAttribute("classActivePages", "home active with-sub-menu hover");
 
         return "/client/faq";
     }
     @RequestMapping("/privacy-policy")
     public String privacyPolicy(Model model) {
-        model.addAttribute("classActivePages", "home active ");
+        model.addAttribute("classActivePages", "home active with-sub-menu hover");
 
         return "/client/privacy-policy";
     }
     @RequestMapping("/return-policy")
     public String returnPolicy(Model model) {
-        model.addAttribute("classActivePages", "home active ");
+        model.addAttribute("classActivePages", "home active with-sub-menu hover");
 
         return "/client/return-policy";
     }
     @RequestMapping("/terms-and-conditions")
     public String termsAndConditions(Model model) {
-        model.addAttribute("classActivePages", "home active ");
+        model.addAttribute("classActivePages", "home active with-sub-menu hover");
 
         return "/client/terms-and-conditions";
     }

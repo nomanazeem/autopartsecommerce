@@ -105,28 +105,28 @@ public class Product {
 
     public String getFullImage1Url(){
         if(id != null && image1 !=null) {
-            return "/upload/product/" + id + "/" + image1;
+            return "/upload/product/" + image1;
         }else {
             return "/upload/no_preview.jpg";
         }
     }
     public String getFullImage2Url(){
         if(id != null && image2 !=null) {
-            return "/upload/product/" + id + "/" + image2;
+            return "/upload/product/" + image2;
         }else {
             return "/upload/no_preview.jpg";
         }
     }
     public String getFullImage3Url(){
         if(id != null && image3 !=null) {
-            return "/upload/product/" + id + "/" + image3;
+            return "/upload/product/" + image3;
         }else {
             return "/upload/no_preview.jpg";
         }
     }
     public String getFullImage4Url(){
         if(id != null && image4 !=null) {
-            return "/upload/product/" + id + "/" + image4;
+            return "/upload/product/" + image4;
         }else {
             return "/upload/no_preview.jpg";
         }

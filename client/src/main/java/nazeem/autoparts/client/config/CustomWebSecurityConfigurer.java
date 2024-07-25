@@ -132,6 +132,8 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             "/return-policy",
             "/terms-and-conditions",
 
+            "/speech-to-text",
+
             //api route
             "/models",
 
