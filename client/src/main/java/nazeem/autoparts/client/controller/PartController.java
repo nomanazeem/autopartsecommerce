@@ -4,8 +4,10 @@ package nazeem.autoparts.client.controller;
     Created By: noman azeem
     Contact: syed.noman.azeem@gmail.com
 */
+import com.google.gson.Gson;
 import nazeem.autoparts.library.model.Category;
 import nazeem.autoparts.library.model.Make;
+import nazeem.autoparts.library.model.ProductInfo;
 import nazeem.autoparts.library.service.CategoryService;
 import nazeem.autoparts.library.service.MakeService;
 import nazeem.autoparts.library.service.ModelService;
@@ -19,7 +21,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -254,6 +258,19 @@ public class PartController {
         return "/client/part-search";
     }*/
 
+    @Autowired
+    private RestTemplate restTemplate;
+
+    public String callThirdPartyApi(String keyword) {
+        String url = "http://127.0.0.1:5000/recommend?keyword=" + keyword; // Replace with your actual URL
+        return restTemplate.getForObject(url, String.class);
+    }
+    private List<ProductInfo> getObject(String jsonProducts){
+        Gson g = new Gson();
+        ProductInfo[] products = g.fromJson(jsonProducts, ProductInfo[].class);
+        return Arrays.asList(products);
+    }
+
     @RequestMapping("/part-details")
     public String partDetails(@RequestParam("id") Long id, Model model) {
         model.addAttribute("classActivePartSearch", "home active ");
@@ -272,16 +289,21 @@ public class PartController {
         List<Integer> listYear = utility.getYears();
         model.addAttribute("listYear", listYear);
 
+
+
         try {
             //Get product
             Product product = productService.get(id);
             model.addAttribute("product", product);
+
+            String products = callThirdPartyApi(product.getName()); //productService.searchResults("", "", "", "", "",  PageRequest.of(1, 20));
+            List<ProductInfo> productList = getObject(products);
+            model.addAttribute("productList", productList);
+
         }catch (Exception ex){
             model.addAttribute("error", ex.getMessage());
             return "/client/part-details";
         }
         return "/client/part-details";
     }
-
-
 }

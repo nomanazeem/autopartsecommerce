@@ -1,16 +1,20 @@
 $(document).ready(function(){
 
     var clientUrl = "http://localhost:8080/client";
-    var recordApiUrl = "http://127.0.0.1:5000/record";
+    var recordApiUrl = "http://127.0.0.1:5000/record?phrase_time_limit=";
 
     $("#btnSpeak").click(function(){
       //alert("The paragraph was clicked.");
       console.log("speaking...");
-      disableButton($("#btnSpeak"), true);
+      speakNavigate();
+    });
+
+    function speakNavigate(){
+        disableButton($("#btnSpeak"), true);
       //debugger;
       $.ajax({
              type:"GET",
-             url: recordApiUrl,
+             url: recordApiUrl+"3",//3 seconds
              success:function(data){
                 disableButton($("#btnSpeak"), false);
 
@@ -33,7 +37,7 @@ $(document).ready(function(){
                 alert('There were any error while calling speech text api. contact support.'+data.error)
             }
         });
-    });
+    }
 
     function getActionUrl(speechText, callback){
         var found=false;
@@ -166,12 +170,15 @@ $(document).ready(function(){
 
     $("#btnSpeakSearch").click(function(){
         console.log("speaking...");
-        disableButton($("#btnSpeakSearch"), true);
+        speakSearch();
+    });
 
+    function speakSearch(){
+        disableButton($("#btnSpeakSearch"), true);
         // Make the call to the record API
         $.ajax({
             type: "GET",
-            url: recordApiUrl,
+            url: recordApiUrl+"3",
             success: function(data){
                 disableButton($("#btnSpeakSearch"), false);
 
@@ -198,5 +205,5 @@ $(document).ready(function(){
                 alert('There was an error while calling the speech text API. Contact support. ' + data.error);
             }
         });
-    });
+    }
 });

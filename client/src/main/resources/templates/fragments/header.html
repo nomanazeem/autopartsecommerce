@@ -45,8 +45,8 @@
                             <form th:action="@{/part-search}" method="GET">
                                 <div id="search0" class="search input-group form-group">
                                     <input class="autosearch-input form-control" type="text" value="" th:value="${param.name}" size="50" autocomplete="off" placeholder="Keyword here..." name="name">
-                                    <input type="hidden" name="make" value="1" />
-                                    <input type="hidden" name="model" value="1" />
+                                    <input type="hidden" name="make" value="" />
+                                    <input type="hidden" name="model" value="" />
                                     <input type="hidden" name="year" value="" />
                                     <input type="hidden" name="category" value="" />
                                     <button type="button" id="btnSpeakSearch" class="button-search btn btn-success" ><i class="fa fa-microphone"></i></button>
