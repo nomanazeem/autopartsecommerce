@@ -5,14 +5,8 @@ package nazeem.autoparts.client.controller;
     Contact: syed.noman.azeem@gmail.com
 */
 import com.google.gson.Gson;
-import nazeem.autoparts.library.model.Category;
-import nazeem.autoparts.library.model.Make;
-import nazeem.autoparts.library.model.ProductInfo;
-import nazeem.autoparts.library.service.CategoryService;
-import nazeem.autoparts.library.service.MakeService;
-import nazeem.autoparts.library.service.ModelService;
-import nazeem.autoparts.library.service.ProductService;
-import nazeem.autoparts.library.model.Product;
+import nazeem.autoparts.library.model.*;
+import nazeem.autoparts.library.service.*;
 import nazeem.autoparts.library.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +34,9 @@ public class PartController {
 
     @Autowired
     private MakeService makeService;
+
+    //@Autowired
+    //private YearService yearService;
 
     @Autowired
     private ModelService modelService;
@@ -105,29 +103,29 @@ public class PartController {
             , @RequestParam("page") Optional<Integer> page
             , @RequestParam("size") Optional<Integer> size) {
 
-        String keyword="",makeId="", modelId="", categoryId="", yearId="";
+        String keyword="",makeName="", modelName="", categoryName="", yearName="";
 
         if(name.isPresent()){
             keyword = name.get();
         }
         if(make.isPresent()){
-            makeId = make.get();
+            makeName = make.get();
         }
         if(model2.isPresent()){
-            modelId = model2.get();
+            modelName = model2.get();
         }
         if(year.isPresent()){
-            yearId=year.get();
+            yearName=year.get();
         }
         if(category.isPresent()){
-            categoryId=category.get();
+            categoryName =category.get();
         }
 
         model.addAttribute("name", keyword);
-        model.addAttribute("make", makeId);
-        model.addAttribute("model", modelId);
-        model.addAttribute("year", yearId);
-        model.addAttribute("category", categoryId);
+        model.addAttribute("make", makeName);
+        model.addAttribute("model", modelName);
+        model.addAttribute("year", yearName);
+        model.addAttribute("category", categoryName);
 
 
 
@@ -146,11 +144,11 @@ public class PartController {
         model.addAttribute("listMake", listMake);
 
         Long lMakeId=0L;
-        try {
-            lMakeId = Long.parseLong(makeId);
-        }catch (NumberFormatException e){
-            lMakeId=0L;
-        }
+//        try {
+//            lMakeId = Long.parseLong(makeId);
+//        }catch (NumberFormatException e){
+//            lMakeId=0L;
+//        }
 
         List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(lMakeId);
         model.addAttribute("listModel", listModel);
@@ -160,7 +158,7 @@ public class PartController {
 
 
         //All parts
-        Page<Product> productList = productService.searchResults(keyword, categoryId, makeId, modelId, yearId
+        Page<Product> productList = productService.searchResults(keyword, categoryName, makeName, modelName, yearName
                 ,  PageRequest.of(currentPage-1, pageSize));
         model.addAttribute("productList", productList);
 
@@ -306,4 +304,6 @@ public class PartController {
         }
         return "/client/part-details";
     }
+
+
 }

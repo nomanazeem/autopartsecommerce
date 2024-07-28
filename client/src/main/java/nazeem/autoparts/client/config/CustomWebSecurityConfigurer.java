@@ -122,7 +122,8 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
             "/part-search",
             "/part-details",
 
-
+            //rest controller
+            "/api/*",
 
             "/register",
             "/login",

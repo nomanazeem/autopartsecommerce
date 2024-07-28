@@ -6,10 +6,12 @@ $(document).ready(function(){
     $("#btnSpeak").click(function(){
       //alert("The paragraph was clicked.");
       console.log("speaking...");
-      //speakNavigate();
-      speakNavigate2();
+      speakNavigate();
+      //speakNavigate2();
     });
 
+
+    /*
     function speakNavigate2(){
         $.ajax({
              type:"GET",
@@ -51,6 +53,7 @@ $(document).ready(function(){
             alert('Command not recognized');
         }
     }
+    */
 
     function speakNavigate(){
       disableButton($("#btnSpeak"), true);
@@ -193,7 +196,7 @@ $(document).ready(function(){
         callback(false, '');
     }
 
-    function viewAction(array, speechText, endpoint){
+    function viewAction(array, speechText){
         //debugger;
         const contains = array.some(element => speechText.includes(element));
         if(contains){
@@ -216,6 +219,41 @@ $(document).ready(function(){
         speakSearch();
     });
 
+    function getMakes(){
+         var makes = ['Toyota', 'Honda', 'Ford', 'Mercedes-Benz', 'BMW', 'Hyundai', 'Nissan', 'Chevrolet', 'Volkswagen', 'Audi', 'Kia', 'Mazda', 'Subaru', 'Lexus', 'Jaguar', 'Acura', 'GMC', 'Kawasaky', 'Mercedes', 'Yamaha'];
+         return makes;
+    }
+    function getCategories(){
+        var categories = ['Brake Pads','Oil Filter', 'Air Filter','Radiator','Timing Belt','Alternator','Spark Plug',
+                          'Battery','Headlight', 'Fuel Pump','Water Pump','Brake Disc','Windshield Wiper','Exhaust Pipe',
+                          'Tire','Lighting','Oil Fluids','Tools & Equipment', 'Wheels & Tires','Car Parts','Body Interior', 'Body Exterior','Engine'];
+
+        return categories;
+    }
+    function getYears(){
+        var years = ['1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010'
+        , '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'
+        , '2021', '2022', '2023', '2024', '2025'
+        ];
+        return years;
+    }
+
+    function matchingElement(array, speechText){
+        if (Array.isArray(array)) {
+            //debugger;
+            const matchingElement = array.find(element =>
+              typeof element === 'string' && speechText.toLowerCase().includes(element.toLowerCase())
+            );
+
+            if(matchingElement){
+                return matchingElement;
+            }
+            return "";
+        }else {
+              console.log('The variable array is not an array or is undefined');
+        }
+    }
+
     function speakSearch(){
         disableButton($("#btnSpeakSearch"), true);
         // Make the call to the record API
@@ -225,16 +263,40 @@ $(document).ready(function(){
             success: function(data){
                 disableButton($("#btnSpeakSearch"), false);
 
-                var nameParam = data.result;
-                console.log("you speak... " + nameParam);
+                var keyword = data.result;
+                console.log("you speak... " + keyword);
+
+                debugger;
+
+                var years = getYears();
+                //fetching year
+                var yearVal = matchingElement(years, keyword);
+                console.log("yearVal="+yearVal);
+
+                var makes = getMakes();
+                //fetching make
+
+                var makeVal = matchingElement(makes, keyword);
+                console.log("makeVal="+makeVal);
+
+                var categories = getCategories();
+                //fetching category
+                var categoryVal = matchingElement(categories, keyword);
+                console.log("categoryVal="+categoryVal);
+
+                //extract year, make and category from keyword
+                //keyword=audi 2005 battery
+                //make=audi
+                //year=2005
+                //category=battery
 
                 // Construct the full URL with query parameters
                 const params = new URLSearchParams({
-                    name: nameParam, // Use the data received from record API
-                    make: '',
+                    name: keyword, // Use the data received from record API
+                    make: makeVal,
                     model: '',
-                    year: '',
-                    category: '',
+                    year: yearVal,
+                    category: categoryVal,
                     page: '1',
                     size: '100'
                 });

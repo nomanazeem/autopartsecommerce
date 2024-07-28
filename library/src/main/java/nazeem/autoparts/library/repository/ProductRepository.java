@@ -18,6 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             ")")
     List<Product> searchProduct(String criteria);
 
+    /*
     @Query(value="select * from product p " +
             "where 1=1 " +
             "and is_active  = 1 and is_deleted = 0 " +
@@ -29,6 +30,22 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             //"and (?4=1 or model_id= ?4) "+
             "and (length(?5) =0 or year= ?5) "
             , nativeQuery = true)
+
+     */
+
+    @Query(value= "SELECT p.*\n" +
+            ", m.name as make, p.`year`, c.name as category\n" +
+            "FROM product p\n" +
+            "inner join make m on m.make_id =p.make_id\n" +
+            "inner join category c on c.category_id = p.category_id\n"+
+            "where 1=1 \n" +
+            "and p.is_active = 1 and p.is_deleted = 0 \n" +
+            //"and (length(?1) = 0 or p.name like concat('%', ?1, '%')) \n" +
+            "and (length(?1) = 0 or MATCH(p.name) AGAINST(?1 IN NATURAL LANGUAGE MODE) ) \n" +//ignoring keyword
+            "and (length(?2) = 0 or c.name= ?2) \n"+
+            "and (length(?3) = 0 or m.name= ?3) \n"+
+            "and (length(?4) = 0 or p.model_id= ?4) \n"+
+            "and (length(?5) = 0 or p.year= ?5) ", nativeQuery = true)
     List<Product> searchProduct2(String keyword, String categoryId, String makeId, String modelId, String year);
 
 

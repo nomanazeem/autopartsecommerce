@@ -15,7 +15,7 @@
                             <legend>Make</legend>
                             <select class="form-control make" name="make" id="make">
                                 <option value="">All Makes</option>
-                                <option th:each="makeInfo : ${listMake}" th:selected="(${makeInfo.id} == ${make})" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
+                                <option th:each="makeInfo : ${listMake}" th:selected="(${makeInfo.name} == ${make})" th:value="${makeInfo.name}" th:utext="${makeInfo.name}"/>
                             </select>
 
                             <legend>Model</legend>
@@ -33,7 +33,7 @@
                             <legend>Category</legend>
                             <select class="form-control" placeholder="Search" name="category" id="category">
                                 <option value="">All Categories</option>
-                                <option th:each="categoryInfo : ${categories}" th:selected="(${categoryInfo.id} == ${category})" th:value="${categoryInfo.id}" th:utext="${categoryInfo.name}"/>
+                                <option th:each="categoryInfo : ${categories}" th:selected="(${categoryInfo.name} == ${category})" th:value="${categoryInfo.name}" th:utext="${categoryInfo.name}"/>
                             </select>
                         </div><!--/ .table_cell -->
                         <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
