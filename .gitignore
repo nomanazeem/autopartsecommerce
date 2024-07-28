@@ -48,3 +48,4 @@ Thumbs.db
 *.mov
 *.wmv
 
+/admin/src/main/resources/static/upload/product/

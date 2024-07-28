@@ -6,11 +6,54 @@ $(document).ready(function(){
     $("#btnSpeak").click(function(){
       //alert("The paragraph was clicked.");
       console.log("speaking...");
-      speakNavigate();
+      //speakNavigate();
+      speakNavigate2();
     });
 
+    function speakNavigate2(){
+        $.ajax({
+             type:"GET",
+             url: recordApiUrl+"3",//3 seconds
+             success:function(data){
+                disableButton($("#btnSpeak"), false);
+
+                debugger;
+                data = data.result;
+                //debugger;
+                console.log("you speak..."+data);
+
+                interpretCommand(data);
+            },
+        });
+    }
+
+    function interpretCommand(text) {
+        $.ajax({
+            url: clientUrl+'/interpret-command',
+            method: 'GET',
+            data: { command: text },
+            success: function(response) {
+                executeCommand(response);
+            },
+            error: function() {
+                alert('Error interpreting command');
+            }
+        });
+    }
+
+    function executeCommand(response) {
+        const command = JSON.parse(response);
+        if (command.action === 'navigate') {
+            window.location.href = command.url;
+        } else if (command.action === 'search') {
+            window.location.href = `/search?query=${encodeURIComponent(command.query)}`;
+        } else {
+            alert('Command not recognized');
+        }
+    }
+
     function speakNavigate(){
-        disableButton($("#btnSpeak"), true);
+      disableButton($("#btnSpeak"), true);
       //debugger;
       $.ajax({
              type:"GET",
