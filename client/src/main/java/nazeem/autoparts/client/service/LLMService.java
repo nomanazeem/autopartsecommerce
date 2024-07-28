@@ -3,6 +3,7 @@ package nazeem.autoparts.client.service;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
@@ -17,9 +18,13 @@ public class LLMService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String LLM_API_URL = "https://api.openai.com/v1/completions";
+
+    @Value("${openai.url}")
+    private String LLM_API_URL;
     //noman_azeem@yahoo.com account
-    private static final String API_KEY = "sk-None-KeYj0MYUvbH0WKhaCwr0T3BlbkFJ3KlyRoA9nqn1ML7YU6Fg";
+
+    @Value("${openai.secret}")
+    private String API_KEY;
 
     public String interpretCommand(String text) throws JSONException {
         HttpHeaders headers = new HttpHeaders();
