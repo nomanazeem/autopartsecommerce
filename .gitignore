@@ -49,3 +49,4 @@ Thumbs.db
 *.wmv
 
 /admin/src/main/resources/static/upload/product/
+admin/src/main/resources/static/upload/product/
