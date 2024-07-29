@@ -5,6 +5,42 @@
 <head>
     <title>Part Details</title>
 </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        .recommendation-container {
+            margin-top: 20px;
+        }
+        .recommendation-item img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .card {
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+        .card-body {
+            background-color: #f8f9fa;
+            border-radius: 0 0 5px 5px;
+        }
+        .card-title {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .card-text {
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+        .card-text .highlight {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
 <body>
 
 <!-- Main Container  -->
@@ -46,9 +82,9 @@
                                 <div class="large-image  ">
                                     <img itemprop="image" class="product-image-zoom" th:src="#{adminPath}+${product.getFullImage1Url()}" th:title="${product.name}" th:alt="${product.name}">
                                 </div>
-        <!--
-                                <a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
-        -->
+                                <!--
+                                                        <a class="thumb-video pull-left" href="https://www.youtube.com/watch?v=HhabgvIIXik"><i class="fa fa-youtube-play"></i></a>
+                                -->
 
                                 <div id="thumb-slider" class="yt-content-slider full_slider owl-drag" data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="10"
                                      data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="4"  data-items_column3="1" data-items_column4="1"
@@ -72,7 +108,7 @@
 
                             <div class="content-product-right col-md-7 col-sm-12 col-xs-12">
                                 <div class="title-product">
-                                    <h1 th:text="${product.name}"></h1>
+                                    <h1 id="productName" th:text="${product.name}"></h1>
                                 </div>
                                 <div class="product-label form-group">
                                     <div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
@@ -185,226 +221,69 @@
                     </div>
                     <!-- //Product Tabs -->
                 </div>
+
+                <div class="recommendation-container container" id="recommendationContainer">
+                    <h2>Recommendations based on selected product:</h2>
+                    <div class="row"></div>
+                </div>
+
             </form>
 
 
-            <!-- Related Products -->
-           <!-- <div class="related titleLine products-list grid module ">
-                <h3 class="modtitle">Related Products  </h3>
-
-                <div class="releate-products yt-content-slider products-list" data-rtl="no" data-loop="yes" data-autoplay="no" data-autoheight="no" data-autowidth="no" data-delay="4" data-speed="0.6" data-margin="30" data-items_column00="4" data-items_column0="4" data-items_column1="3" data-items_column2="2" data-items_column3="2" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-hoverpause="yes">
-                    <div class="product-layout product-grid">
-                        <div class="product-item-container item&#45;&#45;static">
-                            <div class="left-block">
-                                <div class="product-image-container second_img">
-                                    <a href="product.html" target="_self" title="Volup tatem accu">
-                                        <img th:src="@{/image/catalog/demo/product/270/1.jpg}" class="img-1 img-responsive" alt="image1">
-                                        <img th:src="@{/image/catalog/demo/product/270/2.jpg}" class="img-2 img-responsive" alt="image2">
-                                    </a>
-                                </div>
-                                <span class="label-product label-new">New </span>
-                                &lt;!&ndash;quickview&ndash;&gt;
-                                <div class="so-quickview">
-                                    <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                </div>
-                                &lt;!&ndash;end quickview&ndash;&gt;
-                            </div>
-                            <div class="right-block">
-                                <div class="button-group cartinfo&#45;&#45;static">
-
-                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                    <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                        <span>Add to cart </span>
-                                    </button>
-                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                </div>
-                                <h4><a href="product.html" title="Volup tatem accu" target="_self">Volup tatem accu</a></h4>
-                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                </div>
-                                <div class="price">
-                                    <span class="price">$48.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout product-grid">
-                        <div class="product-item-container item&#45;&#45;static">
-                            <div class="left-block">
-                                <div class="product-image-container second_img">
-                                    <a href="product.html" target="_self" title="DPicanha porkcho">
-                                        <img th:src="@{/image/catalog/demo/product/270/2.jpg}" class="img-1 img-responsive" alt="image1">
-                                        <img th:src="@{/image/catalog/demo/product/270/3.jpg}" class="img-2 img-responsive" alt="image2">
-                                    </a>
-                                </div>
-
-                                &lt;!&ndash;quickview&ndash;&gt;
-                                <div class="so-quickview">
-                                    <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                </div>
-                                &lt;!&ndash;end quickview&ndash;&gt;
-                            </div>
-                            <div class="right-block">
-                                <div class="button-group cartinfo&#45;&#45;static">
-                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                    <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                        <span>Add to cart </span>
-                                    </button>
-                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                </div>
-                                <h4><a href="product.html" title="Picanha porkcho" target="_self">Picanha porkcho</a></h4>
-                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                </div>
-                                <div class="price">
-                                    <span class="price">$89.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout product-grid">
-                        <div class="product-item-container item&#45;&#45;static">
-                            <div class="left-block">
-                                <div class="product-image-container second_img">
-                                    <a href="product.html" target="_self" title="Stickrum bresao">
-                                        <img th:src="@{/image/catalog/demo/product/270/3.jpg}" class="img-1 img-responsive" alt="image1">
-                                        <img th:src="@{/image/catalog/demo/product/270/4.jpg}" class="img-2 img-responsive" alt="image2">
-                                    </a>
-                                </div>
-                                <span class="label-product label-sale">-11%</span>
-                                &lt;!&ndash;quickview&ndash;&gt;
-                                <div class="so-quickview">
-                                    <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                </div>
-                                &lt;!&ndash;end quickview&ndash;&gt;
-                            </div>
-                            <div class="right-block">
-                                <div class="button-group cartinfo&#45;&#45;static">
-
-                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                    <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                        <span>Add to cart </span>
-                                    </button>
-                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                </div>
-                                <h4><a href="product.html" title="Stickrum bresao" target="_self">Stickrum bresao</a></h4>
-                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                </div>
-                                <div class="price">
-                                    <span class="price-new">$85.00</span>
-                                    <span class="price-old">$96.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product-layout product-grid">
-                        <div class="product-item-container item&#45;&#45;static">
-                            <div class="left-block">
-                                <div class="product-image-container second_img">
-                                    <a href="product.html" target="_self" title="Shoulder kevinis">
-                                        <img th:src="@{/image/catalog/demo/product/270/4.jpg}" class="img-1 img-responsive" alt="image1">
-                                        <img th:src="@{/image/catalog/demo/product/270/5.jpg}" class="img-2 img-responsive" alt="image2">
-                                    </a>
-                                </div>
-
-                                &lt;!&ndash;quickview&ndash;&gt;
-                                <div class="so-quickview">
-                                    <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                </div>
-                                &lt;!&ndash;end quickview&ndash;&gt;
-                            </div>
-                            <div class="right-block">
-                                <div class="button-group cartinfo&#45;&#45;static">
-
-                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                    <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                        <span>Add to cart </span>
-                                    </button>
-                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                </div>
-                                <h4><a href="product.html" title="Shoulder kevinis" target="_self">Shoulder kevinis</a></h4>
-                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                </div>
-                                <div class="price">
-                                    <span class="price">$60.00</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="product-layout product-grid">
-                        <div class="product-item-container item&#45;&#45;static">
-                            <div class="left-block">
-                                <div class="product-image-container second_img">
-                                    <a href="product.html" target="_self" title="Remporum stick">
-                                        <img th:src="@{/image/catalog/demo/product/270/5.jpg}" class="img-1 img-responsive" alt="image1">
-                                        <img th:src="@{/image/catalog/demo/product/270/6.jpg}" class="img-2 img-responsive" alt="image2">
-                                    </a>
-                                </div>
-                                <span class="label-product label-new">New</span>
-                                &lt;!&ndash;quickview&ndash;&gt;
-                                <div class="so-quickview">
-                                    <a class="iframe-link btn-button quickview quickview_handler visible-lg" href="quickview.html" title="Quick view" data-fancybox-type="iframe"><i class="fa fa-search"></i><span>Quick view</span></a>
-                                </div>
-                                &lt;!&ndash;end quickview&ndash;&gt;
-                            </div>
-                            <div class="right-block">
-                                <div class="button-group cartinfo&#45;&#45;static">
-
-                                    <button type="button" class="wishlist btn-button" title="Add to Wish List" onclick="wishlist.add('60');"><i class="fa fa-heart"></i></button>
-                                    <button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                                        <span>Add to cart </span>
-                                    </button>
-                                    <button type="button" class="compare btn-button" title="Compare this Product " onclick="compare.add('60');"><i class="fa fa-refresh"></i></button>
-                                </div>
-                                <h4><a href="product.html" title="Remporum stick" target="_self">Remporum stick</a></h4>
-                                <div class="rating">    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i></span>
-                                    <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                                </div>
-                                <div class="price">
-                                    <span class="price">$65.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-
-            <!-- end Related  Products-->
         </div>
     </div>
 </div>
 <!--Middle Part End-->
 
 <th:block layout:fragment="script">
-   <script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+    <script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
     <script type="text/javascript" th:src="@{/js/Util.js}"></script>
     <script th:inline="javascript">
-        $(document).ready(function() {
-            //display('grid');
-            $(".make").change(function() {
-                var url = /*[[@{/models}]]*/
-                getModels(url);
+            $(document).ready(function() {
+                const productName = $('#productName').text();
+
+                // Define the API endpoint
+                const apiEndpoint = `http://127.0.0.1:5000/recommend?keyword=${productName}`;
+
+                // Make the API call
+                fetch(apiEndpoint)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the response data
+                        const recommendationContainer = $('#recommendationContainer .row');
+
+                        data.forEach(item => {
+                            // Create a new div element for each recommendation
+                            const recommendationItem = $(`
+                                <div class="col-md-4 mb-4">
+                                    <div class="card shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${item.Combined}</h5>
+                                        </div>
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaUyEsJiE37fZbqYCyrZYj00pwSgyTCyCSdA&s" th:src="@{/image/catalog/demo/product/270/1.jpg}" class="img-1 img-responsive" alt="image1">nnnnnn
+                                        <div class="card-body">
+                                            <p class="card-text">Year: <span class="highlight">${item.year}</span></p>
+                                            <p class="card-text">Make: <span class="highlight">${item.make}</span></p>
+                                            <p class="card-text">Part Name: <span class="highlight">${item.part_name}</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `);
+                            // Append the recommendation item to the container
+                            recommendationContainer.append(recommendationItem);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching recommendations:', error);
+                    });
+
+                // Display models based on the make selection
+                $(".make").change(function() {
+                    var url = /*[[@{/models}]]*/
+                    getModels(url);
+                });
             });
-        });
-    </script>
+        </script>
 </th:block>
 </body>
 </html>
