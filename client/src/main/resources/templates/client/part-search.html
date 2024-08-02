@@ -85,11 +85,31 @@
                 <div th:replace="/fragments/parts::partsData(productList=${productList})"></div>
 
 
-                <nav th:if="${productList.totalPages > 0}" aria-label="Page navigation example">
-                    <ul th:each="pageNumber : ${pageNumbers}" class="pagination">
-                        <li th:class="${pageNumber == currentPage} ? 'page-item active' : 'page-item '">
-                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${pageNumber})}"
-                               th:text="${pageNumber}" ></a>
+                <nav th:if="${productList.totalPages > 1}" aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <!-- Previous Page Link -->
+                        <li th:class="${currentPage == 1} ? 'page-item disabled' : 'page-item'">
+                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${currentPage - 1})}" class="page-link">&laquo;</a>
+                        </li>
+
+                        <!-- First 10 Pages -->
+                        <li th:each="page : ${#numbers.sequence(1, T(Math).min(productList.totalPages, 10))}" th:class="${page == currentPage} ? 'page-item active' : 'page-item'">
+                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${page})}" class="page-link" th:text="${page}"></a>
+                        </li>
+
+                        <!-- Ellipsis -->
+                        <li th:if="${productList.totalPages > 10 && currentPage < productList.totalPages - 3}" class="page-item disabled">
+                            <span class="page-link">...</span>
+                        </li>
+
+                        <!-- Last Page -->
+                        <li th:if="${productList.totalPages > 10}" th:class="${currentPage == productList.totalPages} ? 'page-item active' : 'page-item'">
+                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${productList.totalPages})}" class="page-link" th:text="${productList.totalPages}"></a>
+                        </li>
+
+                        <!-- Next Page Link -->
+                        <li th:class="${currentPage == productList.totalPages} ? 'page-item disabled' : 'page-item'">
+                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${currentPage + 1})}" class="page-link">&raquo;</a>
                         </li>
                     </ul>
                 </nav>
