@@ -2,7 +2,7 @@
 <div th:fragment="partsData(productList)" class="products-list row nopadding-xs so-filter-gird" th:object="${productList}">
     <div th:if="${productList != null}">
         <div data-th-each="productInfo : ${productList}" class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12">
-            <div class="product-item-container item--static" style="height: 150px;"> <!-- Set your desired height here -->
+            <div class="product-item-container item--static" style="height: 150px; margin-bottom: 80px;"> <!-- Set your desired height here -->
                 <div class="left-block">
                     <div class="product-image-container second_img">
                         <a th:href="@{/part-details(id=${productInfo.id})}" target="_self" th:title="${productInfo.name}">
