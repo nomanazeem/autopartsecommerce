@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -114,20 +115,14 @@ public class ProductService {
     private String ImageUpload(Long productId, MultipartFile productImage1){
         String fileName="";
 
-        String productFolder = "admin/src/main/resources/static/upload/product";
+        String productFolder = "admin/src/main/resources/static/upload/product/images";
         //Save image
         try {
             byte[] bytes = productImage1.getBytes();
 
-            //Create directory if not exists
-            File file = new File(productFolder+"/"+productId);
-            if(!file.exists()){
-                file.mkdirs();
-            }
+            fileName = productImage1.getName()+ "_" + UUID.randomUUID()+".png";
 
-            fileName = productImage1.getName()+".png";
-
-            String fileWithFolderName = productFolder+"/"+ productId +"/"+ fileName;
+            String fileWithFolderName = productFolder+"/"+ fileName;
 
             BufferedOutputStream stream = new BufferedOutputStream(
                     new FileOutputStream(
